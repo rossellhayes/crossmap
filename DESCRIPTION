@@ -38,3 +38,5 @@ Collate:
     'crossmap-package.R'
     'future_xmap.R'
     'xmap.R'
+URL: https://github.com/rossellhayes/crossmap
+BugReports: https://github.com/rossellhayes/crossmap/issues
