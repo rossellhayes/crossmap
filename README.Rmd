@@ -1,0 +1,82 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# crossmap <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+**crossmap** provides an extension to [**purrr**](https://github.com/tidyverse/purrr)'s family of mapping functions.
+`xmap()` works like `purrr::pmap()`, but applies a function to every combination of elements in a list of inputs.
+
+**crossmap** also includes a few other general purpose and specialized  functions for working with combinations of list elements.
+
+## Installation
+
+You can install the development version of **crossmap** from [GitHub](https://github.com/rossellhayes/fauxnaif) with:
+
+```{r eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("rossellhayes/crossmap")
+```
+
+## Usage
+
+```{r include = FALSE}
+library(purrr)
+library(crossmap)
+```
+
+While `purrr::pmap()` applies a function to list elements pairwise, `xmap()` applies a function to all combinations of elements
+
+```{r}
+pmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
+xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
+```
+
+**crossmap** also integrates with [**furrr**](https://github.com/DavisVaughan/furrr) to offer parallelized versions of the `xmap()` functions
+
+```{r}
+future::plan("multiprocess")
+future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
+```
+
+`cross_fit()` is an easy wrapper for an important use of **crossmap**, fitting models to subsets of data
+
+```{r warning = FALSE}
+cross_fit(mtcars, c(cyl, vs), list(wt = mpg ~ wt, hp = mpg ~ hp))
+```
+
+`cross()` finds all combinations of elements from a set of lists
+
+```{r}
+cross(number = 1:3, letter = letters[1:3])
+cross(number = 1:3, letter = letters[1:3], .type = "tibble")
+```
+
+And `cross_join()` finds all combinations of the rows of data frames
+
+```{r}
+cross_join(dplyr::band_members, dplyr::band_instruments2)
+```
+
+---
+
+Hex sticker font is
+[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
+[Adobe](https://adobe.com).
+
+Please note that **crossmap** is released with a
+[Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).

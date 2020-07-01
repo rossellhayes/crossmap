@@ -1,0 +1,40 @@
+Package: crossmap
+Title: Apply Functions to All Combinations of List Elements
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Alexander",
+           family = "Rossell Hayes",
+           role = c("aut", "cre", "cph"),
+           email = "alexander@rossellhayes.com",
+           comment = c(ORCID = "0000-0001-9412-0457"))
+Description: Provides an extension to the 'purrr' family of mapping functions to
+    apply a function to each combination of elements in a list of inputs.
+    Also includes general purpose functions for finding every combination of
+    elements of lists or rows of data frames and a specialized function for
+    applying multiple models to multiple subsets of a dataset.
+License: MIT + file LICENSE
+Imports:
+    purrr,
+    rlang
+Suggests: 
+    broom,
+    crayon,
+    datasets,
+    dplyr (>= 1.0.0),
+    furrr,
+    future,
+    glue,
+    stats,
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Collate: 
+    'cross.R'
+    'errors.R'
+    'cross_fit.R'
+    'cross_join.R'
+    'crossmap-package.R'
+    'future_xmap.R'
+    'xmap.R'

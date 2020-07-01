@@ -1,0 +1,47 @@
+#' Crossing join
+#'
+#' Adds columns from a set of data frames, creating all combinations of
+#' their rows
+#'
+#' @param ... [Data frames][data.frame] or a [list] of data frames -- including
+#'   data frame extensions (e.g. [tibbles][tibble::tibble()]) and lazy data
+#'   frames (e.g. from [dbplyr][dbplyr::dbplyr-package] or
+#'   [dtplyr][dtplyr::dtplyr-package])
+#' @param copy If inputs are not from the same data source, and copy is
+#'   `TRUE`, then they will be copied into the same src as the first input.
+#'   This allows you to join tables across srcs, but it is a potentially
+#'   expensive operation so you must opt into it.
+#'
+#' @return An object of the same type as the first input.
+#'   The order of the rows and columns of the first input is preserved as much
+#'   as possible. The output has the following properties:
+#'
+#'   - Rows from each input will be duplicated.
+#'   - Output columns include all columns from each input.
+#'     If columns have the same name, suffixes are added to disambiguate.
+#'   - Groups are taken from the first input.
+#'
+#' @seealso [cross()] to find combinations of elements of vectors and lists.
+#'
+#' @export
+#'
+#' @example examples/cross_join.R
+
+cross_join <- function(..., copy = FALSE) {
+  require_package("dplyr")
+
+  .x <- rlang::list2(...)
+  .x <- lapply(.x, function(.x) if (inherits(.x, "list")) {.x} else {list(.x)})
+  .x <- purrr::flatten(.x)
+
+  abort_if_not_df(.x)
+
+  purrr::reduce2(
+    .x,
+    lapply(seq_len(length(.x) - 1), function(x) paste0(".", c(x, x + 1))),
+    function(x, y, suffix) {
+      dplyr::full_join(x, y, suffix = suffix, by = character(), copy = copy)
+    }
+  )
+}
+
