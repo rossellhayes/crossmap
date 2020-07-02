@@ -1,5 +1,4 @@
 \donttest{future::plan("multiprocess")}
-\dontshow{future::plan("sequential")}
 
 fruits   <- c("apple", "banana", "carrot", "durian", "eggplant")
 desserts <- c("bread", "cake", "cupcake", "streudel", "muffin")

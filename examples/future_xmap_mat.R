@@ -1,5 +1,4 @@
 \donttest{future::plan("multiprocess")}
-\dontshow{future::plan("sequential")}
 
 future_xmap_mat(list(1:3, 1:3),  ~ ..1 * ..2)
 

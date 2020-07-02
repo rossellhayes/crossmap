@@ -1,5 +1,5 @@
 \donttest{future::plan("multiprocess")}
-\dontshow{future::plan("sequential")}
+
 future_xmap(list(1:5, 1:5), ~ .y * .x)
 future_xmap_dbl(list(1:5, 1:5), ~ .y * .x)
 future_xmap_chr(list(1:5, 1:5), ~ paste(.y, "*", .x, "=" .y * .x))
