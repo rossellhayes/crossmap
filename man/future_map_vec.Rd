@@ -2,10 +2,47 @@
 % Please edit documentation in R/future_map_vec.R
 \name{future_map_vec}
 \alias{future_map_vec}
+\alias{future_map2_vec}
+\alias{future_pmap_vec}
+\alias{future_imap_vec}
+\alias{future_xmap_vec}
 \title{Parallelized mapping functions that automatically determine type}
 \usage{
 future_map_vec(
   .x,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
+
+future_map2_vec(
+  .x,
+  .y,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
+
+future_pmap_vec(
+  .l,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
+
+future_imap_vec(
+  .x,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
+
+future_xmap_vec(
+  .l,
   .f,
   ...,
   .progress = FALSE,
@@ -42,6 +79,14 @@ multiprocess, multisession, and multicore plans}
 
 \item{.options}{The \code{future} specific options to use with the workers.
 This must be the result from a call to \code{\link[furrr:future_options]{furrr::future_options()}}}
+
+\item{.y}{A vector the same length as \code{.x}.
+Vectors of length 1 will be recycled.}
+
+\item{.l}{A list of vectors, such as a data frame.
+The length of .l determines the number of arguments that .f will be called
+with.
+List names will be used if present.}
 }
 \value{
 Equivalent to \code{\link[=map_vec]{map_vec()}}, \code{\link[=map2_vec]{map2_vec()}}, \code{\link[=pmap_vec]{pmap_vec()}},

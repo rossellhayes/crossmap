@@ -33,7 +33,7 @@ future_map_vec <- function(
   )
 }
 
-#' @rdname map_vec
+#' @rdname future_map_vec
 #' @export
 
 future_map2_vec <- function(
@@ -49,7 +49,7 @@ future_map2_vec <- function(
   )
 }
 
-#' @rdname map_vec
+#' @rdname future_map_vec
 #' @export
 
 future_pmap_vec <- function(
@@ -63,7 +63,7 @@ future_pmap_vec <- function(
   )
 }
 
-#' @rdname map_vec
+#' @rdname future_map_vec
 #' @export
 
 future_imap_vec <- function(
@@ -77,7 +77,7 @@ future_imap_vec <- function(
   )
 }
 
-#' @rdname map_vec
+#' @rdname future_map_vec
 #' @export
 
 future_xmap_vec <- function(
