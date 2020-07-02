@@ -12,6 +12,14 @@ test_that("require future", {
   expect_error(future_xmap(list(1:3, 1:3), paste))
 })
 
+test_that("message for no plan", {
+  local_mock(
+    plan = function(...) {NULL},
+    .env = "future"
+  )
+  expect_message(require_furrr())
+})
+
 test_that("require dplyr", {
   local_mock(
     requireNamespace = function(x, ...) {if (x == "dplyr") {FALSE} else {TRUE}}
@@ -41,14 +49,6 @@ test_that("R 3.3.0 for trimws", {
   local_mock(getRversion = function() {"0.0.1"})
   expect_error(autonames(unnamed, trimws = TRUE))
   expect_error(require_r("3.3.0"))
-})
-
-test_that("warn for no plan", {
-  local_mock(
-    plan = function(...) {NULL},
-    .env = "future"
-  )
-  expect_warning(require_furrr())
 })
 
 test_that("abort if not formulas", {
