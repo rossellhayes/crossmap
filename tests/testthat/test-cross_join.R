@@ -1,6 +1,8 @@
 stringsAsFactors <- options(stringsAsFactors = FALSE)
 
 test_that("cross_join", {
+  skip_if_not_installed("dplyr")
+
   a <- data.frame(a = 1:2)
   b <- data.frame(b = letters[1:2])
   c <- data.frame(c = LETTERS[1:2])
