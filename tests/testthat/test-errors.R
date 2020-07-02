@@ -17,7 +17,7 @@ test_that("message for no plan", {
     plan = function(...) {NULL},
     .env = "future"
   )
-  expect_message(require_furrr())
+  expect_warning(require_furrr())
 })
 
 test_that("require dplyr", {

@@ -116,7 +116,7 @@ require_furrr <- function() {
   require_package("future", fn = fn)
 
   if (is.null(attr(future::plan(), "call"))) {
-    rlang::inform(
+    rlang::warn(
       c(
         paste("No future plan is set, so", code(fn), "is not parallelized."),
         paste("Try", code('future::plan("multiprocess")'))

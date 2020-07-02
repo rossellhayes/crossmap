@@ -1,5 +1,5 @@
 test_msg  <- function(executor, ...) {paste(executor, ..., sep = " - ")}
-executors <- c("sequential", "multisession", "multicore")
+executors <- c("multicore", "multisession", "sequential")
 system.os <- Sys.info()[["sysname"]]
 test_dat  <- seq_len(3)
 test_l    <- list(test_dat, test_dat)
@@ -8,7 +8,7 @@ for (.e in executors) {
   # Don't test multicore on non-Mac
   if (.e == "multicore" && system.os != "Darwin") {next}
 
-  future::plan(.e, substitute = FALSE)
+  future::plan(.e)
 
   test_that(test_msg(.e, "equivalence with xmap()"), {
     skip_if_not_installed("furrr")
