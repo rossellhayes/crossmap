@@ -115,8 +115,6 @@ These functions work exactly the same as \code{\link[=xmap]{xmap()}} functions,
 but allow you to run the map in parallel using \code{\link[future:future]{future::future()}}
 }
 \examples{
-\donttest{future::plan("multiprocess")}
-
 future_xmap(list(1:5, 1:5), ~ .y * .x)
 future_xmap_dbl(list(1:5, 1:5), ~ .y * .x)
 future_xmap_chr(list(1:5, 1:5), ~ paste(.y, "*", .x, "=" .y * .x))

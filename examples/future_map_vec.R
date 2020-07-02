@@ -1,5 +1,3 @@
-\donttest{future::plan("multiprocess")}
-
 fruits   <- c("apple", "banana", "carrot", "durian", "eggplant")
 desserts <- c("bread", "cake", "cupcake", "streudel", "muffin")
 x        <- sample(5)

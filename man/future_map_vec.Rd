@@ -98,8 +98,6 @@ These functions work exactly the same as \code{\link[=map_vec]{map_vec()}}, \cod
 but allow you to map in parallel.
 }
 \examples{
-\donttest{future::plan("multiprocess")}
-
 fruits   <- c("apple", "banana", "carrot", "durian", "eggplant")
 desserts <- c("bread", "cake", "cupcake", "streudel", "muffin")
 x        <- sample(5)
