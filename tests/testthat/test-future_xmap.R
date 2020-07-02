@@ -60,6 +60,9 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "equivalence with map_vec()"), {
+    skip_if_not_installed("furrr")
+    skip_if_not_installed("future")
+
     x <- 1:3
 
     expect_equal(map_vec(x, ~ .x > 1), future_map_vec(x, ~ .x > 1))
@@ -126,6 +129,9 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "equivalence with xmap_mat()"), {
+    skip_if_not_installed("furrr")
+    skip_if_not_installed("future")
+
     dat       <- 1:3
     named_dat <- `names<-`(1:3, letters[1:3])
 
