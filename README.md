@@ -5,6 +5,14 @@
 
 <!-- badges: start -->
 
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build
+status](https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/crossmap/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap?branch=master)
 <!-- badges: end -->
 
 **crossmap** provides an extension to
