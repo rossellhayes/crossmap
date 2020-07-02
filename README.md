@@ -46,6 +46,16 @@ xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
 #> [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"
 ```
 
+`xmap_mat()` formats `xmap()` results into a matrix
+
+``` r
+xmap_mat(list(1:3, 1:6), prod)
+#>   1 2 3  4  5  6
+#> 1 1 2 3  4  5  6
+#> 2 2 4 6  8 10 12
+#> 3 3 6 9 12 15 18
+```
+
 **crossmap** also integrates with
 [**furrr**](https://github.com/DavisVaughan/furrr) to offer parallelized
 versions of the `xmap()` functions
@@ -85,16 +95,16 @@ cross_fit(mtcars, c(cyl, vs), list(wt = mpg ~ wt, hp = mpg ~ hp))
 #> 18     8     0 hp    hp           -0.0142   1.39e- 2  -1.02e+ 0   3.26e- 1
 ```
 
-`cross()` finds all combinations of elements from a set of lists
+`cross_list()` finds all combinations of elements from a set of lists
 
 ``` r
-cross(number = 1:3, letter = letters[1:3])
+cross_list(number = 1:3, letter = letters[1:3])
 #> $number
 #> [1] 1 2 3 1 2 3 1 2 3
 #> 
 #> $letter
 #> [1] "a" "a" "a" "b" "b" "b" "c" "c" "c"
-cross(number = 1:3, letter = letters[1:3], .type = "tibble")
+cross_tbl(number = 1:3, letter = letters[1:3])
 #> # A tibble: 9 x 2
 #>   number letter
 #>    <int> <chr> 
@@ -112,19 +122,36 @@ cross(number = 1:3, letter = letters[1:3], .type = "tibble")
 And `cross_join()` finds all combinations of the rows of data frames
 
 ``` r
-cross_join(dplyr::band_members, dplyr::band_instruments2)
+cross_join(
+  tibble(
+    color = c("red", "yellow", "orange"),
+    fruit = c("apple", "banana", "cantaloupe")
+  ),
+  tibble(dessert = c("cupcake", "muffin", "streudel"), makes = c(8, 6, 1))
+)
 #> # A tibble: 9 x 4
-#>   name  band    artist plays 
-#>   <chr> <chr>   <chr>  <chr> 
-#> 1 Mick  Stones  John   guitar
-#> 2 Mick  Stones  Paul   bass  
-#> 3 Mick  Stones  Keith  guitar
-#> 4 John  Beatles John   guitar
-#> 5 John  Beatles Paul   bass  
-#> 6 John  Beatles Keith  guitar
-#> 7 Paul  Beatles John   guitar
-#> 8 Paul  Beatles Paul   bass  
-#> 9 Paul  Beatles Keith  guitar
+#>   color  fruit      dessert  makes
+#>   <chr>  <chr>      <chr>    <dbl>
+#> 1 red    apple      cupcake      8
+#> 2 red    apple      muffin       6
+#> 3 red    apple      streudel     1
+#> 4 yellow banana     cupcake      8
+#> 5 yellow banana     muffin       6
+#> 6 yellow banana     streudel     1
+#> 7 orange cantaloupe cupcake      8
+#> 8 orange cantaloupe muffin       6
+#> 9 orange cantaloupe streudel     1
+```
+
+`map_vec()` and variants automatically determine output types. This
+means you don’t have to worry about adding `_int()`, `_dbl()` or
+`_chr()`.
+
+``` r
+map_vec(sample(5), ~ . ^ 2)
+#> [1] 25  1  9 16  4
+map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
+#> [1] "apples"      "bananas"     "cantaloupes"
 ```
 
 -----
