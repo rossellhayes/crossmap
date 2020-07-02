@@ -61,7 +61,7 @@ abort_if_not_formulas <- function(x) {
 warn_if_not_matrix <- function(.l) {
   if (length(.l) > 2) {
     call <- sys.call(-1)
-    call[[1]] <- rlang::sym(gsub("mat$", "arr", format(call[[1]])))
+    call[[1]] <- rlang::sym(gsub("mat$", "arr", as.character(call[[1]])))
 
     rlang::warn(
       c(
