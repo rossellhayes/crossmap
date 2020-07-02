@@ -1,9 +1,10 @@
 dat           <- 1:3
 named_dat     <- `names<-`(1:3, letters[1:3])
 res           <- c(1:3, (1:3) * 2L, (1:3) * 3L)
-unnamed_mat   <- matrix(res, nrow = 3)
-autonamed_mat <- `dimnames<-`(unnamed_mat, list(1:3, 1:3))
-named_mat     <- `dimnames<-`(unnamed_mat, list(letters[1:3], letters[1:3]))
+mat           <- matrix(res, nrow = 3)
+unnamed_mat   <- `dimnames<-`(mat, NULL)
+autonamed_mat <- `dimnames<-`(mat, list(format(1:3), format(1:3)))
+named_mat     <- `dimnames<-`(mat, list(letters[1:3], letters[1:3]))
 unnamed_arr   <- array(c(res, res * 2, res * 3), dim = rep(3, 3))
 
 test_that("xmap_mat()", {
