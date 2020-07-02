@@ -1,6 +1,6 @@
 dat           <- 1:3
 named_dat     <- `names<-`(1:3, letters[1:3])
-res           <- c(1:3, (1:3)*2L, (1:3)*3L)
+res           <- c(1:3, (1:3) * 2L, (1:3) * 3L)
 unnamed_mat   <- matrix(res, nrow = 3)
 autonamed_mat <- `dimnames<-`(unnamed_mat, list(1:3, 1:3))
 named_mat     <- `dimnames<-`(unnamed_mat, list(letters[1:3], letters[1:3]))
