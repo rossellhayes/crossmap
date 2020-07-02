@@ -91,17 +91,17 @@ test_that("conf.int", {
   expect_equal(ncol(fit), 9)
 })
 
-df <- data.frame(
-  x = rep(c(0, 0.5, 1), 2),
-  y = c(0, 0.5, 1, 1, 0.5, 0),
-  m = c(rep("a", 3), rep("b", 3)),
-  stringsAsFactors = FALSE
-)
-
 test_that("logit", {
   skip_if_not_installed("broom")
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
+
+  df <- data.frame(
+    x = rep(c(0, 0.5, 1), 2),
+    y = c(0, 0.5, 1, 1, 0.5, 0),
+    m = c(rep("a", 3), rep("b", 3)),
+    stringsAsFactors = FALSE
+  )
 
   fit <- suppressWarnings(
     cross_fit(
