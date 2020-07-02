@@ -8,7 +8,7 @@ for (.e in executors) {
   # Don't test multicore on non-Mac
   if (.e == "multicore" && system.os != "Darwin") {next}
 
-  future::plan(.e)
+  if (requireNamespace("future", quietly = TRUE)) {future::plan(.e)}
 
   test_that(test_msg(.e, "equivalence with xmap()"), {
     skip_if_not_installed("furrr")
