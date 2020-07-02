@@ -29,6 +29,9 @@ cross_df <- function(...) {
   output
 }
 
+#' @rdname cross_list
+#' @export
+
 cross_tbl <- function(...) {
   require_package("dplyr")
   dplyr::as_tibble(cross_df(...), .name_repair = "unique")

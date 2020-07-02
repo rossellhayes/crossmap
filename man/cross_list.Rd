@@ -3,11 +3,14 @@
 \name{cross_list}
 \alias{cross_list}
 \alias{cross_df}
+\alias{cross_tbl}
 \title{List all combinations of values}
 \usage{
 cross_list(...)
 
 cross_df(...)
+
+cross_tbl(...)
 }
 \arguments{
 \item{...}{Inputs or a \link{list} of inputs}
