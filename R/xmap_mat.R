@@ -34,7 +34,7 @@ xmap_mat <- function(.l, .f, ..., .names = TRUE) {
 xmap_arr <- function(.l, .f, ..., .names = TRUE) {
   array(
     data     = xmap_vec(.l, .f, ...),
-    dim      = lapply(.l, length),
-    dimnames = if (.names) {lapply(.l, autonames)}
+    dim      = purrr::map_int(.l, length),
+    dimnames = if (.names) {purrr::map_chr(.l, autonames)}
   )
 }
