@@ -34,7 +34,7 @@ xmap_mat <- function(.l, .f, ..., .names = TRUE) {
 xmap_arr <- function(.l, .f, ..., .names = TRUE) {
   array(
     data     = xmap_vec(.l, .f, ...),
-    dim      = lapply(.l, length),
-    dimnames = if (.names) {lapply(.l, autonames)}
+    dim      = vapply(.l, length, integer(1)),
+    dimnames = if (.names) {vapply(.l, autonames, character(1))}
   )
 }
