@@ -37,6 +37,12 @@ test_that("require dplyr 1.0.0", {
   expect_error(cross_fit(mtcars, cyl, mpg ~ wt))
 })
 
+test_that("R 3.3.0 for trimws", {
+  local_mock(getRversion = function() {"0.0.1"})
+  expect_error(autonames(unnamed, trimws = TRUE))
+  expect_error(require_r("3.3.0"))
+})
+
 test_that("warn for no plan", {
   local_mock(
     plan = function(...) {NULL},

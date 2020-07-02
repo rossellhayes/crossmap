@@ -18,6 +18,7 @@
 #'   [xmap()] for the underlying functions.
 #'
 #' @include errors.R
+#' @include map_vec.R
 #' @export
 #'
 #' @example examples/xmap_mat.R
@@ -32,7 +33,7 @@ xmap_mat <- function(.l, .f, ..., .names = TRUE) {
 
 xmap_arr <- function(.l, .f, ..., .names = TRUE) {
   array(
-    data     = xmap(.l, .f, ...),
+    data     = xmap_vec(.l, .f, ...),
     dim      = lapply(.l, length),
     dimnames = if (.names) {lapply(.l, autonames)}
   )

@@ -18,13 +18,14 @@
 #' @example examples/future_xmap_mat.R
 
 future_xmap_mat <- function(
-  .l, .f, ..., .names = TRUE, .progress = FALSE, .options = future_options()
+  .l, .f, ...,
+  .names = TRUE, .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
   warn_if_not_matrix(.l)
 
   future_xmap_arr(
-    .l, .f, ..., .names, .progress = .progress, .options = .options
+    .l, .f, ..., .names = .names, .progress = .progress, .options = .options
   )
 }
 
@@ -32,13 +33,16 @@ future_xmap_mat <- function(
 #' @export
 
 future_xmap_arr <- function(
-  .l, .f, ..., .names = TRUE, .progress = FALSE, .options = future_options()
+  .l, .f, ...,
+  .names = TRUE, .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
 
   array(
-    data = future_xmap(.l, .f, ..., .progress = .progress, .options = .options),
-    dim  = lapply(.l, length),
+    data = future_xmap_vec(
+      .l, .f, ..., .progress = .progress, .options = .options
+    ),
+    dim      = lapply(.l, length),
     dimnames = if (.names) {lapply(.l, autonames)}
   )
 }

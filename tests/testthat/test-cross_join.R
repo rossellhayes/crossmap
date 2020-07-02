@@ -25,7 +25,7 @@ test_that("cross_join", {
   )
   expect_error(cross_join(a, 1))
   expect_error(cross_join(1, 1))
-  expect_error(cross_join(1, b))
+  expect_error(cross_join("a", b))
 })
 
 options(stringsAsFactors)

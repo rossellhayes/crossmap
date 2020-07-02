@@ -59,6 +59,104 @@ for (.e in executors) {
     expect_equal(.xmap, .future_xmap)
   })
 
+  test_that(test_msg(.e, "equivalence with map_vec()"), {
+    x <- 1:3
+
+    expect_equal(map_vec(x, ~ .x > 1), future_map_vec(x, ~ .x > 1))
+    expect_equal(map_vec(x, ~ .x - 1L), future_map_vec(x, ~ .x - 1L))
+    expect_equal(map_vec(x, ~ .x / 2), future_map_vec(x, ~ .x / 2))
+    expect_equal(
+      map_vec(x, ~ paste(.x, "!")), future_map_vec(x, ~ paste(.x, "!"))
+    )
+    expect_equal(
+      map_vec(as.raw(x), ~ rawShift(.x, 1)),
+      future_map_vec(as.raw(x), ~ rawShift(.x, 1))
+    )
+    expect_equal(map_vec(x, ~ lm(.x ~ 1)), future_map_vec(x, ~ lm(.x ~ 1)))
+
+    expect_equal(map2_vec(x, x, `>`), future_map2_vec(x, x, `>`))
+    expect_equal(map2_vec(x, x, `-`), future_map2_vec(x, x, `-`))
+    expect_equal(map2_vec(x, x, `/`), future_map2_vec(x, x, `/`))
+    expect_equal(map2_vec(x, x, paste), future_map2_vec(x, x, paste))
+    expect_equal(
+      map2_vec(as.raw(x), x, rawShift), future_map2_vec(as.raw(x), x, rawShift)
+    )
+    expect_equal(
+      map2_vec(x, x, ~ lm(.x ~ .y)), future_map2_vec(x, x, ~ lm(.x ~ .y))
+    )
+
+    expect_equal(pmap_vec(list(x, x), `>`), future_pmap_vec(list(x, x), `>`))
+    expect_equal(pmap_vec(list(x, x), `-`), future_pmap_vec(list(x, x), `-`))
+    expect_equal(pmap_vec(list(x, x), `/`), future_pmap_vec(list(x, x), `/`))
+    expect_equal(
+      pmap_vec(list(x, x), paste), future_pmap_vec(list(x, x), paste)
+    )
+    expect_equal(
+      pmap_vec(list(as.raw(x), x), rawShift),
+      future_pmap_vec(list(as.raw(x), x), rawShift)
+    )
+    expect_equal(
+      pmap_vec(list(x, x), ~ lm(.x ~ .y)),
+      future_pmap_vec(list(x, x), ~ lm(.x ~ .y))
+    )
+
+    expect_equal(imap_vec(x, `>`), future_imap_vec(x, `>`))
+    expect_equal(imap_vec(x, `-`), future_imap_vec(x, `-`))
+    expect_equal(imap_vec(x, `/`), future_imap_vec(x, `/`))
+    expect_equal(imap_vec(x, paste), future_imap_vec(x, paste))
+    expect_equal(
+      imap_vec(as.raw(x), rawShift), future_imap_vec(as.raw(x), rawShift)
+    )
+    expect_equal(imap_vec(x, ~ lm(.x ~ .y)), future_imap_vec(x, ~ lm(.x ~ .y)))
+
+    expect_equal(xmap_vec(list(x, x), `>`), future_xmap_vec(list(x, x), `>`))
+    expect_equal(xmap_vec(list(x, x), `-`), future_xmap_vec(list(x, x), `-`))
+    expect_equal(xmap_vec(list(x, x), `/`), future_xmap_vec(list(x, x), `/`))
+    expect_equal(
+      xmap_vec(list(x, x), paste), future_xmap_vec(list(x, x), paste)
+    )
+    expect_equal(
+      xmap_vec(list(as.raw(x), x), rawShift),
+      future_xmap_vec(list(as.raw(x), x), rawShift)
+    )
+    expect_equal(
+      xmap_vec(list(x, x), ~ lm(.x ~ .y)),
+      future_xmap_vec(list(x, x), ~ lm(.x ~ .y))
+    )
+  })
+
+  test_that(test_msg(.e, "equivalence with xmap_mat()"), {
+    dat       <- 1:3
+    named_dat <- `names<-`(1:3, letters[1:3])
+
+    expect_equal(
+      xmap_mat(list(dat, dat), `*`), future_xmap_mat(list(dat, dat), `*`)
+    )
+    expect_equal(
+      xmap_mat(list(named_dat, named_dat), `*`),
+      future_xmap_mat(list(named_dat, named_dat), `*`)
+    )
+    expect_equal(
+      xmap_mat(list(dat, dat), `*`, .names = FALSE),
+      future_xmap_mat(list(dat, dat), `*`, .names = FALSE)
+    )
+    expect_equal(
+      xmap_arr(list(dat, dat), `*`, .names = FALSE),
+      future_xmap_arr(list(dat, dat), `*`, .names = FALSE)
+    )
+    expect_equal(
+      xmap_arr(list(dat, dat, dat), prod, .names = FALSE),
+      future_xmap_arr(list(dat, dat, dat), prod, .names = FALSE)
+    )
+    expect_warning(future_xmap_mat(list(dat, dat, dat), prod, .names = FALSE))
+    expect_equal(
+      suppressWarnings(xmap_mat(list(dat, dat, dat), prod, .names = FALSE)),
+      suppressWarnings(
+        future_xmap_mat(list(dat, dat, dat), prod, .names = FALSE)
+      )
+    )
+  })
+
   test_that(test_msg(.e, "named arguments can be passed through"), {
     skip_if_not_installed("furrr")
     skip_if_not_installed("future")
