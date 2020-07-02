@@ -18,14 +18,32 @@ future_map2_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = future_options()
+  .options = furrr::future_options()
 )
 
-future_pmap_vec(.l, .f, ..., .progress = FALSE, .options = future_options())
+future_pmap_vec(
+  .l,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
 
-future_imap_vec(.x, .f, ..., .progress = FALSE, .options = future_options())
+future_imap_vec(
+  .x,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
 
-future_xmap_vec(.l, .f, ..., .progress = FALSE, .options = future_options())
+future_xmap_vec(
+  .l,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
 
 map_vec(.x, .f, ...)
 

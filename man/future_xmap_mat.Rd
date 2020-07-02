@@ -11,7 +11,7 @@ future_xmap_mat(
   ...,
   .names = TRUE,
   .progress = FALSE,
-  .options = future_options()
+  .options = furrr::future_options()
 )
 
 future_xmap_arr(
@@ -20,7 +20,7 @@ future_xmap_arr(
   ...,
   .names = TRUE,
   .progress = FALSE,
-  .options = future_options()
+  .options = furrr::future_options()
 )
 }
 \arguments{

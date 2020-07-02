@@ -4,7 +4,13 @@
 \alias{future_map_vec}
 \title{Parallelized mapping functions that automatically determine type}
 \usage{
-future_map_vec(.x, .f, ..., .progress = FALSE, .options = future_options())
+future_map_vec(
+  .x,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::future_options()
+)
 }
 \arguments{
 \item{.x}{A list or atomic vector.}
