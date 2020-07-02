@@ -2,13 +2,10 @@
 % Please edit documentation in R/cross_list.R
 \name{cross_list}
 \alias{cross_list}
-\alias{cross_df}
 \alias{cross_tbl}
 \title{List all combinations of values}
 \usage{
 cross_list(...)
-
-cross_df(...)
 
 cross_tbl(...)
 }
@@ -16,10 +13,11 @@ cross_tbl(...)
 \item{...}{Inputs or a \link{list} of inputs}
 }
 \value{
-A \link{list}, \link{data.frame}, or \link[tibble:tibble]{tibble}.
+A \link{list} for \code{cross_list()} or \link[tibble:tibble]{tibble} for
+\code{cross_tbl()}.
 Names will match the names of the inputs.
-Unnamed inputs will be left unnamed for \code{cross_list()} and \code{cross_df()},
-and automatically named for \code{cross_tbl()}.
+Unnamed inputs will be left unnamed for \code{cross_list()} and automatically
+named for \code{cross_tbl()}.
 }
 \description{
 List all combinations of values
@@ -30,15 +28,17 @@ desserts <- c("cupcake", "muffin", "streudel")
 
 cross_list(list(fruits, desserts))
 cross_list(fruits, desserts)
-
-cross_df(fruits, desserts)
 cross_tbl(fruits, desserts)
 
 cross_list(list(fruit = fruits, dessert = desserts))
 cross_list(fruit = fruits, dessert = desserts)
-cross_df(fruit = fruits, dessert = desserts)
 cross_tbl(fruit = fruits, dessert = desserts)
 }
 \seealso{
 \code{\link[=cross_join]{cross_join()}} to find combinations of data frame rows.
+
+\code{\link[purrr:cross]{purrr::cross()}} for an implementation that results in a differently
+formatted list.
+
+\code{\link[=expand.grid]{expand.grid()}} for an implementation that results in a \link{data.frame}.
 }
