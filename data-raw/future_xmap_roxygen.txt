@@ -17,6 +17,11 @@
 #'
 #' @seealso [xmap()] to run functions without with parallel processing.
 #'
+#'   [future_xmap_vec()] to automatically determine output type.
+#'
+#'   [future_xmap_mat()] and [future_xmap_arr()] to return results in a matrix
+#'   or array.
+#'
 #'   [furrr::future_map()], [furrr::future_map2()], and [furrr::future_pmap()]
 #'   for other parallelized mapping functions.
 #'

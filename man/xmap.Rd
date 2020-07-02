@@ -76,6 +76,13 @@ If any input is length 1, it will be recycled to the length of the longest.
 \description{
 These functions are variants of \code{\link[purrr:map2]{purrr::pmap()}} that iterate over each
 combination of elements in a list.
+}
+\details{
+Typed variants return a vector of the specified type.
+To automatically determine type, try \code{\link[=xmap_vec]{xmap_vec()}}.
+
+To return results as a matrix or array, try \code{\link[=xmap_mat]{xmap_mat()}} and \code{\link[=xmap_arr]{xmap_arr()}}.
+
 Note that a data frame is a very important special case, in which case
 \code{xmap()} and \code{xwalk()} apply the function \code{.f} to each row.
 \code{xmap_dfr()} and \code{xmap_dfc()} return data frames created by row-binding and
@@ -102,6 +109,10 @@ xmap(list(subsets, formulas), ~ lm(.y, data = .x))
 xmap(list(data = subsets, formula = formulas), lm)
 }
 \seealso{
+\code{\link[=xmap_vec]{xmap_vec()}} to automatically determine output type.
+
+\code{\link[=xmap_mat]{xmap_mat()}} and \code{\link[=xmap_arr]{xmap_arr()}} to return results in a matrix or array.
+
 \code{\link[=future_xmap]{future_xmap()}} to run \code{xmap} functions with parallel processing.
 
 \code{\link[=cross_fit]{cross_fit()}} to apply multiple models to multiple subsets of data.

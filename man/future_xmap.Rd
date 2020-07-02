@@ -137,6 +137,11 @@ future_xmap(list(subsets, formulas), ~ lm(.y, data = .x))
 \seealso{
 \code{\link[=xmap]{xmap()}} to run functions without with parallel processing.
 
+\code{\link[=future_xmap_vec]{future_xmap_vec()}} to automatically determine output type.
+
+\code{\link[=future_xmap_mat]{future_xmap_mat()}} and \code{\link[=future_xmap_arr]{future_xmap_arr()}} to return results in a matrix
+or array.
+
 \code{\link[furrr:future_map]{furrr::future_map()}}, \code{\link[furrr:future_map2]{furrr::future_map2()}}, and \code{\link[furrr:future_map2]{furrr::future_pmap()}}
 for other parallelized mapping functions.
 }

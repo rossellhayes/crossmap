@@ -23,6 +23,7 @@
 #'
 #' @seealso [cross()] to find combinations of elements of vectors and lists.
 #'
+#' @include errors.R
 #' @export
 #'
 #' @example examples/cross_join.R
@@ -36,12 +37,19 @@ cross_join <- function(..., copy = FALSE) {
 
   abort_if_not_df(.x)
 
-  purrr::reduce2(
-    .x,
-    lapply(seq_len(length(.x) - 1), function(x) paste0(".", c(x, x + 1))),
-    function(x, y, suffix) {
-      dplyr::full_join(x, y, suffix = suffix, by = character(), copy = copy)
-    }
+  names           <- lapply(.x, names)
+  collapsed_names <- c(names, recursive = TRUE)
+  duplicate_names <- unique(collapsed_names[duplicated(collapsed_names)])
+
+  new_names <- purrr::imap(
+    names,
+    ~ purrr::map2_chr(
+      .x, .y, ~ ifelse(.x %in% duplicate_names, paste0(.x, ".", .y), .x)
+    )
   )
+
+  .x <- purrr::map2(.x, new_names, purrr::set_names)
+
+  purrr::reduce(.x, ~ dplyr::full_join(.x, .y, by = character(), copy = copy))
 }
 

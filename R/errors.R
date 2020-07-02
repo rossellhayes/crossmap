@@ -10,9 +10,9 @@ field <- function(x) {
   x
 }
 
-format.character <- function(x) {encodeString(x, quote = '"')}
-
 abort_if_not_df <- function(x) {
+  format.character <- function(x) {encodeString(x, quote = '"')}
+
   ndf  <- which(!vapply(x, inherits, logical(1), "data.frame"))
   ln   <- length(ndf)
   call <- sys.call(-1)
@@ -35,6 +35,8 @@ abort_if_not_df <- function(x) {
 }
 
 abort_if_not_formulas <- function(x) {
+  format.character <- function(x) {encodeString(x, quote = '"')}
+
   x    <- rlang::flatten(x)
   nfs  <- which(!vapply(x, inherits, logical(1), "formula"))
   ln   <- length(nfs)
@@ -53,6 +55,36 @@ abort_if_not_formulas <- function(x) {
     )
 
     rlang::abort(message)
+  }
+}
+
+warn_if_not_matrix <- function(.l) {
+  if (length(.l) > 2) {
+    call <- sys.call(-1)
+    call[[1]] <- rlang::sym(gsub("mat$", "arr", format(call[[1]])))
+
+    rlang::warn(
+      c(
+        paste(
+          code(format(sys.call(-1)[1])),
+          "returned an array because it has more than 2 dimensions."
+        ),
+        paste("Try", code(format(call)), "to avoid this warning.")
+      )
+    )
+  }
+}
+
+require_r <- function(ver, fn = NULL) {
+  if (getRversion() < numeric_version(ver)) {
+    if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
+
+    rlang::abort(
+      c(
+        paste(code(fn), "requires", field(paste("R", ver)), "or greater."),
+        paste("Try", code('install.packages("installr"); installr::updateR()'))
+      )
+    )
   }
 }
 

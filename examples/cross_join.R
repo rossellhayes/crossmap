@@ -1,5 +1,13 @@
-cross_join(dplyr::band_members, dplyr::band_instruments2)
+fruits <- dplyr::tibble(
+  fruit = c("apple", "banana", "cantaloupe"),
+  color = c("red", "yellow", "orange")
+)
 
-cross_join(dplyr::band_members, dplyr::band_instruments)
+desserts <- dplyr::tibble(
+  dessert = c("cupcake", "muffin", "streudel"),
+  makes   = c(8, 6, 1)
+)
 
-cross_join(rep(list(dplyr::band_instruments), 3))
+cross_join(fruits, desserts)
+cross_join(list(fruits, desserts))
+cross_join(rep(list(fruits), 3))

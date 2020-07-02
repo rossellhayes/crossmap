@@ -17,6 +17,11 @@
 #'
 #' @seealso [xmap()] to run functions without with parallel processing.
 #'
+#'   [future_xmap_vec()] to automatically determine output type.
+#'
+#'   [future_xmap_mat()] and [future_xmap_arr()] to return results in a matrix
+#'   or array.
+#'
 #'   [furrr::future_map()], [furrr::future_map2()], and [furrr::future_pmap()]
 #'   for other parallelized mapping functions.
 #'
@@ -29,7 +34,9 @@ future_xmap <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
-  furrr::future_pmap(cross(.l), .f, ...)
+  furrr::future_pmap(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -39,7 +46,9 @@ future_xmap_chr <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
-  furrr::future_pmap_chr(cross(.l), .f, ...)
+  furrr::future_pmap_chr(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -49,7 +58,9 @@ future_xmap_dbl <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
-  furrr::future_pmap_dbl(cross(.l), .f, ...)
+  furrr::future_pmap_dbl(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -60,7 +71,9 @@ future_xmap_dfc <- function(
 ) {
   require_furrr()
   require_package("dplyr")
-  furrr::future_pmap_dfc(cross(.l), .f, ...)
+  furrr::future_pmap_dfc(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -71,7 +84,9 @@ future_xmap_dfr <- function(
 ) {
   require_furrr()
   require_package("dplyr")
-  furrr::future_pmap_dfr(cross(.l), .f, ..., .id)
+  furrr::future_pmap_dfr(
+    cross_list(.l), .f, ..., .id, .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -81,7 +96,9 @@ future_xmap_int <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
-  furrr::future_pmap_int(cross(.l), .f, ...)
+  furrr::future_pmap_int(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 
 #' @rdname future_xmap
@@ -91,6 +108,8 @@ future_xmap_lgl <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
 ) {
   require_furrr()
-  furrr::future_pmap_lgl(cross(.l), .f, ...)
+  furrr::future_pmap_lgl(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
 }
 

@@ -27,6 +27,7 @@
 #'
 #' @importFrom rlang :=
 #' @include errors.R
+#' @include autonames.R
 #' @export
 #'
 #' @example examples/cross_fit.R
@@ -41,11 +42,7 @@ cross_fit <- function(
 
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
-  if (is.null(names(formulas))) {
-    formulas <- dplyr::tibble(.formula = formulas, model = format(formulas))
-  } else {
-    formulas <- dplyr::tibble(.formula = formulas, model = names(formulas))
-  }
+  formulas <- dplyr::tibble(.formula = formulas, model = autonames(formulas))
 
   data <- dplyr::group_by(data, dplyr::across({{cols}}))
   data <- dplyr::group_nest(data)

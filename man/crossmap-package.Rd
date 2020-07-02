@@ -8,11 +8,20 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Provides an extension to the 'purrr' family of mapping functions to
-    apply a function to each combination of elements in a list of inputs.
-    Also includes general purpose functions for finding every combination of
-    elements of lists or rows of data frames and a specialized function for
-    applying multiple models to multiple subsets of a dataset.
+Provides an extension to the 'purrr' family of
+    mapping functions to apply a function to each combination of elements
+    in a list of inputs.  Also includes functions for automatically
+    detecting output type in mapping functions, finding every combination
+    of elements of lists or rows of data frames, and applying multiple
+    models to multiple subsets of a dataset.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/rossellhayes/crossmap}
+  \item Report bugs at \url{https://github.com/rossellhayes/crossmap/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Alexander Rossell Hayes \email{alexander@rossellhayes.com} (\href{https://orcid.org/0000-0001-9412-0457}{ORCID}) [copyright holder]
