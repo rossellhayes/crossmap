@@ -67,7 +67,7 @@ future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
 `cross_fit()` is an easy wrapper for an important use of **crossmap**, fitting models to subsets of data
 
 ```{r warning = FALSE}
-cross_fit(mtcars, c(cyl, vs), list(wt = mpg ~ wt, hp = mpg ~ hp))
+cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), c(cyl, vs))
 ```
 
 `cross_list()` finds all combinations of elements from a set of lists
@@ -99,9 +99,6 @@ map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 
 ---
 
-Hex sticker font is
-[Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://adobe.com).
+Hex sticker font is [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com).
 
-Please note that **crossmap** is released with a
-[Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
+Please note that **crossmap** is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).

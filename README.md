@@ -71,7 +71,7 @@ future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
 fitting models to subsets of data
 
 ``` r
-cross_fit(mtcars, c(cyl, vs), list(wt = mpg ~ wt, hp = mpg ~ hp))
+cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), c(cyl, vs))
 #> # A tibble: 18 x 8
 #>      cyl    vs model term        estimate  std.error  statistic    p.value
 #>    <dbl> <dbl> <chr> <chr>          <dbl>      <dbl>      <dbl>      <dbl>
@@ -87,8 +87,8 @@ cross_fit(mtcars, c(cyl, vs), list(wt = mpg ~ wt, hp = mpg ~ hp))
 #> 10     4     0 hp    (Intercept)  26      NaN        NaN        NaN       
 #> 11     4     1 hp    (Intercept)  36.0      5.52e+ 0   6.52e+ 0   1.85e- 4
 #> 12     4     1 hp    hp           -0.113    6.55e- 2  -1.73e+ 0   1.21e- 1
-#> 13     6     0 hp    (Intercept)  23.2      6.86e-15   3.38e+15   1.88e-16
-#> 14     6     0 hp    hp           -0.02     5.07e-17  -3.94e+14   1.61e-15
+#> 13     6     0 hp    (Intercept)  23.2      1.02e-14   2.28e+15   2.79e-16
+#> 14     6     0 hp    hp           -0.02     7.53e-17  -2.66e+14   2.40e-15
 #> 15     6     1 hp    (Intercept)  24.2      1.41e+ 1   1.72e+ 0   2.28e- 1
 #> 16     6     1 hp    hp           -0.0440   1.22e- 1  -3.61e- 1   7.52e- 1
 #> 17     8     0 hp    (Intercept)  18.1      2.99e+ 0   6.05e+ 0   5.74e- 5
@@ -149,7 +149,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1] 25  1  9 16  4
+#> [1]  9 16  4 25  1
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```
