@@ -12,9 +12,9 @@ test_that("one subset, one formula", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit      <- suppressWarnings(cross_fit(df, m, y ~ x))
-  fit_lst  <- suppressWarnings(cross_fit(df, c(m), list(y ~ x)))
-  fit_tidy <- suppressWarnings(cross_fit(df, m, y ~ x, tidy = TRUE))
+  fit      <- suppressWarnings(cross_fit(df, y ~ x, m))
+  fit_lst  <- suppressWarnings(cross_fit(df, list(y ~ x), c(m)))
+  fit_tidy <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = TRUE))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 7)
   expect_equal(fit$estimate, c(0, 1, 0, -1))
@@ -27,7 +27,7 @@ test_that("one subset, two formulas", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit <- suppressWarnings(cross_fit(df, m, list(y ~ x, y ~ z)))
+  fit <- suppressWarnings(cross_fit(df, list(y ~ x, y ~ z), m))
   expect_equal(nrow(fit), 8)
   expect_equal(ncol(fit), 7)
   expect_equal(fit$estimate, c(0, 1, 0, -1, 0, -1, 0, 1))
@@ -38,7 +38,7 @@ test_that("two subsets, one formula", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit <- suppressWarnings(cross_fit(df, c(m, n), y ~ x))
+  fit <- suppressWarnings(cross_fit(df, y ~ x, c(m, n)))
   expect_equal(nrow(fit), 8)
   expect_equal(ncol(fit), 8)
   expect_equal(fit$estimate, c(0, 1, 0, 1, 0, -1, 0, -1))
@@ -49,7 +49,7 @@ test_that("two subsets, two formulas", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit <- suppressWarnings(cross_fit(df, c(m, n), c(y ~ x, y ~ z)))
+  fit <- suppressWarnings(cross_fit(df, c(y ~ x, y ~ z), c(m, n)))
   expect_equal(nrow(fit), 16)
   expect_equal(ncol(fit), 8)
   expect_equal(
@@ -62,7 +62,7 @@ test_that("named formulas", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit <- suppressWarnings(cross_fit(df, m, list(x = y ~ x, z = y ~ z)))
+  fit <- suppressWarnings(cross_fit(df, list(x = y ~ x, z = y ~ z), m))
   expect_equal(nrow(fit), 8)
   expect_equal(ncol(fit), 7)
   expect_equal(fit$estimate, c(0, 1, 0, -1, 0, -1, 0, 1))
@@ -73,10 +73,13 @@ test_that("untidied", {
   skip_if_not_installed("dplyr", "1.0.0")
   skip_if_not_installed("stats")
 
-  fit <- suppressWarnings(cross_fit(df, m, y ~ x, tidy = FALSE))
+  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = FALSE))
   expect_equal(nrow(fit), 2)
   expect_equal(ncol(fit), 3)
   expect_s3_class(fit$fit[[1]], "lm")
+
+  expect_equal(fit, suppressWarnings(cross_fit(df, y ~ x, m, tidy = NA)))
+  expect_equal(fit, suppressWarnings(cross_fit(df, y ~ x, m, tidy = NULL)))
 })
 
 test_that("conf.int", {
@@ -85,10 +88,16 @@ test_that("conf.int", {
   skip_if_not_installed("stats")
 
   fit <- suppressWarnings(
-    cross_fit(df, m, y ~ x, tidy_args = list(conf.int = TRUE))
+    cross_fit(df, y ~ x, m, tidy_args = list(conf.int = TRUE))
   )
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 9)
+  expect_equal(
+    fit,
+    suppressWarnings(
+      cross_fit(df, y ~ x, m, tidy = ~ broom::tidy(., conf.int = TRUE))
+    )
+  )
 })
 
 test_that("logit", {
@@ -105,10 +114,33 @@ test_that("logit", {
 
   fit <- suppressWarnings(
     cross_fit(
-      df, m, y ~ x, fn = glm, fn_args = list(family = binomial(link = logit))
+      df, y ~ x, m, fn = glm, fn_args = list(family = binomial(link = logit))
     )
   )
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 7)
   expect_equal(round(fit$estimate), c(-24, 47, 24, -47))
+  expect_equal(
+    fit,
+    suppressWarnings(
+      cross_fit(
+        df, y ~ x, m, fn = ~ glm(.x, .y, family = binomial(link = logit))
+      )
+    )
+  )
+  expect_equal(
+    fit,
+    suppressWarnings(
+      cross_fit(
+        df, y ~ x, m, fn = glm,
+        fn_args = list(family = binomial(link = logit), na.action = na.omit)
+      )
+    )
+  )
+})
+
+test_that("invalid tidiers", {
+  expect_error(cross_fit(df, y ~ x, m, tidy = tiy))
+  expect_error(cross_fit(df, y ~ x, m, tidy = broom::tiy))
+  expect_error(cross_fit(df, y ~ x, m, tidy = ~ broom::tiy(.)))
 })

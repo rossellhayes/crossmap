@@ -6,8 +6,8 @@
 \usage{
 cross_fit(
   data,
-  cols,
   formulas,
+  cols = NULL,
   fn = stats::lm,
   fn_args = list(),
   tidy = broom::tidy,
@@ -17,21 +17,31 @@ cross_fit(
 \arguments{
 \item{data}{A data frame}
 
-\item{cols}{Columns to subset the data.
-Can be any expression supported by
-<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}>.}
-
 \item{formulas}{A list of formulas to apply to each subset of the data.
 If named, these names will be used in the \code{model} column of the output.
 Otherwise, the formulas will be converted to strings in the \code{model} column.}
 
-\item{fn}{The modeling function. Defaults to \code{lm}}
+\item{cols}{Columns to subset the data.
+Can be any expression supported by
+<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}>.
+If \code{NULL}, the data is not subset into columns.
+Defaults to \code{NULL}.}
+
+\item{fn}{The modeling function.
+Either an unquoted function name or a \link[purrr:map]{purrr}-style lambda
+function with two arguments (see usage with \link[stats:glm]{glm} in examples).
+Defaults to \code{lm}}
 
 \item{fn_args}{A list of additional arguments to \code{fn}}
 
-\item{tidy}{A logical or a function to use to tidy model output into
+\item{tidy}{A logical or function to use to tidy model output into
 data.frame columns.
-If \code{FALSE}, no tidying occurs.
+If \code{TRUE}, uses the default tidying function: \code{\link[broom:reexports]{broom::tidy()}}.
+If \code{FALSE}, \code{NA}, or \code{NULL}, the untidied model output will be returned in
+a list column \code{fit}.
+An alternative function can be specified with an unquoted function name or
+a \link[purrr:map]{purrr}-style lambda function with one argument (see usage
+with \link[broom:reexports]{broom::tidy(conf.int = TRUE)} in examples).
 Defaults to \code{\link[broom:reexports]{broom::tidy()}}.}
 
 \item{tidy_args}{A list of additional arguments to the \code{tidy} function}
@@ -47,20 +57,28 @@ Applies a modeling function to every combination of a set of formulas and a
 set of data subsets.
 }
 \examples{
-cross_fit(mtcars, cyl, mpg ~ wt)
-cross_fit(mtcars, cyl, list(mpg ~ wt, mpg ~ hp))
-cross_fit(mtcars, cyl, list(wt = mpg ~ wt, hp = mpg ~ hp))
+cross_fit(mtcars, mpg ~ wt, cyl)
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl)
+cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), cyl)
 
-cross_fit(mtcars, c(cyl, vs), list(mpg ~ wt, mpg ~ hp))
-cross_fit(mtcars, dplyr::starts_with("c"), list(mpg ~ wt, mpg ~ hp))
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), c(cyl, vs))
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), dplyr::starts_with("c"))
 
 cross_fit(
-  mtcars, am, list(vs ~ cyl, vs ~ hp),
+  mtcars, list(vs ~ cyl, vs ~ hp), am,
   fn = glm, fn_args = list(family = binomial(link = logit))
 )
+cross_fit(
+  mtcars, list(vs ~ cyl, vs ~ hp), am,
+  fn = ~ glm(.x, .y, family = binomial(link = logit))
+)
 
-cross_fit(mtcars, cyl, list(mpg ~ wt, mpg ~ hp), tidy = FALSE)
-cross_fit(mtcars, cyl, list(mpg ~ wt, mpg ~ hp), tidy_args = c(conf.int = TRUE))
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = FALSE)
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy_args = c(conf.int = TRUE))
+cross_fit(
+  mtcars, list(mpg ~ wt, mpg ~ hp), cyl,
+  tidy = ~ broom::tidy(., conf.int = TRUE)
+)
 }
 \seealso{
 \code{\link[=xmap]{xmap()}} to apply any function to combinations of inputs
