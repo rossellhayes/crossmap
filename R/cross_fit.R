@@ -52,7 +52,7 @@ cross_fit <- function(
     require_package("broom", fn = "cross_fit(tidy = TRUE)")
     tidy <- broom::tidy
   } else if (isFALSE(tidy) || is.null(tidy) || suppressWarnings(is.na(tidy))) {
-    tidy <- function(x) {tibble::tibble(fit = list(x))}
+    tidy <- function(x) {dplyr::tibble(fit = list(x))}
   } else {
     tidy <- rlang::as_function(tidy)
   }
