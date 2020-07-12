@@ -50,9 +50,3 @@ test_that("R 3.3.0 for trimws", {
   expect_error(autonames(unnamed, trimws = TRUE))
   expect_error(require_r("3.3.0"))
 })
-
-test_that("abort if not formulas", {
-  expect_error(cross_fit(mtcars, cyl, "mpg"))
-  expect_error(cross_fit(mtcars, cyl, list("mpg")))
-  expect_error(cross_fit(mtcars, cyl, rep("mpg", 10)))
-})

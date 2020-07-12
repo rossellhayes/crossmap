@@ -100,6 +100,17 @@ test_that("conf.int", {
   )
 })
 
+test_that("invalid tidiers", {
+  expect_error(cross_fit(df, y ~ x, m, tidy = character(1)))
+  expect_error(cross_fit(df, y ~ x, m, tidy = y ~ x))
+})
+
+test_that("abort if not formulas", {
+  expect_error(cross_fit(df, "x", m))
+  expect_error(cross_fit(df, list("x"), m))
+  expect_error(cross_fit(df, rep("x", 10), m))
+})
+
 test_that("logit", {
   skip_if_not_installed("broom")
   skip_if_not_installed("dplyr", "1.0.0")
@@ -137,10 +148,4 @@ test_that("logit", {
       )
     )
   )
-})
-
-test_that("invalid tidiers", {
-  expect_error(cross_fit(df, y ~ x, m, tidy = tiy))
-  expect_error(cross_fit(df, y ~ x, m, tidy = broom::tiy))
-  expect_error(cross_fit(df, y ~ x, m, tidy = ~ broom::tiy(.)))
 })
