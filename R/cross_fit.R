@@ -27,6 +27,7 @@
 #'   with [broom::tidy(conf.int = TRUE)][broom::tidy] in examples).
 #'   Defaults to [broom::tidy()].
 #' @param tidy_args A list of additional arguments to the `tidy` function
+#'
 #' @return A tibble with subsetting columns,
 #'   a column for the model formula applied,
 #'   and columns of tidy model output or a list column of models
@@ -48,15 +49,6 @@ cross_fit <- function(
   .formula <- model <- dont_tidy <- FALSE
   require_package("dplyr", ver = "1.0.0")
 
-  if (isTRUE(tidy)) {
-    require_package("broom", fn = "cross_fit(tidy = TRUE)")
-    tidy <- broom::tidy
-  } else if (isFALSE(tidy) || is.null(tidy) || suppressWarnings(is.na(tidy))) {
-    tidy <- function(x) {dplyr::tibble(fit = list(x))}
-  } else {
-    tidy <- rlang::as_function(tidy)
-  }
-
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
   formulas <- dplyr::tibble(.formula = formulas, model = autonames(formulas))
@@ -69,6 +61,14 @@ cross_fit <- function(
   data <- dplyr::group_by(data, dplyr::across({{cols}}), model)
   data <- dplyr::rowwise(data)
 
+  if (isTRUE(tidy)) {
+    require_package("broom", fn = "cross_fit(tidy = TRUE)")
+    tidy <- broom::tidy
+  } else if (isFALSE(tidy) || rlang::is_na(tidy) || is.null(tidy)) {
+    tidy <- function(x) {dplyr::tibble(fit = list(x))}
+  } else {
+    tidy <- rlang::as_function(tidy)
+  }
 
   dplyr::summarize(
     data,
