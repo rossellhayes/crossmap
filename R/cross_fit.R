@@ -58,7 +58,9 @@ cross_fit <- function(
   }
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, data)
-  data <- dplyr::group_by(data, dplyr::across({{cols}}), model)
+  if (!isTRUE(try(is.null(cols), silent = TRUE))) {
+    data <- dplyr::group_by(data, dplyr::across({{cols}}), model)
+  }
   data <- dplyr::rowwise(data)
 
   if (isTRUE(tidy)) {
