@@ -59,7 +59,7 @@
 #'
 #'   [cross_fit()] to apply multiple models to multiple subsets of data.
 #'
-#'   [cross()] to find combinations of list elements.
+#'   [cross_list()] to find combinations of list elements.
 #'
 #'   [purrr::map()], [purrr::map2()], and [purrr::pmap()] for other mapping
 #'   functions.

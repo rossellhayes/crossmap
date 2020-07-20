@@ -117,7 +117,7 @@ xmap(list(data = subsets, formula = formulas), lm)
 
 \code{\link[=cross_fit]{cross_fit()}} to apply multiple models to multiple subsets of data.
 
-\code{\link[=cross]{cross()}} to find combinations of list elements.
+\code{\link[=cross_list]{cross_list()}} to find combinations of list elements.
 
 \code{\link[purrr:map]{purrr::map()}}, \code{\link[purrr:map2]{purrr::map2()}}, and \code{\link[purrr:map2]{purrr::pmap()}} for other mapping
 functions.

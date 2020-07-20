@@ -20,7 +20,7 @@
 #'     If columns have the same name, suffixes are added to disambiguate.
 #'   - Groups are taken from the first input.
 #'
-#' @seealso [cross()] to find combinations of elements of vectors and lists.
+#' @seealso [cross_list()] to find combinations of elements of vectors and lists.
 #'
 #' @include errors.R
 #' @export
