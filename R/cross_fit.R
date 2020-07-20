@@ -38,6 +38,7 @@
 #' @importFrom rlang :=
 #' @include errors.R
 #' @include autonames.R
+#' @include isFALSE.R
 #' @export
 #'
 #' @example examples/cross_fit.R

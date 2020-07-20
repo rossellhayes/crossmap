@@ -35,6 +35,7 @@ RoxygenNote: 7.1.1
 Collate: 
     'errors.R'
     'autonames.R'
+    'isFALSE.R'
     'cross_fit.R'
     'cross_join.R'
     'cross_list.R'
