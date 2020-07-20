@@ -5,8 +5,7 @@
 #'
 #' @param ... [Data frames][data.frame] or a [list] of data frames -- including
 #'   data frame extensions (e.g. [tibbles][tibble::tibble()]) and lazy data
-#'   frames (e.g. from [dbplyr][dbplyr::dbplyr-package] or
-#'   [dtplyr][dtplyr::dtplyr-package])
+#'   frames (e.g. from dbplyr or dtplyr)
 #' @param copy If inputs are not from the same data source, and copy is
 #'   `TRUE`, then they will be copied into the same src as the first input.
 #'   This allows you to join tables across srcs, but it is a potentially
