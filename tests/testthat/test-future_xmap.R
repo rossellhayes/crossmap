@@ -63,7 +63,8 @@ for (.e in executors) {
     skip_if_not_installed("furrr")
     skip_if_not_installed("future")
 
-    x <- 1:3
+    x  <- 1:3
+    df <- data.frame(x = 1:3, y = 2:4, z = 3:5)
 
     expect_equal(map_vec(x, ~ .x > 1), future_map_vec(x, ~ .x > 1))
     expect_equal(map_vec(x, ~ .x - 1L), future_map_vec(x, ~ .x - 1L))
@@ -76,6 +77,7 @@ for (.e in executors) {
       future_map_vec(as.raw(x), ~ rawShift(.x, 1))
     )
     expect_equal(map_vec(x, ~ lm(.x ~ 1)), future_map_vec(x, ~ lm(.x ~ 1)))
+    expect_equal(map_vec(df, ~ . + 1), future_map_vec(df, ~ . + 1))
 
     expect_equal(map2_vec(x, x, `>`), future_map2_vec(x, x, `>`))
     expect_equal(map2_vec(x, x, `-`), future_map2_vec(x, x, `-`))
@@ -87,6 +89,7 @@ for (.e in executors) {
     expect_equal(
       map2_vec(x, x, ~ lm(.x ~ .y)), future_map2_vec(x, x, ~ lm(.x ~ .y))
     )
+    expect_equal(map2_vec(df, x, ~ .x + .y), future_map2_vec(df, x, ~ .x + .y))
 
     expect_equal(pmap_vec(list(x, x), `>`), future_pmap_vec(list(x, x), `>`))
     expect_equal(pmap_vec(list(x, x), `-`), future_pmap_vec(list(x, x), `-`))
@@ -102,6 +105,10 @@ for (.e in executors) {
       pmap_vec(list(x, x), ~ lm(.x ~ .y)),
       future_pmap_vec(list(x, x), ~ lm(.x ~ .y))
     )
+    expect_equivalent(
+      pmap_vec(list(df, x), ~ .x + .y), future_pmap_vec(list(df, x), ~ .x + .y)
+    )
+    # Names mismatch due to bug in {furrr}
 
     expect_equal(imap_vec(x, `>`), future_imap_vec(x, `>`))
     expect_equal(imap_vec(x, `-`), future_imap_vec(x, `-`))
@@ -111,6 +118,10 @@ for (.e in executors) {
       imap_vec(as.raw(x), rawShift), future_imap_vec(as.raw(x), rawShift)
     )
     expect_equal(imap_vec(x, ~ lm(.x ~ .y)), future_imap_vec(x, ~ lm(.x ~ .y)))
+    expect_equal(
+      imap_vec(df, ~ paste0(.y, ": ", .x)),
+      future_imap_vec(df, ~ paste0(.y, ": ", .x))
+    )
 
     expect_equal(xmap_vec(list(x, x), `>`), future_xmap_vec(list(x, x), `>`))
     expect_equal(xmap_vec(list(x, x), `-`), future_xmap_vec(list(x, x), `-`))
@@ -126,6 +137,10 @@ for (.e in executors) {
       xmap_vec(list(x, x), ~ lm(.x ~ .y)),
       future_xmap_vec(list(x, x), ~ lm(.x ~ .y))
     )
+    expect_equivalent(
+      xmap_vec(list(df, x), ~ .x + .y), future_xmap_vec(list(df, x), ~ .x + .y)
+    )
+    # Names mismatch due to bug in {furrr}
   })
 
   test_that(test_msg(.e, "equivalence with xmap_mat()"), {
