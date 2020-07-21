@@ -47,19 +47,21 @@ cross_fit <- function(
   data, formulas, cols = NULL,
   fn = stats::lm, fn_args = list(), tidy = broom::tidy, tidy_args = list()
 ) {
-  .formula <- model <- dont_tidy <- FALSE
+  .formula <- model <- NULL
   require_package("dplyr", ver = "1.0.0")
 
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
   formulas <- dplyr::tibble(.formula = formulas, model = autonames(formulas))
 
-  if (!isTRUE(try(is.null(cols), silent = TRUE))) {
+  cols_specified <- !isTRUE(try(is.null(cols), silent = TRUE))
+
+  if (cols_specified) {
     data <- dplyr::group_by(data, dplyr::across({{cols}}))
   }
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, data)
-  if (!isTRUE(try(is.null(cols), silent = TRUE))) {
+  if (cols_specified) {
     data <- dplyr::group_by(data, dplyr::across({{cols}}), model)
   }
   data <- dplyr::rowwise(data)
