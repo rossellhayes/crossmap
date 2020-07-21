@@ -31,30 +31,30 @@
 #'
 #' @example examples/map_vec.R
 
-map_vec <- function(.x, .f, ...) {c(purrr::map(.x, .f, ...), recursive = TRUE)}
+map_vec <- function(.x, .f, ...) {vectorize(purrr::map(.x, .f, ...))}
 
 #' @rdname map_vec
 #' @export
 
 map2_vec <- function(.x, .y, .f, ...) {
-  c(purrr::map2(.x, .y, .f, ...), recursive = TRUE)
+  vectorize(purrr::map2(.x, .y, .f, ...))
 }
 
 #' @rdname map_vec
 #' @export
 
 pmap_vec <- function(.l, .f, ...) {
-  c(purrr::pmap(.l, .f, ...), recursive = TRUE)
+  vectorize(purrr::pmap(.l, .f, ...))
 }
 
 #' @rdname map_vec
 #' @export
 
 imap_vec <- function(.x, .f, ...) {
-  c(purrr::imap(.x, .f, ...), recursive = TRUE)
+  vectorize(purrr::imap(.x, .f, ...))
 }
 
 #' @rdname map_vec
 #' @export
 
-xmap_vec <- function(.l, .f, ...) {c(xmap(.l, .f, ...), recursive = TRUE)}
+xmap_vec <- function(.l, .f, ...) {vectorize(xmap(.l, .f, ...))}

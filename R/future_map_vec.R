@@ -27,9 +27,8 @@ future_map_vec <- function(
 ) {
   require_furrr()
 
-  c(
-    furrr::future_map(.x, .f, ..., .progress = .progress, .options = .options),
-    recursive = TRUE
+  vectorize(
+    furrr::future_map(.x, .f, ..., .progress = .progress, .options = .options)
   )
 }
 
@@ -41,11 +40,10 @@ future_map2_vec <- function(
 ) {
   require_furrr()
 
-  c(
+  vectorize(
     furrr::future_map2(
       .x, .y, .f, ..., .progress = .progress, .options = .options
-    ),
-    recursive = TRUE
+    )
   )
 }
 
@@ -57,9 +55,8 @@ future_pmap_vec <- function(
 ) {
   require_furrr()
 
-  c(
-    furrr::future_pmap(.l, .f, ..., .progress = .progress, .options = .options),
-    recursive = TRUE
+  vectorize(
+    furrr::future_pmap(.l, .f, ..., .progress = .progress, .options = .options)
   )
 }
 
@@ -71,9 +68,8 @@ future_imap_vec <- function(
 ) {
   require_furrr()
 
-  c(
-    furrr::future_imap(.x, .f, ..., .progress = .progress, .options = .options),
-    recursive = TRUE
+  vectorize(
+    furrr::future_imap(.x, .f, ..., .progress = .progress, .options = .options)
   )
 }
 
@@ -85,8 +81,7 @@ future_xmap_vec <- function(
 ) {
   require_furrr()
 
-  c(
-    future_xmap(.l, .f, ..., .progress = .progress, .options = .options),
-    recursive = TRUE
+  vectorize(
+    future_xmap(.l, .f, ..., .progress = .progress, .options = .options)
   )
 }
