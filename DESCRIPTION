@@ -44,5 +44,6 @@ Collate:
     'future_xmap.R'
     'future_xmap_mat.R'
     'map_vec.R'
+    'vectorize.R'
     'xmap.R'
     'xmap_mat.R'
