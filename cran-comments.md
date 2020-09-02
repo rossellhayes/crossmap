@@ -1,3 +1,7 @@
+## Resubmission
+
+* Fixed link to http://www.adobe.com in README.md
+
 ## Test environments
 * Local R installation, Windows 10, R 4.0.2
 * GitHub Action
