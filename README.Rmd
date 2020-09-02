@@ -99,6 +99,6 @@ map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 
 ---
 
-Hex sticker font is [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://adobe.com).
+Hex sticker font is [Source Code Pro](https://github.com/adobe-fonts/source-code-pro) by [Adobe](https://www.adobe.com).
 
 Please note that **crossmap** is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).

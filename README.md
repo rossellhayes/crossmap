@@ -72,27 +72,29 @@ fitting models to subsets of data
 
 ``` r
 cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), c(cyl, vs))
-#> # A tibble: 18 x 8
+#> # A tibble: 20 x 8
 #>      cyl    vs model term        estimate  std.error  statistic    p.value
 #>    <dbl> <dbl> <chr> <chr>          <dbl>      <dbl>      <dbl>      <dbl>
 #>  1     4     0 wt    (Intercept)  26      NaN        NaN        NaN       
-#>  2     4     1 wt    (Intercept)  39.9      4.61e+ 0   8.66e+ 0   2.47e- 5
-#>  3     4     1 wt    wt           -5.72     1.95e+ 0  -2.94e+ 0   1.87e- 2
-#>  4     6     0 wt    (Intercept)  22.2      1.61e+ 1   1.38e+ 0   3.99e- 1
-#>  5     6     0 wt    wt           -0.594    5.83e+ 0  -1.02e- 1   9.35e- 1
-#>  6     6     1 wt    (Intercept)  63.6      1.19e+ 1   5.36e+ 0   3.30e- 2
-#>  7     6     1 wt    wt          -13.1      3.50e+ 0  -3.75e+ 0   6.42e- 2
-#>  8     8     0 wt    (Intercept)  23.9      3.01e+ 0   7.94e+ 0   4.05e- 6
-#>  9     8     0 wt    wt           -2.19     7.39e- 1  -2.97e+ 0   1.18e- 2
-#> 10     4     0 hp    (Intercept)  26      NaN        NaN        NaN       
-#> 11     4     1 hp    (Intercept)  36.0      5.52e+ 0   6.52e+ 0   1.85e- 4
-#> 12     4     1 hp    hp           -0.113    6.55e- 2  -1.73e+ 0   1.21e- 1
-#> 13     6     0 hp    (Intercept)  23.2      1.02e-14   2.28e+15   2.79e-16
-#> 14     6     0 hp    hp           -0.02     7.53e-17  -2.66e+14   2.40e-15
-#> 15     6     1 hp    (Intercept)  24.2      1.41e+ 1   1.72e+ 0   2.28e- 1
-#> 16     6     1 hp    hp           -0.0440   1.22e- 1  -3.61e- 1   7.52e- 1
-#> 17     8     0 hp    (Intercept)  18.1      2.99e+ 0   6.05e+ 0   5.74e- 5
-#> 18     8     0 hp    hp           -0.0142   1.39e- 2  -1.02e+ 0   3.26e- 1
+#>  2     4     0 wt    wt           NA       NA         NA         NA       
+#>  3     4     1 wt    (Intercept)  39.9      4.61e+ 0   8.66e+ 0   2.47e- 5
+#>  4     4     1 wt    wt           -5.72     1.95e+ 0  -2.94e+ 0   1.87e- 2
+#>  5     6     0 wt    (Intercept)  22.2      1.61e+ 1   1.38e+ 0   3.99e- 1
+#>  6     6     0 wt    wt           -0.594    5.83e+ 0  -1.02e- 1   9.35e- 1
+#>  7     6     1 wt    (Intercept)  63.6      1.19e+ 1   5.36e+ 0   3.30e- 2
+#>  8     6     1 wt    wt          -13.1      3.50e+ 0  -3.75e+ 0   6.42e- 2
+#>  9     8     0 wt    (Intercept)  23.9      3.01e+ 0   7.94e+ 0   4.05e- 6
+#> 10     8     0 wt    wt           -2.19     7.39e- 1  -2.97e+ 0   1.18e- 2
+#> 11     4     0 hp    (Intercept)  26      NaN        NaN        NaN       
+#> 12     4     0 hp    hp           NA       NA         NA         NA       
+#> 13     4     1 hp    (Intercept)  36.0      5.52e+ 0   6.52e+ 0   1.85e- 4
+#> 14     4     1 hp    hp           -0.113    6.55e- 2  -1.73e+ 0   1.21e- 1
+#> 15     6     0 hp    (Intercept)  23.2      1.02e-14   2.28e+15   2.79e-16
+#> 16     6     0 hp    hp           -0.02     7.53e-17  -2.66e+14   2.40e-15
+#> 17     6     1 hp    (Intercept)  24.2      1.41e+ 1   1.72e+ 0   2.28e- 1
+#> 18     6     1 hp    hp           -0.0440   1.22e- 1  -3.61e- 1   7.52e- 1
+#> 19     8     0 hp    (Intercept)  18.1      2.99e+ 0   6.05e+ 0   5.74e- 5
+#> 20     8     0 hp    hp           -0.0142   1.39e- 2  -1.02e+ 0   3.26e- 1
 ```
 
 `cross_list()` finds all combinations of elements from a set of lists
@@ -149,7 +151,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1]  9 16  4 25  1
+#> [1] 25  1 16  9  4
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```
@@ -158,7 +160,7 @@ map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 
 Hex sticker font is [Source Code
 Pro](https://github.com/adobe-fonts/source-code-pro) by
-[Adobe](https://adobe.com).
+[Adobe](https://www.adobe.com).
 
 Please note that **crossmap** is released with a [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
