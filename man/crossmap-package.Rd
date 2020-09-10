@@ -18,6 +18,7 @@ Provides an extension to the 'purrr' family of
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://crossmap.rossellhayes.com}
   \item \url{https://github.com/rossellhayes/crossmap}
   \item Report bugs at \url{https://github.com/rossellhayes/crossmap/issues}
 }

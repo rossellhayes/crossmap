@@ -1,9 +1,9 @@
-fruits <- dplyr::tibble(
+fruits <- tibble::tibble(
   fruit = c("apple", "banana", "cantaloupe"),
   color = c("red", "yellow", "orange")
 )
 
-desserts <- dplyr::tibble(
+desserts <- tibble::tibble(
   dessert = c("cupcake", "muffin", "streudel"),
   makes   = c(8, 6, 1)
 )
