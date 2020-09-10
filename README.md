@@ -5,14 +5,14 @@
 
 <!-- badges: start -->
 
+[![](https://www.r-pkg.org/badges/version/crossmap?color=brightgreen)](https://cran.r-project.org/package=crossmap)
+[![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![License:
-MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/crossmap/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap?branch=master)
+[![](https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
+[![Dependencies](https://tinyverse.netlify.com/badge/crossmap)](https://cran.r-project.org/package=crossmap)
 <!-- badges: end -->
 
 **crossmap** provides an extension to
@@ -25,8 +25,15 @@ functions for working with combinations of list elements.
 
 ## Installation
 
-You can install the development version of **crossmap** from
-[GitHub](https://github.com/rossellhayes/fauxnaif) with:
+You can install the released version of **crossmap** from
+[CRAN](https://cran.r-project.org/package=crossmap) with:
+
+``` r
+install.packages("crossmap")
+```
+
+or the development version from
+[GitHub](https://github.com/rossellhayes/crossmap) with:
 
 ``` r
 # install.packages("remotes")
@@ -151,7 +158,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1] 25  1 16  9  4
+#> [1]  4 25 16  1  9
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```

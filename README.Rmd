@@ -11,15 +11,20 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+# remotes::install_github("GuangchuangYu/badger")
+library(badger)
 ```
 
 # crossmap <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-[![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://opensource.org/licenses/MIT)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R build status](https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/crossmap/actions)
-[![Codecov test coverage](https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap?branch=master)
+`r badge_cran_release(color = "brightgreen")`
+`r badge_lifecycle("maturing")`
+`r badge_license(color = "blueviolet")`
+`r badge_github_actions(action = "R-CMD-check")`
+`r badge_codecov()`
+`r badge_dependencies()`
 <!-- badges: end -->
 
 **crossmap** provides an extension to [**purrr**](https://github.com/tidyverse/purrr)'s family of mapping functions.
@@ -29,7 +34,13 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the development version of **crossmap** from [GitHub](https://github.com/rossellhayes/fauxnaif) with:
+You can install the released version of **crossmap** from [CRAN](https://cran.r-project.org/package=crossmap) with:
+
+``` {r eval = FALSE}
+install.packages("crossmap")
+```
+
+or the development version from [GitHub](https://github.com/rossellhayes/crossmap) with:
 
 ```{r eval = FALSE}
 # install.packages("remotes")
