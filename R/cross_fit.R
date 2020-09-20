@@ -1,4 +1,4 @@
-#' Cross map a model across multiple formulas and multiple subsets
+#' Cross map a model across multiple formulas, subsets, and weights
 #'
 #' Applies a modeling function to every combination of a set of formulas and a
 #' set of data subsets.
@@ -11,6 +11,10 @@
 #'   Can be any expression supported by
 #'   <[`tidy-select`][dplyr::dplyr_tidy_select]>.
 #'   If `NULL`, the data is not subset into columns.
+#'   Defaults to `NULL`.
+#' @param weights A list of columns passed to `weights` in `fn`.
+#'   If one of the elements is `NULL` or another column name that does not
+#'   appear in the data, that model will not be weighted.
 #'   Defaults to `NULL`.
 #' @param fn The modeling function.
 #'   Either an unquoted function name or a [purrr][purrr::map]-style lambda
@@ -44,25 +48,60 @@
 #' @example examples/cross_fit.R
 
 cross_fit <- function(
-  data, formulas, cols = NULL,
+  data, formulas, cols = NULL, weights = NULL,
   fn = stats::lm, fn_args = list(), tidy = broom::tidy, tidy_args = list()
 ) {
-  .formula <- model <- NULL
+  .formula <- NULL
   require_package("dplyr", ver = "1.0.0")
 
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
-  formulas <- dplyr::tibble(.formula = formulas, model = autonames(formulas))
+  formulas <- dplyr::tibble(.formula = formulas, "model" := autonames(formulas))
+
+  weights <- as.character(rlang::enexpr(weights))
+  weights_specified <- length(weights) && !identical(weights, "NULL")
+
+  if (weights_specified) {
+    if (length(weights) > 1) {weights <- weights[-1]}
+
+    data <- purrr::map_dfr(
+      weights,
+      function(wt) {
+        if (wt != "NULL" && !wt %in% names(data)) {
+          rlang::abort(
+            paste0(
+              code("weights"), " must be made up of columns in ",
+              code("data"), " or ", code("NULL"), "."
+            )
+          )
+        }
+
+        if (wt == "NULL") {
+          data[[".weight"]] <- 1
+        } else {
+          data[[".weight"]] <- data[[wt]]
+        }
+
+        data[["weights"]] <- wt
+        data
+      }
+    )
+  }
 
   cols_specified <- !isTRUE(try(is.null(cols), silent = TRUE))
 
-  if (cols_specified) {
-    data <- dplyr::group_by(data, dplyr::across({{cols}}))
+  if (cols_specified) {data <- dplyr::group_by(data, dplyr::across({{cols}}))}
+  if (weights_specified) {
+    data <- dplyr::group_by(data, dplyr::across("weights"), .add = TRUE)
   }
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, data)
+  data <- dplyr::group_by(data, dplyr::across("model"))
   if (cols_specified) {
-    data <- dplyr::group_by(data, dplyr::across({{cols}}), model)
+    data <- dplyr::group_by(data, dplyr::across({{cols}}), .add = TRUE)
+  }
+  if (weights_specified) {
+    data <- dplyr::group_by(data, dplyr::across("weights"), .add = TRUE)
   }
   data <- dplyr::rowwise(data)
 
@@ -80,7 +119,7 @@ cross_fit <- function(
     purrr::lift(tidy)(
       rlang::list2(
         purrr::lift(rlang::as_function(fn))(
-          formula = .formula, data = data, fn_args
+          formula = .formula, data = data, weights = data[[".weight"]], fn_args
         ),
         !!!tidy_args
       )

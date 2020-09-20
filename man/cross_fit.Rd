@@ -2,12 +2,13 @@
 % Please edit documentation in R/cross_fit.R
 \name{cross_fit}
 \alias{cross_fit}
-\title{Cross map a model across multiple formulas and multiple subsets}
+\title{Cross map a model across multiple formulas, subsets, and weights}
 \usage{
 cross_fit(
   data,
   formulas,
   cols = NULL,
+  weights = NULL,
   fn = stats::lm,
   fn_args = list(),
   tidy = broom::tidy,
@@ -25,6 +26,11 @@ Otherwise, the formulas will be converted to strings in the \code{model} column.
 Can be any expression supported by
 <\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}>.
 If \code{NULL}, the data is not subset into columns.
+Defaults to \code{NULL}.}
+
+\item{weights}{A list of columns passed to \code{weights} in \code{fn}.
+If one of the elements is \code{NULL} or another column name that does not
+appear in the data, that model will not be weighted.
 Defaults to \code{NULL}.}
 
 \item{fn}{The modeling function.
@@ -63,6 +69,9 @@ cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), cyl)
 
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), c(cyl, vs))
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), dplyr::starts_with("c"))
+
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = wt)
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = list(wt, NULL))
 
 cross_fit(
   mtcars, list(vs ~ cyl, vs ~ hp), am,

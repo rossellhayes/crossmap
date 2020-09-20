@@ -5,6 +5,9 @@ cross_fit(mtcars, list(wt = mpg ~ wt, hp = mpg ~ hp), cyl)
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), c(cyl, vs))
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), dplyr::starts_with("c"))
 
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = wt)
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = list(wt, NULL))
+
 cross_fit(
   mtcars, list(vs ~ cyl, vs ~ hp), am,
   fn = glm, fn_args = list(family = binomial(link = logit))
