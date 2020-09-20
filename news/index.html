@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatically generate names for vectors — autonames • crossmap</title>
+<title>Changelog • crossmap</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,7 @@
 
 
 
-<meta property="og:title" content="Automatically generate names for vectors — autonames" />
-<meta property="og:description" content="Automatically generate names for vectors" />
+<meta property="og:title" content="Changelog" />
 <meta property="og:image" content="https://dplyr.tidyverse.org/logo.png" />
 
 
@@ -67,7 +66,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -119,56 +118,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatically generate names for vectors</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rossellhayes/crossmap/blob/master/R/autonames.R'><code>R/autonames.R</code></a></small>
-    <div class="hidden name"><code>autonames.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/rossellhayes/crossmap/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Automatically generate names for vectors</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>autonames</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, trimws = <span class='fu'><a href='https://rdrr.io/r/base/numeric_version.html'>getRversion</a></span>() <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric_version.html'>numeric_version</a></span>(<span class='st'>"3.3.0"</span>))</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A vector</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>trimws</th>
-      <td><p>Whether to trim whitespace surrounding automatically formatted
-names.
-Requires R version 3.3.0 or greater.
-Defaults to <code>TRUE</code> if R version is 3.3.0 or greater.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Returns the names of a named vector and the elements of an unnamed
-vector formatted as characters.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>autonames</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(a = <span class='st'>"apple"</span>, b = <span class='st'>"banana"</span>, c = <span class='st'>"cantaloupe"</span>))
-</div><div class='output co'>#&gt; [1] "a" "b" "c"</div><div class='input'><span class='fu'>autonames</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"cantaloupe"</span>))
-</div><div class='output co'>#&gt; [1] "apple"      "banana"     "cantaloupe"</div><div class='input'>
-<span class='fu'>autonames</span>(<span class='fl'>10</span><span class='op'>^</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>))
-</div><div class='output co'>#&gt; [1] "10"    "100"   "1000"  "10000"</div><div class='input'><span class='fu'>autonames</span>(<span class='fl'>10</span><span class='op'>^</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>), big.mark = <span class='st'>","</span>)
-</div><div class='output co'>#&gt; [1] "10"     "100"    "1,000"  "10,000"</div><div class='input'><span class='fu'>autonames</span>(<span class='fl'>10</span><span class='op'>^</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>), scientific = <span class='fl'>TRUE</span>)
-</div><div class='output co'>#&gt; [1] "1e+01" "1e+02" "1e+03" "1e+04"</div></pre>
+    <div id="crossmap-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#crossmap-development-version" class="anchor"></a>crossmap (development version)<small> Unreleased </small>
+</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>Added <code>weights</code> argument to <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.
+<ul>
+<li>You can now cross model specifications in three dimensions: formulas, subsets, and weights.</li>
+<li>Weights are specified as a list of column names, or <code>NULL</code> or <code>NA</code> for an unweighted model.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="miscellaneous" class="section level2">
+<h2 class="hasAnchor">
+<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<ul>
+<li>Added <strong>tibble</strong> as a suggested package.</li>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+<li>Added a URL to <strong>pkgdown</strong> YAML.</li>
+</ul>
+</div>
+</div>
+    <div id="crossmap-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#crossmap-010" class="anchor"></a>crossmap 0.1.0<small> 2020-09-10 </small>
+</h1>
+<ul>
+<li>Initial CRAN release.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 

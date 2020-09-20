@@ -49,7 +49,7 @@
 <meta property="og:title" content="Crossing join — cross_join" />
 <meta property="og:description" content="Adds columns from a set of data frames, creating all combinations of
 their rows" />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://dplyr.tidyverse.org/logo.png" />
 
 
 
@@ -81,7 +81,7 @@ their rows" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@ their rows" />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -163,12 +166,12 @@ If columns have the same name, suffixes are added to disambiguate.</p></li>
     <div class='dont-index'><p><code><a href='cross_list.html'>cross_list()</a></code> to find combinations of elements of vectors and lists.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>fruits</span> <span class='op'>&lt;-</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
+    <pre class="examples"><div class='input'><span class='kw'>fruits</span> <span class='op'>&lt;-</span> <span class='kw'>tibble</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
   fruit = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"cantaloupe"</span>),
   color = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"yellow"</span>, <span class='st'>"orange"</span>)
 )
 
-<span class='kw'>desserts</span> <span class='op'>&lt;-</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
+<span class='kw'>desserts</span> <span class='op'>&lt;-</span> <span class='kw'>tibble</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
   dessert = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cupcake"</span>, <span class='st'>"muffin"</span>, <span class='st'>"streudel"</span>),
   makes   = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>6</span>, <span class='fl'>1</span>)
 )
@@ -227,7 +230,7 @@ If columns have the same name, suffixes are added to disambiguate.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

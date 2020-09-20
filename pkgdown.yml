@@ -1,6 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 1.6.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-09-10T21:15Z
+articles: {}
+last_built: 2020-09-20T06:04Z
+urls:
+  reference: https://dplyr.tidyverse.org/reference
+  article: https://dplyr.tidyverse.org/articles
 
