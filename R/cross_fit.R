@@ -13,8 +13,7 @@
 #'   If `NULL`, the data is not subset into columns.
 #'   Defaults to `NULL`.
 #' @param weights A list of columns passed to `weights` in `fn`.
-#'   If one of the elements is `NULL` or another column name that does not
-#'   appear in the data, that model will not be weighted.
+#'   If one of the elements is `NA` or `NULL`, that model will not be weighted.
 #'   Defaults to `NULL`.
 #' @param fn The modeling function.
 #'   Either an unquoted function name or a [purrr][purrr::map]-style lambda
@@ -58,8 +57,9 @@ cross_fit <- function(
   abort_if_not_formulas(formulas)
   formulas <- dplyr::tibble(.formula = formulas, "model" := autonames(formulas))
 
-  weights <- as.character(rlang::enexpr(weights))
-  weights_specified <- length(weights) && !identical(weights, "NULL")
+  weights           <- as.character(rlang::enexpr(weights))
+  weights_specified <- length(weights) &&
+    !(identical(weights, "NULL") || all(is.na(weights)))
 
   if (weights_specified) {
     if (length(weights) > 1) {weights <- weights[-1]}
@@ -67,16 +67,16 @@ cross_fit <- function(
     data <- purrr::map_dfr(
       weights,
       function(wt) {
-        if (wt != "NULL" && !wt %in% names(data)) {
+        if (!wt %in% names(data) && wt != "NULL" && wt != "NA" && !is.na(wt)) {
           rlang::abort(
             paste0(
               code("weights"), " must be made up of columns in ",
-              code("data"), " or ", code("NULL"), "."
+              code("data"), ", or ", code("NULL"), " or ", code("NA"), "."
             )
           )
         }
 
-        if (wt == "NULL") {
+        if (wt == "NULL" || wt == "NA") {
           data[[".weight"]] <- 1
         } else {
           data[[".weight"]] <- data[[wt]]

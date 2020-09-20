@@ -82,7 +82,7 @@ cross_fit(
   mtcars,
   formulas = list(hp = mpg ~ hp, drat = mpg ~ drat),
   cols     = c(cyl, vs),
-  weights  = list(wt, NULL)
+  weights  = c(wt, NA)
 )
 ```
 

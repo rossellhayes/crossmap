@@ -83,21 +83,21 @@ cross_fit(
   mtcars,
   formulas = list(hp = mpg ~ hp, drat = mpg ~ drat),
   cols     = c(cyl, vs),
-  weights  = list(wt, NULL)
+  weights  = c(wt, NA)
 )
 #> # A tibble: 40 x 9
 #>    model   cyl    vs weights term       estimate  std.error statistic    p.value
 #>    <chr> <dbl> <dbl> <chr>   <chr>         <dbl>      <dbl>     <dbl>      <dbl>
-#>  1 hp        4     0 NULL    (Intercep~   26     NaN        NaN       NaN       
-#>  2 hp        4     0 NULL    hp           NA      NA         NA        NA       
+#>  1 hp        4     0 NA      (Intercep~   26     NaN        NaN       NaN       
+#>  2 hp        4     0 NA      hp           NA      NA         NA        NA       
 #>  3 hp        4     0 wt      (Intercep~   26.0   NaN        NaN       NaN       
 #>  4 hp        4     0 wt      hp           NA      NA         NA        NA       
-#>  5 hp        4     1 NULL    (Intercep~   36.0     5.52e+ 0   6.52e 0   1.85e- 4
-#>  6 hp        4     1 NULL    hp           -0.113   6.55e- 2  -1.73e 0   1.21e- 1
+#>  5 hp        4     1 NA      (Intercep~   36.0     5.52e+ 0   6.52e 0   1.85e- 4
+#>  6 hp        4     1 NA      hp           -0.113   6.55e- 2  -1.73e 0   1.21e- 1
 #>  7 hp        4     1 wt      (Intercep~   36.2     5.44e+ 0   6.66e 0   1.59e- 4
 #>  8 hp        4     1 wt      hp           -0.125   6.39e- 2  -1.95e 0   8.73e- 2
-#>  9 hp        6     0 NULL    (Intercep~   23.2     1.02e-14   2.28e15   2.79e-16
-#> 10 hp        6     0 NULL    hp           -0.02    7.53e-17  -2.66e14   2.40e-15
+#>  9 hp        6     0 NA      (Intercep~   23.2     1.02e-14   2.28e15   2.79e-16
+#> 10 hp        6     0 NA      hp           -0.02    7.53e-17  -2.66e14   2.40e-15
 #> # ... with 30 more rows
 ```
 
@@ -155,7 +155,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1]  9 25 16  4  1
+#> [1] 16 25  1  9  4
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```

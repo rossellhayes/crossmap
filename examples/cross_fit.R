@@ -6,7 +6,7 @@ cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), c(cyl, vs))
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), dplyr::starts_with("c"))
 
 cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = wt)
-cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = list(wt, NULL))
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = c(wt, NA))
 
 cross_fit(
   mtcars, list(vs ~ cyl, vs ~ hp), am,
