@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.2.0
 
 ## New features
 
