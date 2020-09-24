@@ -1,8 +1,9 @@
-## Resubmission
+# Updates
 
-* Fixed link to http://www.adobe.com in README.md
+* Added {tibble} as a suggested package to fix NOTE on r-devel-linux-x86_64-fedora-clang.
+* Added a new argument to cross_fit() to allow models to specify weights.
 
-## Test environments
+# Test environments
 * Local R installation, Windows 10, R 4.0.2
 * GitHub Action
     * R 4.0.0 on Windows Server 2019, Mac OS X 10.15.4 and Ubuntu 16.04
@@ -13,8 +14,6 @@
     * R 4.1.0-devel on Windows Server 2008 and Fedora Linux
     * R 4.0.0 on Ubuntu 16.04
 
-## R CMD check results
+# R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+0 errors | 0 warnings | 0 notes
