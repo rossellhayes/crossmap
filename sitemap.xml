@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dplyr.tidyverse.org/index.html</loc>
+    <loc>https://crossmap.rossellhayes.com/index.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/autonames.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/autonames.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/cross_fit.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/cross_fit.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/cross_join.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/cross_join.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/cross_list.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/cross_list.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/crossmap-package.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/crossmap-package.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/future_map_vec.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/future_map_vec.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/future_xmap.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/future_xmap.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/future_xmap_mat.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/future_xmap_mat.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/isFALSE.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/isFALSE.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/map_vec.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/map_vec.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/xmap.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/xmap.html</loc>
   </url>
   <url>
-    <loc>https://dplyr.tidyverse.org/reference/xmap_mat.html</loc>
+    <loc>https://crossmap.rossellhayes.com/reference/xmap_mat.html</loc>
   </url>
 </urlset>
