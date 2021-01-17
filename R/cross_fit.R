@@ -110,7 +110,7 @@ cross_fit <- function(
   data <- dplyr::rowwise(data)
 
   if (isTRUE(tidy)) {
-    tidy <- tidy_glance
+    tidy <- crossmap::tidy_glance
   } else if (isFALSE(tidy) || rlang::is_na(tidy) || is.null(tidy)) {
     tidy <- function(x) {dplyr::tibble(fit = list(x))}
   } else {
@@ -137,8 +137,8 @@ cross_fit <- function(
     .groups = "drop"
   )
 
-  if (any(result$term == "crossmap_invalid_model")) {
-    errors <- which(result$term == "crossmap_invalid_model")
+  if (any(result[["term"]] == "crossmap_invalid_model")) {
+    errors <- which(result[["term"]] == "crossmap_invalid_model")
 
     rlang::warn(
       paste0(
@@ -146,8 +146,8 @@ cross_fit <- function(
         paste(errors), collapse = ", ")
     )
 
-    result$term             <- "(Invalid model)"
-    result$estimate[errors] <- NaN
+    result[["term"]]             <- "(Invalid model)"
+    result[["estimate"]][errors] <- NaN
   }
 
   result

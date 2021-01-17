@@ -12,6 +12,7 @@ MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-pr
 [![R build
 status](https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/crossmap/actions)
 [![](https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
+[![CodeFactor](https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge)](https://www.codefactor.io/repository/github/rossellhayes/crossmap)
 [![Dependencies](https://tinyverse.netlify.com/badge/crossmap)](https://cran.r-project.org/package=crossmap)
 <!-- badges: end -->
 
@@ -69,7 +70,14 @@ versions of the `xmap()` functions.
 
 ``` r
 future::plan("multiprocess")
+#> Warning: Strategy 'multiprocess' is deprecated in future (>= 1.20.0). Instead,
+#> explicitly specify either 'multisession' or 'multicore'. In the current R
+#> session, 'multiprocess' equals 'multisession'.
 future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
+#> Warning: `future_options()` is deprecated as of furrr 0.2.0.
+#> Please use `furrr_options()` instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_warnings()` to see where this warning was generated.
 #> [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"
 #> [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"
 ```
@@ -155,7 +163,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1] 16 25  1  9  4
+#> [1] 25  9  1 16  4
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```

@@ -197,8 +197,8 @@ for (.e in executors) {
       mean(c(.x, .y), na.rm = na.rm)
     }
 
-    test_l_na         <- test_l
-    test_l_na[[1]][1] <- NA
+    test_l_na           <- test_l
+    test_l_na[[1]][[1]] <- NA
 
     .xmap        <- xmap(test_l_na, vec_mean, na.rm = TRUE)
     .future_xmap <- future_xmap(test_l_na, vec_mean, na.rm = TRUE)
@@ -253,8 +253,7 @@ for (.e in executors) {
   })
 
   test_that(
-    test_msg(.e, "Globals in .l are only exported to workers that use them"),
-    {
+    test_msg(.e, "Globals in .l are only exported to workers that use them"), {
       skip_if_not_installed("furrr")
       skip_if_not_installed("future")
 

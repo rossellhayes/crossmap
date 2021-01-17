@@ -1,6 +1,6 @@
-stringsAsFactors <- options(stringsAsFactors = FALSE)
-
 test_that("cross_join", {
+  withr::with_options(stringsAsFactors = FALSE)
+
   skip_if_not_installed("dplyr")
 
   a <- data.frame(a = 1:2)
@@ -29,5 +29,3 @@ test_that("cross_join", {
   expect_error(cross_join(1, 1))
   expect_error(cross_join("a", b))
 })
-
-options(stringsAsFactors)

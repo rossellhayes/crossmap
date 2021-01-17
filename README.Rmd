@@ -24,6 +24,7 @@ library(badger)
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 `r badge_codecov()`
+`r badge_codefactor()`
 `r badge_dependencies()`
 <!-- badges: end -->
 

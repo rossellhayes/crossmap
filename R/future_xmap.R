@@ -134,4 +134,3 @@ future_xwalk <- function(
     cross_list(.l), .f, ..., .progress = .progress, .options = .options
   )
 }
-
