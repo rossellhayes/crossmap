@@ -11,8 +11,9 @@ cross_fit(
   weights = NULL,
   fn = stats::lm,
   fn_args = list(),
-  tidy = broom::tidy,
-  tidy_args = list()
+  tidy = tidy_glance,
+  tidy_args = list(),
+  errors = c("stop", "warn")
 )
 }
 \arguments{
@@ -29,8 +30,7 @@ If \code{NULL}, the data is not subset into columns.
 Defaults to \code{NULL}.}
 
 \item{weights}{A list of columns passed to \code{weights} in \code{fn}.
-If one of the elements is \code{NULL} or another column name that does not
-appear in the data, that model will not be weighted.
+If one of the elements is \code{NA} or \code{NULL}, that model will not be weighted.
 Defaults to \code{NULL}.}
 
 \item{fn}{The modeling function.
@@ -42,15 +42,20 @@ Defaults to \code{lm}}
 
 \item{tidy}{A logical or function to use to tidy model output into
 data.frame columns.
-If \code{TRUE}, uses the default tidying function: \code{\link[broom:reexports]{broom::tidy()}}.
+If \code{TRUE}, uses the default tidying function: \code{\link[=tidy_glance]{tidy_glance()}}.
 If \code{FALSE}, \code{NA}, or \code{NULL}, the untidied model output will be returned in
 a list column \code{fit}.
 An alternative function can be specified with an unquoted function name or
 a \link[purrr:map]{purrr}-style lambda function with one argument (see usage
 with \link[broom:reexports]{broom::tidy(conf.int = TRUE)} in examples).
-Defaults to \code{\link[broom:reexports]{broom::tidy()}}.}
+Defaults to \code{\link[=tidy_glance]{tidy_glance()}}.}
 
 \item{tidy_args}{A list of additional arguments to the \code{tidy} function}
+
+\item{errors}{If \code{"stop"}, the default, the function will stop and return an
+error if any subset produces an error.
+If \code{"warn"}, the function will produce a warning for subsets that produce
+an error and return results for all subsets that do not.}
 }
 \value{
 A tibble with subsetting columns,
@@ -71,7 +76,7 @@ cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), c(cyl, vs))
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), dplyr::starts_with("c"))
 
 cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = wt)
-cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = list(wt, NULL))
+cross_fit(mtcars, list(hp = mpg ~ hp), cyl, weights = c(wt, NA))
 
 cross_fit(
   mtcars, list(vs ~ cyl, vs ~ hp), am,
@@ -84,6 +89,8 @@ cross_fit(
 
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = FALSE)
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy_args = c(conf.int = TRUE))
+
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = broom::tidy)
 cross_fit(
   mtcars, list(mpg ~ wt, mpg ~ hp), cyl,
   tidy = ~ broom::tidy(., conf.int = TRUE)

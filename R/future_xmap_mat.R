@@ -19,7 +19,7 @@
 
 future_xmap_mat <- function(
   .l, .f, ...,
-  .names = TRUE, .progress = FALSE, .options = furrr::future_options()
+  .names = TRUE, .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   warn_if_not_matrix(.l)
@@ -34,7 +34,7 @@ future_xmap_mat <- function(
 
 future_xmap_arr <- function(
   .l, .f, ...,
-  .names = TRUE, .progress = FALSE, .options = furrr::future_options()
+  .names = TRUE, .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 

@@ -7,7 +7,7 @@
 #' @param .progress A logical, for whether or not to print a progress bar for
 #'   multiprocess, multisession, and multicore plans
 #' @param .options The `future` specific options to use with the workers.
-#'   This must be the result from a call to [furrr::future_options()]
+#'   This must be the result from a call to [furrr::furrr_options()]
 #'
 #' @return An atomic vector, list, or data frame, depending on the suffix.
 #'   Atomic vectors and lists will be named if the first element of .l is named.

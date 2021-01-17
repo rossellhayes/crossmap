@@ -22,14 +22,18 @@
 #' @param fn_args A list of additional arguments to `fn`
 #' @param tidy A logical or function to use to tidy model output into
 #'   data.frame columns.
-#'   If `TRUE`, uses the default tidying function: [broom::tidy()].
+#'   If `TRUE`, uses the default tidying function: [tidy_glance()].
 #'   If `FALSE`, `NA`, or `NULL`, the untidied model output will be returned in
 #'   a list column `fit`.
 #'   An alternative function can be specified with an unquoted function name or
-#'   a [purrr][purrr::map]-style lambda function with one argument (see usage
-#'   with [broom::tidy(conf.int = TRUE)][broom::tidy] in examples).
-#'   Defaults to [broom::tidy()].
+#'   a [purrr][purrr::map()]-style lambda function with one argument (see usage
+#'   with [broom::tidy(conf.int = TRUE)][broom::tidy()] in examples).
+#'   Defaults to [tidy_glance()].
 #' @param tidy_args A list of additional arguments to the `tidy` function
+#' @param errors If `"stop"`, the default, the function will stop and return an
+#'   error if any subset produces an error.
+#'   If `"warn"`, the function will produce a warning for subsets that produce
+#'   an error and return results for all subsets that do not.
 #'
 #' @return A tibble with subsetting columns,
 #'   a column for the model formula applied,
@@ -48,10 +52,10 @@
 
 cross_fit <- function(
   data, formulas, cols = NULL, weights = NULL,
-  fn = stats::lm, fn_args = list(), tidy = broom::tidy, tidy_args = list()
+  fn = stats::lm, fn_args = list(), tidy = tidy_glance, tidy_args = list(),
+  errors = c("stop", "warn")
 ) {
   .formula <- NULL
-  require_package("dplyr", ver = "1.0.0")
 
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
@@ -106,24 +110,45 @@ cross_fit <- function(
   data <- dplyr::rowwise(data)
 
   if (isTRUE(tidy)) {
-    require_package("broom", fn = "cross_fit(tidy = TRUE)")
-    tidy <- broom::tidy
+    tidy <- tidy_glance
   } else if (isFALSE(tidy) || rlang::is_na(tidy) || is.null(tidy)) {
     tidy <- function(x) {dplyr::tibble(fit = list(x))}
   } else {
     tidy <- rlang::as_function(tidy)
   }
 
-  dplyr::summarize(
+  fn <- purrr::lift(rlang::as_function(fn))
+  if (match.arg(errors) == "warn") {
+    fn <- purrr::possibly(
+      fn, lm(0 ~ 0 + crossmap_invalid_model, list(crossmap_invalid_model = 1))
+    )
+  }
+
+  result <- dplyr::summarize(
     data,
     purrr::lift(tidy)(
       rlang::list2(
-        purrr::lift(rlang::as_function(fn))(
+        fn(
           formula = .formula, data = data, weights = data[[".weight"]], fn_args
-        ),
-        !!!tidy_args
-      )
+        )
+      ),
+      !!!tidy_args
     ),
     .groups = "drop"
   )
+
+  if (any(result$term == "crossmap_invalid_model")) {
+    errors <- which(result$term == "crossmap_invalid_model")
+
+    rlang::warn(
+      paste0(
+        "Invalid model specified in row ",
+        paste(errors), collapse = ", ")
+    )
+
+    result$term             <- "(Invalid model)"
+    result$estimate[errors] <- NaN
+  }
+
+  result
 }

@@ -18,18 +18,19 @@ URL: https://crossmap.rossellhayes.com,
     https://github.com/rossellhayes/crossmap
 BugReports: https://github.com/rossellhayes/crossmap/issues
 Imports:
+    broom,
+    dplyr (>= 1.0.0),
     purrr,
     rlang
 Suggests: 
-    broom,
     covr,
     crayon,
-    dplyr (>= 1.0.0),
     furrr,
     future,
     stats,
     testthat,
-    tibble
+    tibble,
+    utils
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -46,6 +47,7 @@ Collate:
     'future_xmap.R'
     'future_xmap_mat.R'
     'map_vec.R'
+    'tidy_glance.R'
     'vectorize.R'
     'xmap.R'
     'xmap_mat.R'

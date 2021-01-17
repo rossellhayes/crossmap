@@ -13,7 +13,7 @@ future_map_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_map2_vec(
@@ -22,7 +22,7 @@ future_map2_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_pmap_vec(
@@ -30,7 +30,7 @@ future_pmap_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_imap_vec(
@@ -38,7 +38,7 @@ future_imap_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_vec(
@@ -46,7 +46,7 @@ future_xmap_vec(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 }
 \arguments{
@@ -78,7 +78,7 @@ present, the value of \code{.default} will be returned.}
 multiprocess, multisession, and multicore plans}
 
 \item{.options}{The \code{future} specific options to use with the workers.
-This must be the result from a call to \code{\link[furrr:future_options]{furrr::future_options()}}}
+This must be the result from a call to \code{\link[furrr:furrr_options]{furrr::furrr_options()}}}
 
 \item{.y}{A vector the same length as \code{.x}.
 Vectors of length 1 will be recycled.}

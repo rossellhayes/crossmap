@@ -18,9 +18,7 @@ xmap <- glue(
   ] <- function(.l, .f, ...[
     ifelse(str_detect(pmap, 'dfr'), ', .id = NULL', '')
   ]) {",
-  "  [
-    ifelse(str_detect(pmap, 'df'), 'require_package(\"dplyr\")\n  ', '')
-    ]purrr::[pmap](cross_list(.l), .f, ...[
+  "  purrr::[pmap](cross_list(.l), .f, ...[
       ifelse(str_detect(pmap, 'dfr'), ', .id', '')
     ])",
   "}",
@@ -47,12 +45,10 @@ future_xmap <- glue(
   ] <- function(",
   "  .l, .f, ...[
       ifelse(str_detect(future_pmap, 'dfr'), ', .id = NULL', '')
-    ], .progress = FALSE, .options = furrr::future_options()",
+    ], .progress = FALSE, .options = furrr::furrr_options()",
   ") {",
   "  require_furrr()",
-  "  [
-    ifelse(str_detect(future_pmap, 'df'), 'require_package(\"dplyr\")\n  ', '')
-    ]furrr::[future_pmap](",
+  "  furrr::[future_pmap](",
   "    cross_list(.l), .f, ...[
         ifelse(str_detect(future_pmap, 'dfr'), ', .id', '')
       ], .progress = .progress, .options = .options",

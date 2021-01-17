@@ -89,9 +89,9 @@ require_r <- function(ver, fn = NULL) {
 }
 
 require_package <- function(package, fn = NULL, ver = NULL) {
-  if (!requireNamespace(package, quietly = TRUE)) {
-    if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
+  if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
 
+  if (!requireNamespace(package, quietly = TRUE)) {
     rlang::abort(
       c(
         paste(code(fn), "requires the", field(package), "package."),

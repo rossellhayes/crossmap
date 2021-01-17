@@ -11,7 +11,7 @@ future_xmap_mat(
   ...,
   .names = TRUE,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_arr(
@@ -20,7 +20,7 @@ future_xmap_arr(
   ...,
   .names = TRUE,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 }
 \arguments{
@@ -61,7 +61,7 @@ Defaults to \code{TRUE}.}
 multiprocess, multisession, and multicore plans}
 
 \item{.options}{The \code{future} specific options to use with the workers.
-This must be the result from a call to \code{\link[furrr:future_options]{furrr::future_options()}}}
+This must be the result from a call to \code{\link[furrr:furrr_options]{furrr::furrr_options()}}}
 }
 \value{
 A matrix (for \code{future_xmap_mat()}) or array (for \code{future_xmap_arr()})

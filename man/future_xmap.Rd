@@ -8,16 +8,18 @@
 \alias{future_xmap_dfr}
 \alias{future_xmap_int}
 \alias{future_xmap_lgl}
+\alias{future_xmap_raw}
+\alias{future_xwalk}
 \title{Map over each combination of list elements simultaneously via futures}
 \usage{
-future_xmap(.l, .f, ..., .progress = FALSE, .options = furrr::future_options())
+future_xmap(.l, .f, ..., .progress = FALSE, .options = furrr::furrr_options())
 
 future_xmap_chr(
   .l,
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_dbl(
@@ -25,7 +27,7 @@ future_xmap_dbl(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_dfc(
@@ -33,7 +35,7 @@ future_xmap_dfc(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_dfr(
@@ -42,7 +44,7 @@ future_xmap_dfr(
   ...,
   .id = NULL,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_int(
@@ -50,7 +52,7 @@ future_xmap_int(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
 
 future_xmap_lgl(
@@ -58,8 +60,18 @@ future_xmap_lgl(
   .f,
   ...,
   .progress = FALSE,
-  .options = furrr::future_options()
+  .options = furrr::furrr_options()
 )
+
+future_xmap_raw(
+  .l,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::furrr_options()
+)
+
+future_xwalk(.l, .f, ..., .progress = FALSE, .options = furrr::furrr_options())
 }
 \arguments{
 \item{.l}{A list of vectors, such as a data frame.
@@ -93,7 +105,7 @@ present, the value of \code{.default} will be returned.}
 multiprocess, multisession, and multicore plans}
 
 \item{.options}{The \code{future} specific options to use with the workers.
-This must be the result from a call to \code{\link[furrr:future_options]{furrr::future_options()}}}
+This must be the result from a call to \code{\link[furrr:furrr_options]{furrr::furrr_options()}}}
 
 \item{.id}{Either a string or \code{NULL}.
 If a string, the output will contain a variable with that name, storing

@@ -7,7 +7,7 @@
 #' @param .progress A logical, for whether or not to print a progress bar for
 #'   multiprocess, multisession, and multicore plans
 #' @param .options The `future` specific options to use with the workers.
-#'   This must be the result from a call to [furrr::future_options()]
+#'   This must be the result from a call to [furrr::furrr_options()]
 #'
 #' @return An atomic vector, list, or data frame, depending on the suffix.
 #'   Atomic vectors and lists will be named if the first element of .l is named.
@@ -31,7 +31,7 @@
 #' @example examples/future_xmap.R
 
 future_xmap <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   furrr::future_pmap(
@@ -43,7 +43,7 @@ future_xmap <- function(
 #' @export
 
 future_xmap_chr <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   furrr::future_pmap_chr(
@@ -55,7 +55,7 @@ future_xmap_chr <- function(
 #' @export
 
 future_xmap_dbl <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   furrr::future_pmap_dbl(
@@ -67,10 +67,9 @@ future_xmap_dbl <- function(
 #' @export
 
 future_xmap_dfc <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
-  require_package("dplyr")
   furrr::future_pmap_dfc(
     cross_list(.l), .f, ..., .progress = .progress, .options = .options
   )
@@ -80,10 +79,9 @@ future_xmap_dfc <- function(
 #' @export
 
 future_xmap_dfr <- function(
-  .l, .f, ..., .id = NULL, .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .id = NULL, .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
-  require_package("dplyr")
   furrr::future_pmap_dfr(
     cross_list(.l), .f, ..., .id, .progress = .progress, .options = .options
   )
@@ -93,7 +91,7 @@ future_xmap_dfr <- function(
 #' @export
 
 future_xmap_int <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   furrr::future_pmap_int(
@@ -105,10 +103,34 @@ future_xmap_int <- function(
 #' @export
 
 future_xmap_lgl <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::future_options()
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
   furrr::future_pmap_lgl(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
+}
+
+#' @rdname future_xmap
+#' @export
+
+future_xmap_raw <- function(
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+) {
+  require_furrr()
+  furrr::future_pmap_raw(
+    cross_list(.l), .f, ..., .progress = .progress, .options = .options
+  )
+}
+
+#' @rdname future_xmap
+#' @export
+
+future_xwalk <- function(
+  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+) {
+  require_furrr()
+  furrr::future_pwalk(
     cross_list(.l), .f, ..., .progress = .progress, .options = .options
   )
 }

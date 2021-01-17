@@ -87,7 +87,6 @@ Note that a data frame is a very important special case, in which case
 \code{xmap()} and \code{xwalk()} apply the function \code{.f} to each row.
 \code{xmap_dfr()} and \code{xmap_dfc()} return data frames created by row-binding and
 column-binding respectively.
-They require dplyr to be installed.
 }
 \examples{
 xmap(list(1:5, 1:5), ~ .y * .x)
