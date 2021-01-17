@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +102,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/rossellhayes/crossmap/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -128,9 +128,9 @@
     <p>Return a table applying a function to all combinations of list elements</p>
     </div>
 
-    <pre class="usage"><span class='fu'>xmap_mat</span>(<span class='kw'>.l</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>, .names = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>xmap_mat</span><span class='op'>(</span><span class='va'>.l</span>, <span class='va'>.f</span>, <span class='va'>...</span>, .names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>xmap_arr</span>(<span class='kw'>.l</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>, .names = <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>xmap_arr</span><span class='op'>(</span><span class='va'>.l</span>, <span class='va'>.f</span>, <span class='va'>...</span>, .names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,22 +186,22 @@ parallel.</p>
 <p><code><a href='xmap.html'>xmap()</a></code> for the underlying functions.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>xmap_mat</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>),  <span class='op'>~</span> <span class='kw'>..1</span> <span class='op'>*</span> <span class='kw'>..2</span>)
+    <pre class="examples"><div class='input'><span class='fu'>xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,  <span class='op'>~</span> <span class='va'>..1</span> <span class='op'>*</span> <span class='va'>..2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   1 2 3
 #&gt; 1 1 2 3
 #&gt; 2 2 4 6
 #&gt; 3 3 6 9</div><div class='input'>
-<span class='kw'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(a = <span class='st'>"apple"</span>, b = <span class='st'>"banana"</span>, c = <span class='st'>"cantaloupe"</span>)
-<span class='fu'>xmap_mat</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='kw'>fruits</span>), <span class='kw'>paste</span>)
+<span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='st'>"apple"</span>, b <span class='op'>=</span> <span class='st'>"banana"</span>, c <span class='op'>=</span> <span class='st'>"cantaloupe"</span><span class='op'>)</span>
+<span class='fu'>xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>fruits</span><span class='op'>)</span>, <span class='va'>paste</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   a         b          c             
 #&gt; 1 "1 apple" "1 banana" "1 cantaloupe"
 #&gt; 2 "2 apple" "2 banana" "2 cantaloupe"
-#&gt; 3 "3 apple" "3 banana" "3 cantaloupe"</div><div class='input'><span class='fu'>xmap_mat</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='kw'>fruits</span>), <span class='kw'>paste</span>, .names = <span class='fl'>FALSE</span>)
+#&gt; 3 "3 apple" "3 banana" "3 cantaloupe"</div><div class='input'><span class='fu'>xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>fruits</span><span class='op'>)</span>, <span class='va'>paste</span>, .names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      [,1]      [,2]       [,3]          
 #&gt; [1,] "1 apple" "1 banana" "1 cantaloupe"
 #&gt; [2,] "2 apple" "2 banana" "2 cantaloupe"
 #&gt; [3,] "3 apple" "3 banana" "3 cantaloupe"</div><div class='input'>
-<span class='fu'>xmap_arr</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>),  <span class='op'>~</span> <span class='kw'>..1</span> <span class='op'>*</span> <span class='kw'>..2</span> <span class='op'>*</span> <span class='kw'>..3</span>)
+<span class='fu'>xmap_arr</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,  <span class='op'>~</span> <span class='va'>..1</span> <span class='op'>*</span> <span class='va'>..2</span> <span class='op'>*</span> <span class='va'>..3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;   1 2 3

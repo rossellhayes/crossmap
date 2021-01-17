@@ -51,7 +51,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -65,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/rossellhayes/crossmap/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -93,49 +93,44 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the released version of <strong>crossmap</strong> from <a href="https://cran.r-project.org/package=crossmap">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"crossmap"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"crossmap"</span><span class="op">)</span></code></pre></div>
 <p>or the development version from <a href="https://github.com/rossellhayes/crossmap">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("remotes")</span>
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"rossellhayes/crossmap"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rossellhayes/crossmap"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>While <code><a href="https://purrr.tidyverse.org/reference/map2.html">purrr::pmap()</a></code> applies a function to list elements pairwise, <code><a href="reference/xmap.html">xmap()</a></code> applies a function to all combinations of elements.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu">pmap_chr</span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>), <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">.x</span>, <span class="st">"*"</span>, <span class="kw">.y</span>, <span class="st">"="</span>, <span class="kw">.x</span> <span class="op">*</span> <span class="kw">.y</span>))
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pmap_chr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 2 = 4" "3 * 3 = 9"</span>
-<span class="fu"><a href="reference/xmap.html">xmap_chr</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>), <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">.x</span>, <span class="st">"*"</span>, <span class="kw">.y</span>, <span class="st">"="</span>, <span class="kw">.x</span> <span class="op">*</span> <span class="kw">.y</span>))
+<span class="fu"><a href="reference/xmap.html">xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"</span>
-<span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span>
-</pre></div>
+<span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span></code></pre></div>
 <p><code><a href="reference/xmap_mat.html">xmap_mat()</a></code> formats <code><a href="reference/xmap.html">xmap()</a></code> results into a matrix.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="reference/xmap_mat.html">xmap_mat</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>), <span class="kw">prod</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/xmap_mat.html">xmap_mat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="va">prod</span><span class="op">)</span>
 <span class="co">#&gt;   1 2 3  4  5  6</span>
 <span class="co">#&gt; 1 1 2 3  4  5  6</span>
 <span class="co">#&gt; 2 2 4 6  8 10 12</span>
-<span class="co">#&gt; 3 3 6 9 12 15 18</span>
-</pre></div>
+<span class="co">#&gt; 3 3 6 9 12 15 18</span></code></pre></div>
 <p><strong>crossmap</strong> also integrates with <a href="https://github.com/DavisVaughan/furrr"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">future</span>::<span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="st">"multiprocess"</span>)
-<span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>), <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">.x</span>, <span class="st">"*"</span>, <span class="kw">.y</span>, <span class="st">"="</span>, <span class="kw">.x</span> <span class="op">*</span> <span class="kw">.y</span>))
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span><span class="op">(</span><span class="st">"multiprocess"</span><span class="op">)</span>
+<span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"</span>
-<span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span>
-</pre></div>
+<span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span></code></pre></div>
 <p><code><a href="reference/cross_fit.html">cross_fit()</a></code> is an easy wrapper for an important use of <strong>crossmap</strong>, crossing model specifications with different formulas, subsets, and weights.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="reference/cross_fit.html">cross_fit</a></span>(
-  <span class="kw">mtcars</span>,
-  formulas = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(hp = <span class="kw">mpg</span> <span class="op">~</span> <span class="kw">hp</span>, drat = <span class="kw">mpg</span> <span class="op">~</span> <span class="kw">drat</span>),
-  cols     = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">cyl</span>, <span class="kw">vs</span>),
-  weights  = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">wt</span>, <span class="fl">NA</span>)
-)
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/cross_fit.html">cross_fit</a></span><span class="op">(</span>
+  <span class="va">mtcars</span>,
+  formulas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, drat <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">drat</span><span class="op">)</span>,
+  cols     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">vs</span><span class="op">)</span>,
+  weights  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">wt</span>, <span class="cn">NA</span><span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt; # A tibble: 40 x 9</span>
 <span class="co">#&gt;    model   cyl    vs weights term       estimate  std.error statistic    p.value</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
@@ -149,17 +144,16 @@
 <span class="co">#&gt;  8 hp        4     1 wt      hp           -0.125   6.39e- 2  -1.95e 0   8.73e- 2</span>
 <span class="co">#&gt;  9 hp        6     0 NA      (Intercep~   23.2     1.02e-14   2.28e15   2.79e-16</span>
 <span class="co">#&gt; 10 hp        6     0 NA      hp           -0.02    7.53e-17  -2.66e14   2.40e-15</span>
-<span class="co">#&gt; # ... with 30 more rows</span>
-</pre></div>
+<span class="co">#&gt; # ... with 30 more rows</span></code></pre></div>
 <p><code><a href="reference/cross_list.html">cross_list()</a></code> finds all combinations of elements from a set of lists.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="reference/cross_list.html">cross_list</a></span>(number = <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter = <span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>])
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/cross_list.html">cross_list</a></span><span class="op">(</span>number <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; $number</span>
 <span class="co">#&gt; [1] 1 2 3 1 2 3 1 2 3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $letter</span>
 <span class="co">#&gt; [1] "a" "a" "a" "b" "b" "b" "c" "c" "c"</span>
-<span class="fu"><a href="reference/cross_list.html">cross_tbl</a></span>(number = <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter = <span class="kw">letters</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>])
+<span class="fu"><a href="reference/cross_list.html">cross_tbl</a></span><span class="op">(</span>number <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 2</span>
 <span class="co">#&gt;   number letter</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; </span>
@@ -171,17 +165,16 @@
 <span class="co">#&gt; 6      3 b     </span>
 <span class="co">#&gt; 7      1 c     </span>
 <span class="co">#&gt; 8      2 c     </span>
-<span class="co">#&gt; 9      3 c</span>
-</pre></div>
+<span class="co">#&gt; 9      3 c</span></code></pre></div>
 <p>And <code><a href="reference/cross_join.html">cross_join()</a></code> finds all combinations of the rows of data frames.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="reference/cross_join.html">cross_join</a></span>(
-  <span class="fu">tibble</span>(
-    color = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"orange"</span>),
-    fruit = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span>)
-  ),
-  <span class="fu">tibble</span>(dessert = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span>), makes = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">1</span>))
-)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/cross_join.html">cross_join</a></span><span class="op">(</span>
+  <span class="fu">tibble</span><span class="op">(</span>
+    color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"orange"</span><span class="op">)</span>,
+    fruit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>
+  <span class="op">)</span>,
+  <span class="fu">tibble</span><span class="op">(</span>dessert <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span>, makes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 4</span>
 <span class="co">#&gt;   color  fruit      dessert  makes</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;</span>
@@ -193,15 +186,13 @@
 <span class="co">#&gt; 6 yellow banana     streudel     1</span>
 <span class="co">#&gt; 7 orange cantaloupe cupcake      8</span>
 <span class="co">#&gt; 8 orange cantaloupe muffin       6</span>
-<span class="co">#&gt; 9 orange cantaloupe streudel     1</span>
-</pre></div>
+<span class="co">#&gt; 9 orange cantaloupe streudel     1</span></code></pre></div>
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="reference/map_vec.html">map_vec</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">5</span>), <span class="op">~</span> <span class="kw">.</span> <span class="op">^</span> <span class="fl">2</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; [1] 16 25  1  9  4</span>
-<span class="fu"><a href="reference/map_vec.html">map_vec</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span>), <span class="kw">paste0</span>, <span class="st">"s"</span>)
-<span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span>
-</pre></div>
+<span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></code></pre></div>
 <hr>
 <p>Hex sticker font is <a href="https://github.com/adobe-fonts/source-sans-pro">Source Sans Pro</a> by <a href="https://www.adobe.com">Adobe</a>.</p>
 <p>Please note that <strong>crossmap</strong> is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct/">Contributor Code of Conduct</a>.</p>

@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +102,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/rossellhayes/crossmap/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -128,9 +128,9 @@
     <p>List all combinations of values</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cross_list</span>(<span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>cross_list</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>cross_tbl</span>(<span class='kw'>...</span>)</pre>
+<span class='fu'>cross_tbl</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,10 +156,10 @@ formatted list.</p>
 <p><code><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid()</a></code> for an implementation that results in a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>fruits</span>   <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"cantaloupe"</span>)
-<span class='kw'>desserts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cupcake"</span>, <span class='st'>"muffin"</span>, <span class='st'>"streudel"</span>)
+    <pre class="examples"><div class='input'><span class='va'>fruits</span>   <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"cantaloupe"</span><span class='op'>)</span>
+<span class='va'>desserts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cupcake"</span>, <span class='st'>"muffin"</span>, <span class='st'>"streudel"</span><span class='op'>)</span>
 
-<span class='fu'>cross_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fruits</span>, <span class='kw'>desserts</span>))
+<span class='fu'>cross_list</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "apple"      "banana"     "cantaloupe" "apple"      "banana"    
 #&gt; [6] "cantaloupe" "apple"      "banana"     "cantaloupe"
@@ -167,7 +167,7 @@ formatted list.</p>
 #&gt; [[2]]
 #&gt; [1] "cupcake"  "cupcake"  "cupcake"  "muffin"   "muffin"   "muffin"   "streudel"
 #&gt; [8] "streudel" "streudel"
-#&gt; </div><div class='input'><span class='fu'>cross_list</span>(<span class='kw'>fruits</span>, <span class='kw'>desserts</span>)
+#&gt; </div><div class='input'><span class='fu'>cross_list</span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "apple"      "banana"     "cantaloupe" "apple"      "banana"    
 #&gt; [6] "cantaloupe" "apple"      "banana"     "cantaloupe"
@@ -175,7 +175,7 @@ formatted list.</p>
 #&gt; [[2]]
 #&gt; [1] "cupcake"  "cupcake"  "cupcake"  "muffin"   "muffin"   "muffin"   "streudel"
 #&gt; [8] "streudel" "streudel"
-#&gt; </div><div class='input'><span class='fu'>cross_tbl</span>(<span class='kw'>fruits</span>, <span class='kw'>desserts</span>)
+#&gt; </div><div class='input'><span class='fu'>cross_tbl</span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>New names:</span>
 #&gt; <span class='message'>* `` -&gt; ...1</span>
 #&gt; <span class='message'>* `` -&gt; ...2</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 9 x 2</span><span>
@@ -190,7 +190,7 @@ formatted list.</p>
 #&gt; </span><span style='color: #555555;'>7</span><span> apple      streudel
 #&gt; </span><span style='color: #555555;'>8</span><span> banana     streudel
 #&gt; </span><span style='color: #555555;'>9</span><span> cantaloupe streudel</div><div class='input'>
-<span class='fu'>cross_list</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(fruit = <span class='kw'>fruits</span>, dessert = <span class='kw'>desserts</span>))
+<span class='fu'>cross_list</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='va'>fruits</span>, dessert <span class='op'>=</span> <span class='va'>desserts</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $fruit
 #&gt; [1] "apple"      "banana"     "cantaloupe" "apple"      "banana"    
 #&gt; [6] "cantaloupe" "apple"      "banana"     "cantaloupe"
@@ -198,7 +198,7 @@ formatted list.</p>
 #&gt; $dessert
 #&gt; [1] "cupcake"  "cupcake"  "cupcake"  "muffin"   "muffin"   "muffin"   "streudel"
 #&gt; [8] "streudel" "streudel"
-#&gt; </div><div class='input'><span class='fu'>cross_list</span>(fruit = <span class='kw'>fruits</span>, dessert = <span class='kw'>desserts</span>)
+#&gt; </div><div class='input'><span class='fu'>cross_list</span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='va'>fruits</span>, dessert <span class='op'>=</span> <span class='va'>desserts</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $fruit
 #&gt; [1] "apple"      "banana"     "cantaloupe" "apple"      "banana"    
 #&gt; [6] "cantaloupe" "apple"      "banana"     "cantaloupe"
@@ -206,7 +206,7 @@ formatted list.</p>
 #&gt; $dessert
 #&gt; [1] "cupcake"  "cupcake"  "cupcake"  "muffin"   "muffin"   "muffin"   "streudel"
 #&gt; [8] "streudel" "streudel"
-#&gt; </div><div class='input'><span class='fu'>cross_tbl</span>(fruit = <span class='kw'>fruits</span>, dessert = <span class='kw'>desserts</span>)
+#&gt; </div><div class='input'><span class='fu'>cross_tbl</span><span class='op'>(</span>fruit <span class='op'>=</span> <span class='va'>fruits</span>, dessert <span class='op'>=</span> <span class='va'>desserts</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 9 x 2</span><span>
 #&gt;   fruit      dessert 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
