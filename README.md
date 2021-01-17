@@ -74,10 +74,6 @@ future::plan("multiprocess")
 #> explicitly specify either 'multisession' or 'multicore'. In the current R
 #> session, 'multiprocess' equals 'multisession'.
 future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
-#> Warning: `future_options()` is deprecated as of furrr 0.2.0.
-#> Please use `furrr_options()` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_warnings()` to see where this warning was generated.
 #> [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"
 #> [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"
 ```
@@ -93,20 +89,23 @@ cross_fit(
   cols     = c(cyl, vs),
   weights  = c(wt, NA)
 )
-#> # A tibble: 40 x 9
-#>    model   cyl    vs weights term       estimate  std.error statistic    p.value
-#>    <chr> <dbl> <dbl> <chr>   <chr>         <dbl>      <dbl>     <dbl>      <dbl>
-#>  1 hp        4     0 NA      (Intercep~   26     NaN        NaN       NaN       
-#>  2 hp        4     0 NA      hp           NA      NA         NA        NA       
-#>  3 hp        4     0 wt      (Intercep~   26.0   NaN        NaN       NaN       
-#>  4 hp        4     0 wt      hp           NA      NA         NA        NA       
-#>  5 hp        4     1 NA      (Intercep~   36.0     5.52e+ 0   6.52e 0   1.85e- 4
-#>  6 hp        4     1 NA      hp           -0.113   6.55e- 2  -1.73e 0   1.21e- 1
-#>  7 hp        4     1 wt      (Intercep~   36.2     5.44e+ 0   6.66e 0   1.59e- 4
-#>  8 hp        4     1 wt      hp           -0.125   6.39e- 2  -1.95e 0   8.73e- 2
-#>  9 hp        6     0 NA      (Intercep~   23.2     1.02e-14   2.28e15   2.79e-16
-#> 10 hp        6     0 NA      hp           -0.02    7.53e-17  -2.66e14   2.40e-15
-#> # ... with 30 more rows
+#> # A tibble: 40 x 21
+#>    model   cyl    vs weights term  estimate  std.error statistic    p.value
+#>    <chr> <dbl> <dbl> <chr>   <chr>    <dbl>      <dbl>     <dbl>      <dbl>
+#>  1 hp        4     0 NA      (Int~   26     NaN        NaN       NaN       
+#>  2 hp        4     0 NA      hp      NA      NA         NA        NA       
+#>  3 hp        4     0 wt      (Int~   26.0   NaN        NaN       NaN       
+#>  4 hp        4     0 wt      hp      NA      NA         NA        NA       
+#>  5 hp        4     1 NA      (Int~   36.0     5.52e+ 0   6.52e 0   1.85e- 4
+#>  6 hp        4     1 NA      hp      -0.113   6.55e- 2  -1.73e 0   1.21e- 1
+#>  7 hp        4     1 wt      (Int~   36.2     5.44e+ 0   6.66e 0   1.59e- 4
+#>  8 hp        4     1 wt      hp      -0.125   6.39e- 2  -1.95e 0   8.73e- 2
+#>  9 hp        6     0 NA      (Int~   23.2     1.02e-14   2.28e15   2.79e-16
+#> 10 hp        6     0 NA      hp      -0.02    7.53e-17  -2.66e14   2.40e-15
+#> # ... with 30 more rows, and 12 more variables: r.squared <dbl>,
+#> #   adj.r.squared <dbl>, sigma <dbl>, model.statistic <dbl>,
+#> #   model.p.value <dbl>, df <dbl>, logLik <dbl>, AIC <dbl>, BIC <dbl>,
+#> #   deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
 `cross_list()` finds all combinations of elements from a set of lists.
