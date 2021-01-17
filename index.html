@@ -120,7 +120,14 @@
 <p><strong>crossmap</strong> also integrates with <a href="https://github.com/DavisVaughan/furrr"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span><span class="op">(</span><span class="st">"multiprocess"</span><span class="op">)</span>
+<span class="co">#&gt; Warning: Strategy 'multiprocess' is deprecated in future (&gt;= 1.20.0). Instead,</span>
+<span class="co">#&gt; explicitly specify either 'multisession' or 'multicore'. In the current R</span>
+<span class="co">#&gt; session, 'multiprocess' equals 'multisession'.</span>
 <span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Warning: `future_options()` is deprecated as of furrr 0.2.0.</span>
+<span class="co">#&gt; Please use `furrr_options()` instead.</span>
+<span class="co">#&gt; This warning is displayed once every 8 hours.</span>
+<span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"</span>
 <span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span></code></pre></div>
 <p><code><a href="reference/cross_fit.html">cross_fit()</a></code> is an easy wrapper for an important use of <strong>crossmap</strong>, crossing model specifications with different formulas, subsets, and weights.</p>
@@ -190,7 +197,7 @@
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 16 25  1  9  4</span>
+<span class="co">#&gt; [1] 25  9  1 16  4</span>
 <span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></code></pre></div>
 <hr>
@@ -240,6 +247,7 @@
 <li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/crossmap/actions"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/rossellhayes/crossmap"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/rossellhayes/crossmap"><img src="https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge" alt="CodeFactor"></a></li>
 <li><a href="https://cran.r-project.org/package=crossmap"><img src="https://tinyverse.netlify.com/badge/crossmap" alt="Dependencies"></a></li>
 </ul>
 </div>
