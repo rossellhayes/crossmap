@@ -47,5 +47,6 @@ cross_join(list(fruits, desserts))
 cross_join(rep(list(fruits), 3))
 }
 \seealso{
-\code{\link[=cross_list]{cross_list()}} to find combinations of elements of vectors and lists.
+\code{\link[=cross_list]{cross_list()}} to find combinations of elements of vectors
+and lists.
 }

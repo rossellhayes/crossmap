@@ -1,5 +1,5 @@
 test_that("cross_join", {
-  withr::with_options(stringsAsFactors = FALSE)
+  withr::local_options(stringsAsFactors = FALSE)
 
   skip_if_not_installed("dplyr")
 
