@@ -17,9 +17,10 @@
 #'   Defaults to `NULL`.
 #' @param fn The modeling function.
 #'   Either an unquoted function name or a [purrr][purrr::map]-style lambda
-#'   function with two arguments (see usage with [glm][stats::glm] in examples).
+#'   function with two arguments.
+#'   To use multiple modeling functions, see [cross_fit_glm()].
 #'   Defaults to `lm`
-#' @param fn_args A list of additional arguments to `fn`
+#' @param fn_args A list of additional arguments to `fn`.
 #' @param tidy A logical or function to use to tidy model output into
 #'   data.frame columns.
 #'   If `TRUE`, uses the default tidying function: [tidy_glance()].
@@ -37,10 +38,13 @@
 #'
 #' @return A tibble with subsetting columns,
 #'   a column for the model formula applied,
+#'   a column for the weights applied (if applicable),
 #'   and columns of tidy model output or a list column of models
 #'   (if `tidy = FALSE`)
 #'
-#' @seealso [xmap()] to apply any function to combinations of inputs
+#' @seealso [cross_fit_glm()] to map a model acoss multiple model types.
+#'
+#'   [xmap()] to apply any function to combinations of inputs.
 #'
 #' @importFrom rlang :=
 #' @include errors.R
@@ -92,18 +96,17 @@ cross_fit <- function(
     )
   }
 
-  cols_specified <- !isTRUE(try(is.null(cols), silent = TRUE))
+  data <- dplyr::group_by(data, dplyr::across({{cols}}))
 
-  if (cols_specified) {data <- dplyr::group_by(data, dplyr::across({{cols}}))}
   if (weights_specified) {
     data <- dplyr::group_by(data, dplyr::across("weights"), .add = TRUE)
   }
+
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, data)
   data <- dplyr::group_by(data, dplyr::across("model"))
-  if (cols_specified) {
-    data <- dplyr::group_by(data, dplyr::across({{cols}}), .add = TRUE)
-  }
+  data <- dplyr::group_by(data, dplyr::across({{cols}}), .add = TRUE)
+
   if (weights_specified) {
     data <- dplyr::group_by(data, dplyr::across("weights"), .add = TRUE)
   }
