@@ -32,12 +32,12 @@ Adds columns from a set of data frames, creating all combinations of
 their rows
 }
 \examples{
-fruits <- tibble::tibble(
+fruits <- dplyr::tibble(
   fruit = c("apple", "banana", "cantaloupe"),
   color = c("red", "yellow", "orange")
 )
 
-desserts <- tibble::tibble(
+desserts <- dplyr::tibble(
   dessert = c("cupcake", "muffin", "streudel"),
   makes   = c(8, 6, 1)
 )
