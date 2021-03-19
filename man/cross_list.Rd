@@ -10,7 +10,8 @@ cross_list(...)
 cross_tbl(...)
 }
 \arguments{
-\item{...}{Inputs or a \link{list} of inputs}
+\item{...}{Inputs or a \link{list} of inputs.
+\code{\link{NULL}} inputs are silently ignored.}
 }
 \value{
 A \link{list} for \code{cross_list()} or \link[tibble:tibble]{tibble} for

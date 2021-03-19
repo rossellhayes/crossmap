@@ -3,6 +3,8 @@
 * Added `tidy_glance()`, which returns a tibble with information from both `broom::tidy()` and `broom::glance()`.
   - `tidy_glance()` is now the default tidier in `cross_fit()`.
   
+* `cross_join()`, `cross_list()`, `cross_tbl()` and `cross_df()` now silently ignore `NULL` inputs.
+  
 * Added `future_xmap_raw()` and `future_xwalk()`.
 
 * Promoted `broom` and `dplyr` from suggested to imported packages.

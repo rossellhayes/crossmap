@@ -5,7 +5,8 @@
 #'
 #' @param ... [Data frames][data.frame] or a [list] of data frames -- including
 #'   data frame extensions (e.g. [tibbles][tibble::tibble()]) and lazy data
-#'   frames (e.g. from dbplyr or dtplyr)
+#'   frames (e.g. from dbplyr or dtplyr).
+#'   [`NULL`] inputs are silently ignored.
 #' @param copy If inputs are not from the same data source, and copy is
 #'   `TRUE`, then they will be copied into the same src as the first input.
 #'   This allows you to join tables across srcs, but it is a potentially
@@ -29,9 +30,7 @@
 #' @example examples/cross_join.R
 
 cross_join <- function(..., copy = FALSE) {
-  require_package("dplyr")
-
-  .x <- rlang::list2(...)
+  .x <- compact_null(rlang::list2(...))
   .x <- lapply(.x, function(.x) if (inherits(.x, "list")) {.x} else {list(.x)})
   .x <- purrr::flatten(.x)
 
