@@ -44,8 +44,8 @@ install.packages("crossmap")
 or the development version from [GitHub](https://github.com/rossellhayes/crossmap) with:
 
 ```{r eval = FALSE}
-# install.packages("remotes")
-remotes::install_github("rossellhayes/crossmap")
+# install.packages("pak")
+pak::pkg_install("rossellhayes/crossmap")
 ```
 
 ## Usage

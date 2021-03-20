@@ -37,8 +37,8 @@ or the development version from
 [GitHub](https://github.com/rossellhayes/crossmap) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("rossellhayes/crossmap")
+# install.packages("pak")
+pak::pkg_install("rossellhayes/crossmap")
 ```
 
 ## Usage
@@ -162,7 +162,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1] 16  1 25  9  4
+#> [1]  4 16  1  9 25
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```
