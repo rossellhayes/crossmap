@@ -12,12 +12,14 @@ test_that("one subset, one formula", {
   fit_lst  <- suppressWarnings(cross_fit(df, list(y ~ x), c(m)))
   fit_tidy <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = TRUE))
   fit_unwt <- suppressWarnings(cross_fit(df, y ~ x, m, NULL))
+  fit_nawt <- suppressWarnings(cross_fit(df, y ~ x, m, NA))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 19)
   expect_equal(fit$estimate, c(0, 1, 0, -1))
   expect_equal(fit, fit_lst)
   expect_equal(fit, fit_tidy)
   expect_equal(fit, fit_unwt)
+  expect_equal(fit, fit_nawt)
 })
 
 test_that("no subset, one formula", {
@@ -67,6 +69,20 @@ test_that("two subsets, one formula, two weights", {
   expect_equal(
     fit$estimate, c(0, 1, 0, 1, 0, 1, 0, 1, 0, -1, 0, -1, 0, -1, 0, -1)
   )
+
+  fit_na <- suppressWarnings(cross_fit(df, y ~ x, c(m, n), c(w, NA)))
+  expect_equal(nrow(fit_na), 16)
+  expect_equal(ncol(fit_na), 21)
+  expect_true(all(c("model", "m", "n", "weights", "term") %in% names(fit_na)))
+  expect_equal(unique(fit_na$weights), c("NA", "w"))
+  expect_equal(fit_na$estimate, fit$estimate)
+
+  fit_na_real <- suppressWarnings(cross_fit(df, y ~ x, c(m, n), c(w, NA_real_)))
+  expect_equal(nrow(fit_na), 16)
+  expect_equal(ncol(fit_na), 21)
+  expect_true(all(c("model", "m", "n", "weights", "term") %in% names(fit_na)))
+  expect_equal(unique(fit_na_real$weights), c("NA_real_", "w"))
+  expect_equal(fit_na_real$estimate, fit$estimate)
 })
 
 test_that("named formulas", {

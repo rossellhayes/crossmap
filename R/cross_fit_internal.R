@@ -19,9 +19,11 @@ cross_fit_internal <- function(
     weighted_data <- purrr::map_dfr(
       weights,
       function(.weight) {
-        col <- unlist(dplyr::select(data, .weight))
-
-        if (!length(col)) {col <- rep(1, nrow(data))}
+        if (is.null(.weight) || suppressWarnings(is.na(.weight))) {
+          col <- rep(1, nrow(data))
+        } else {
+          col <- unlist(dplyr::select(data, .weight))
+        }
 
         dplyr::mutate(
           data,
