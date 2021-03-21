@@ -28,7 +28,7 @@ Suggests:
     furrr,
     future,
     stats,
-    testthat (>= 3.0.0),
+    testthat,
     tibble,
     utils,
     withr
@@ -55,4 +55,3 @@ Collate:
     'vectorize.R'
     'xmap.R'
     'xmap_mat.R'
-Config/testthat/edition: 3
