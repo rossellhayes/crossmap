@@ -21,7 +21,8 @@ Imports:
     broom,
     dplyr (>= 1.0.0),
     purrr,
-    rlang
+    rlang,
+    utils
 Suggests: 
     covr,
     crayon,
@@ -30,7 +31,6 @@ Suggests:
     stats,
     testthat,
     tibble,
-    utils,
     withr
 Encoding: UTF-8
 LazyData: true

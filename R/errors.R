@@ -1,14 +1,13 @@
-code <- function(x) {
-  x <- encodeString(x, quote = "`")
-  if (requireNamespace("crayon", quietly = TRUE)) {x <- crayon::silver(x)}
+style <- function(x, quote, color) {
+  x <- encodeString(x, quote = quote)
+  if (rlang::is_installed("crayon")) {
+    x <- do.call(color, list(x), envir = asNamespace("crayon"))
+  }
   x
 }
 
-field <- function(x) {
-  x <- encodeString(x, quote = "'")
-  if (requireNamespace("crayon", quietly = TRUE)) {x <- crayon::blue(x)}
-  x
-}
+code  <- function(x) {style(x, "`", "silver")}
+field <- function(x) {style(x, "'", "blue")}
 
 abort_if_not_df <- function(x) {
   format.character <- function(x) {encodeString(x, quote = '"')}
@@ -115,12 +114,27 @@ require_furrr <- function() {
   require_package("furrr",  fn = fn)
   require_package("future", fn = fn)
 
-  if (is.null(attr(future::plan(), "call"))) {
-    rlang::warn(
+  if ("uniprocess" %in% class(future::plan()) || is.null(future::plan())) {
+    plan <- utils::menu(
       c(
-        paste("No future plan is set, so", code(fn), "is not parallelized."),
-        paste("Try", code('future::plan("multiprocess")'))
+        "Multicore (recommended for non-Windows)",
+        "Multisession (recommended for Windows)",
+        "Cancel"
+      ),
+      title = paste(
+        paste(code(fn), "is not set up to run background processes."),
+        paste("Please choose a", code("future"), "plan."),
+        paste("Check", code("help(plan, future)"), "for more details."),
+        sep = "\n"
       )
+    )
+
+    switch(
+      plan + 1,
+      invisible(NULL),
+      future::plan("multicore"),
+      future::plan("multisession"),
+      rlang::abort("Cancelled")
     )
   }
 }
