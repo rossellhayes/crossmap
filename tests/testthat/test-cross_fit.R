@@ -1,11 +1,10 @@
-df <- data.frame(
+df <- dplyr::tibble(
   x = rep(0:5, 2),
   y = c(0:5, 0:-5),
   z = rep(0:-5, 2),
   m = c(rep("a", 6), rep("b", 6)),
   n = c(rep("a", 4), rep("b", 4), rep("c", 4)),
-  w = seq(0.4, 2.6, length.out = 12),
-  stringsAsFactors = FALSE
+  w = seq(0.4, 2.6, length.out = 12)
 )
 
 test_that("one subset, one formula", {
@@ -13,14 +12,18 @@ test_that("one subset, one formula", {
   fit_lst  <- suppressWarnings(cross_fit(df, list(y ~ x), c(m)))
   fit_tidy <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = TRUE))
   fit_unwt <- suppressWarnings(cross_fit(df, y ~ x, m, NULL))
-  fit_nawt <- suppressWarnings(cross_fit(df, y ~ x, m, NA))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 19)
   expect_equal(fit$estimate, c(0, 1, 0, -1))
   expect_equal(fit, fit_lst)
   expect_equal(fit, fit_tidy)
   expect_equal(fit, fit_unwt)
-  expect_equal(fit, fit_nawt)
+})
+
+test_that("no subset, one formula", {
+  fit <- suppressWarnings(cross_fit(df, y ~ x))
+  expect_equal(nrow(fit), 2)
+  expect_equal(ncol(fit), 18)
 })
 
 test_that("one subset, two formulas", {
@@ -64,18 +67,6 @@ test_that("two subsets, one formula, two weights", {
   expect_equal(
     fit$estimate, c(0, 1, 0, 1, 0, 1, 0, 1, 0, -1, 0, -1, 0, -1, 0, -1)
   )
-
-  fit_na      <- suppressWarnings(cross_fit(df, y ~ x, c(m, n), c(w, NA)))
-  expect_equal(nrow(fit_na), 16)
-  expect_equal(ncol(fit_na), 21)
-  expect_true(all(c("model", "m", "n", "weights", "term") %in% names(fit_na)))
-  expect_equal(unique(fit_na$weights), c("NA", "w"))
-  expect_equal(
-    fit_na$estimate, c(0, 1, 0, 1, 0, 1, 0, 1, 0, -1, 0, -1, 0, -1, 0, -1)
-  )
-
-  fit_na_real <- suppressWarnings(cross_fit(df, y ~ x, c(m, n), c(w, NA_real_)))
-  expect_equal(fit_na, fit_na_real)
 })
 
 test_that("named formulas", {
@@ -171,4 +162,103 @@ test_that("abort if not formulas", {
   expect_error(cross_fit(df, "x", m))
   expect_error(cross_fit(df, list("x"), m))
   expect_error(cross_fit(df, rep("x", 10), m))
+})
+
+test_that("cross_fit_glm", {
+  df <- dplyr::tibble(
+    x = rep(0:5, 2),
+    y = c(0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0),
+    z = rep(0:-5, 2),
+    m = c(rep("a", 6), rep("b", 6)),
+    w = seq(0.4, 2.6, length.out = 12)
+  )
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = y ~ x,
+      families = list(stats::gaussian("identity"), stats::binomial("logit"))
+    )
+  )
+  expect_equal(nrow(fit), 4)
+  expect_equal(ncol(fit), 16)
+  expect_equal(
+    fit$estimate,
+    unname(
+      c(
+        stats::coef(
+          stats::glm(y ~ x, family = stats::gaussian("identity"), data = df)
+        ),
+        stats::coef(
+          stats::glm(y ~ x, family = stats::binomial("logit"), data = df)
+        )
+      )
+    )
+  )
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = y ~ x,
+      cols     = m,
+      families = list(stats::gaussian("identity"), stats::binomial("logit"))
+    )
+  )
+
+  expect_equal(nrow(fit), 8)
+  expect_equal(ncol(fit), 17)
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = y ~ x,
+      cols     = m,
+      weights  = w,
+      families = list(stats::gaussian("identity"), stats::binomial("logit"))
+    )
+  )
+
+  expect_equal(nrow(fit), 8)
+  expect_equal(ncol(fit), 18)
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = y ~ x,
+      cols     = m,
+      weights  = list(w, NULL),
+      families = list(stats::gaussian("identity"), stats::binomial("logit"))
+    )
+  )
+
+  expect_equal(nrow(fit), 16)
+  expect_equal(ncol(fit), 18)
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = list(y ~ x, y ~ x + z),
+      cols     = m,
+      families = stats::binomial("logit")
+    )
+  )
+
+  expect_equal(nrow(fit), 10)
+  expect_equal(ncol(fit), 17)
+
+  fit <- suppressWarnings(
+    cross_fit_glm(
+      data     = df,
+      formulas = list(y ~ x, y ~ x + z),
+      cols     = m,
+      families = list(stats::gaussian("identity"), stats::binomial("logit"))
+    )
+  )
+
+  expect_equal(nrow(fit), 20)
+  expect_equal(ncol(fit), 17)
+
+  fit <- suppressWarnings(cross_fit_glm(df, y ~ x))
+  expect_equal(nrow(fit), 2)
+  expect_equal(ncol(fit), 16)
 })

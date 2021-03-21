@@ -2,6 +2,7 @@
 
 export(autonames)
 export(cross_fit)
+export(cross_fit_glm)
 export(cross_join)
 export(cross_list)
 export(cross_tbl)
