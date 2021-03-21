@@ -8,7 +8,7 @@ cross_fit_internal <- function(
   abort_if_not_formulas(formulas)
   formulas <- dplyr::tibble(.formula = formulas, "model" := autonames(formulas))
 
-  if (!is.null(weights)) {
+  if (!is.null(weights) && !rlang::is_na(weights)) {
     if (length(weights) > 1) {
       # Remove concatenating function (e.g. c(), list())
       weights <- weights[-1]
@@ -16,11 +16,11 @@ cross_fit_internal <- function(
       weights <- rlang::new_call(weights)
     }
 
-    weighted_data <- purrr::map_dfr(
+    data <- purrr::map_dfr(
       weights,
       function(.weight) {
-        if (is.null(.weight) || suppressWarnings(is.na(.weight))) {
-          col <- rep(1, nrow(data))
+        if (is.null(.weight) || rlang::is_na(.weight)) {
+          col <- 1
         } else {
           col <- unlist(dplyr::select(data, .weight))
         }
@@ -32,12 +32,6 @@ cross_fit_internal <- function(
         )
       }
     )
-
-    if (all(weighted_data$.weight == 1)) {
-      data <- dplyr::mutate(data, ".weight" = 1)
-    } else {
-      data <- weighted_data
-    }
   }
 
   data <- dplyr::group_by(
@@ -65,7 +59,7 @@ cross_fit_internal <- function(
   fn <- purrr::lift(rlang::as_function(fn))
   if (errors == "warn") {
     fn <- purrr::possibly(
-      fn, lm(0 ~ 0 + crossmap_invalid_model, list(crossmap_invalid_model = 1))
+      fn, fn(0 ~ 0 + .invalid_model, data = list(.invalid_model = 1))
     )
   }
 
@@ -92,14 +86,14 @@ cross_fit_internal <- function(
 }
 
 cross_fit_warn_errors <- function(result) {
-  errors <- which(result$term == "crossmap_invalid_model")
+  errors <- which(result$term == ".invalid_model")
 
   if (length(errors)) {
     rlang::warn(
       paste("Invalid model specified in row", paste(errors, collapse = ", "))
     )
 
-    result$term             <- "(Invalid model)"
+    result$term[errors]     <- "(Invalid model)"
     result$estimate[errors] <- NaN
   }
 

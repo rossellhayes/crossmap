@@ -9,7 +9,7 @@ cross_fit_glm(
   formulas,
   cols = NULL,
   weights = NULL,
-  families = gaussian(link = "identity"),
+  families = stats::gaussian(link = "identity"),
   fn_args = list(),
   tidy = tidy_glance,
   tidy_args = list(),
@@ -26,15 +26,16 @@ Otherwise, the formulas will be converted to strings in the \code{model} column.
 \item{cols}{Columns to subset the data.
 Can be any expression supported by
 <\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}>.
-If \code{NULL}, the data is not subset into columns.
+If \code{\link{NULL}}, the data is not subset into columns.
 Defaults to \code{NULL}.}
 
 \item{weights}{A list of columns passed to \code{weights} in \code{fn}.
-If one of the elements is \code{NA} or \code{NULL}, that model will not be weighted.
+If one of the elements is \code{\link{NULL}} or \code{\link{NA}}, that model will not
+be weighted.
 Defaults to \code{NULL}.}
 
 \item{families}{A list of \link{glm} model families.
-Defaults to \link[=gaussian]{gaussian("identity")}, the equivalent of \code{\link[=lm]{lm()}}.
+Defaults to \code{\link[=gaussian]{gaussian("identity")}}, the equivalent of \code{\link[=lm]{lm()}}.
 See \link{family} for examples.}
 
 \item{fn_args}{A list of additional arguments to \code{\link[=glm]{glm()}}.}
@@ -43,11 +44,11 @@ See \link{family} for examples.}
 data.frame columns.
 If \code{TRUE}, uses the default tidying function: \code{\link[=tidy_glance]{tidy_glance()}}.
 If \code{FALSE}, \code{NA}, or \code{NULL}, the untidied model output will be returned in
-a list column \code{fit}.
+a list column named \code{fit}.
 An alternative function can be specified with an unquoted function name or
 a \link[purrr:map]{purrr}-style lambda function with one argument (see usage
 with \link[broom:reexports]{broom::tidy(conf.int = TRUE)} in examples).
-Defaults to \code{\link[=tidy_glance]{tidy_glance()}}.}
+Defaults to \link{tidy_glance}.}
 
 \item{tidy_args}{A list of additional arguments to the \code{tidy} function}
 

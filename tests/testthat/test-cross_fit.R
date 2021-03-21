@@ -163,6 +163,10 @@ test_that("no contrasts", {
   expect_warning(
     cross_fit(df, x ~ m, n, errors = "warn"), "Invalid model specified in row 1"
   )
+  fit <- suppressWarnings(cross_fit(df, x ~ m, n, errors = "warn"))
+  expect_equal(ncol(fit), 19)
+  expect_true( any(fit$term == "(Invalid model)"))
+  expect_false(all(fit$term == "(Invalid model)"))
 })
 
 test_that("invalid weights", {
@@ -186,6 +190,7 @@ test_that("cross_fit_glm", {
     y = c(0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0),
     z = rep(0:-5, 2),
     m = c(rep("a", 6), rep("b", 6)),
+    n = c(rep("a", 4), rep("b", 4), rep("c", 4)),
     w = seq(0.4, 2.6, length.out = 12)
   )
 
@@ -277,4 +282,14 @@ test_that("cross_fit_glm", {
   fit <- suppressWarnings(cross_fit_glm(df, y ~ x))
   expect_equal(nrow(fit), 2)
   expect_equal(ncol(fit), 16)
+
+  expect_error(cross_fit_glm(df, x ~ m, n))
+  expect_warning(
+    cross_fit_glm(df, x ~ m, n, errors = "warn"),
+    "Invalid model specified in row 1"
+  )
+  fit <- suppressWarnings(cross_fit_glm(df, x ~ m, n, errors = "warn"))
+  expect_equal(ncol(fit), 17)
+  expect_true( any(fit$term == "(Invalid model)"))
+  expect_false(all(fit$term == "(Invalid model)"))
 })
