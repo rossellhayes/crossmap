@@ -97,8 +97,8 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"crossmap"</span><span class="op">)</span></code></pre></div>
 <p>or the development version from <a href="https://github.com/rossellhayes/crossmap">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rossellhayes/crossmap"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># install.packages("pak")</span>
+<span class="fu">pak</span><span class="fu">::</span><span class="fu">pkg_install</span><span class="op">(</span><span class="st">"rossellhayes/crossmap"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -196,7 +196,7 @@
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 25  9  1 16  4</span>
+<span class="co">#&gt; [1]  4 16  1  9 25</span>
 <span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></code></pre></div>
 <hr>
@@ -242,7 +242,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=crossmap"><img src="https://www.r-pkg.org/badges/version/crossmap?color=brightgreen"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/crossmap/actions"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/rossellhayes/crossmap"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/master/graph/badge.svg"></a></li>

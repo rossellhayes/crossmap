@@ -139,7 +139,8 @@ their rows</p>
       <th>...</th>
       <td><p><a href='https://rdrr.io/r/base/data.frame.html'>Data frames</a> or a <a href='https://rdrr.io/r/base/list.html'>list</a> of data frames -- including
 data frame extensions (e.g. <a href='https://tibble.tidyverse.org/reference/tibble.html'>tibbles</a>) and lazy data
-frames (e.g. from dbplyr or dtplyr)</p></td>
+frames (e.g. from dbplyr or dtplyr).
+<code><a href='https://rdrr.io/r/base/NULL.html'>NULL</a></code> inputs are silently ignored.</p></td>
     </tr>
     <tr>
       <th>copy</th>
@@ -167,55 +168,55 @@ If columns have the same name, suffixes are added to disambiguate.</p></li>
 and lists.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   fruit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"banana"</span>, <span class='st'>"cantaloupe"</span><span class='op'>)</span>,
   color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"yellow"</span>, <span class='st'>"orange"</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='va'>desserts</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+<span class='va'>desserts</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   dessert <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cupcake"</span>, <span class='st'>"muffin"</span>, <span class='st'>"streudel"</span><span class='op'>)</span>,
   makes   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>6</span>, <span class='fl'>1</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='fu'>cross_join</span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 9 x 4</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 x 4</span><span>
 #&gt;   fruit      color  dessert  makes
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> apple      red    cupcake      8
-#&gt; </span><span style='color: #555555;'>2</span><span> apple      red    muffin       6
-#&gt; </span><span style='color: #555555;'>3</span><span> apple      red    streudel     1
-#&gt; </span><span style='color: #555555;'>4</span><span> banana     yellow cupcake      8
-#&gt; </span><span style='color: #555555;'>5</span><span> banana     yellow muffin       6
-#&gt; </span><span style='color: #555555;'>6</span><span> banana     yellow streudel     1
-#&gt; </span><span style='color: #555555;'>7</span><span> cantaloupe orange cupcake      8
-#&gt; </span><span style='color: #555555;'>8</span><span> cantaloupe orange muffin       6
-#&gt; </span><span style='color: #555555;'>9</span><span> cantaloupe orange streudel     1</div><div class='input'><span class='fu'>cross_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 9 x 4</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> apple      red    cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> apple      red    muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> apple      red    streudel     1
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> banana     yellow cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> banana     yellow muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> banana     yellow streudel     1
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> cantaloupe orange cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>8</span><span> cantaloupe orange muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>9</span><span> cantaloupe orange streudel     1</div><div class='input'><span class='fu'>cross_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fruits</span>, <span class='va'>desserts</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 9 x 4</span><span>
 #&gt;   fruit      color  dessert  makes
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> apple      red    cupcake      8
-#&gt; </span><span style='color: #555555;'>2</span><span> apple      red    muffin       6
-#&gt; </span><span style='color: #555555;'>3</span><span> apple      red    streudel     1
-#&gt; </span><span style='color: #555555;'>4</span><span> banana     yellow cupcake      8
-#&gt; </span><span style='color: #555555;'>5</span><span> banana     yellow muffin       6
-#&gt; </span><span style='color: #555555;'>6</span><span> banana     yellow streudel     1
-#&gt; </span><span style='color: #555555;'>7</span><span> cantaloupe orange cupcake      8
-#&gt; </span><span style='color: #555555;'>8</span><span> cantaloupe orange muffin       6
-#&gt; </span><span style='color: #555555;'>9</span><span> cantaloupe orange streudel     1</div><div class='input'><span class='fu'>cross_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fruits</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 27 x 6</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> apple      red    cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> apple      red    muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> apple      red    streudel     1
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> banana     yellow cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> banana     yellow muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> banana     yellow streudel     1
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> cantaloupe orange cupcake      8
+#&gt; </span><span style='color: #BCBCBC;'>8</span><span> cantaloupe orange muffin       6
+#&gt; </span><span style='color: #BCBCBC;'>9</span><span> cantaloupe orange streudel     1</div><div class='input'><span class='fu'>cross_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fruits</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 27 x 6</span><span>
 #&gt;    fruit.1 color.1 fruit.2    color.2 fruit.3    color.3
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'> 1</span><span> apple   red     apple      red     apple      red    
-#&gt; </span><span style='color: #555555;'> 2</span><span> apple   red     apple      red     banana     yellow 
-#&gt; </span><span style='color: #555555;'> 3</span><span> apple   red     apple      red     cantaloupe orange 
-#&gt; </span><span style='color: #555555;'> 4</span><span> apple   red     banana     yellow  apple      red    
-#&gt; </span><span style='color: #555555;'> 5</span><span> apple   red     banana     yellow  banana     yellow 
-#&gt; </span><span style='color: #555555;'> 6</span><span> apple   red     banana     yellow  cantaloupe orange 
-#&gt; </span><span style='color: #555555;'> 7</span><span> apple   red     cantaloupe orange  apple      red    
-#&gt; </span><span style='color: #555555;'> 8</span><span> apple   red     cantaloupe orange  banana     yellow 
-#&gt; </span><span style='color: #555555;'> 9</span><span> apple   red     cantaloupe orange  cantaloupe orange 
-#&gt; </span><span style='color: #555555;'>10</span><span> banana  yellow  apple      red     apple      red    
-#&gt; </span><span style='color: #555555;'># … with 17 more rows</span><span></div></span></pre>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> apple   red     apple      red     apple      red    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> apple   red     apple      red     banana     yellow 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> apple   red     apple      red     cantaloupe orange 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> apple   red     banana     yellow  apple      red    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> apple   red     banana     yellow  banana     yellow 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> apple   red     banana     yellow  cantaloupe orange 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> apple   red     cantaloupe orange  apple      red    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> apple   red     cantaloupe orange  banana     yellow 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> apple   red     cantaloupe orange  cantaloupe orange 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> banana  yellow  apple      red     apple      red    
+#&gt; </span><span style='color: #949494;'># … with 17 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
