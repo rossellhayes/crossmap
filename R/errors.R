@@ -120,11 +120,13 @@ require_furrr <- function() {
 check_unparallelized <- function(fn) {
   plan         <- future::plan()
   multiprocess <- future::availableCores() > 1
+  base_fn      <- gsub("future_", "", fn)
 
   if (!multiprocess) {
     rlang::inform(
       c(
         paste(code(fn), "is not set up to run background processes."),
+        paste0("You can use ", code(base_fn), "."),
         i = paste("Check", code("help(plan, future)"), "for more details.")
       )
     )
@@ -136,7 +138,10 @@ check_unparallelized <- function(fn) {
     rlang::inform(
       c(
         paste(code(fn), "is not set up to run background processes."),
-        paste("Please choose a", code("future"), "plan."),
+        paste0(
+          "Please choose a ", code("future"), " plan or use ",
+          code(base_fn), "."
+        ),
         i = paste("Check", code("help(plan, future)"), "for more details.")
       )
     )
