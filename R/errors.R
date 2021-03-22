@@ -114,9 +114,25 @@ require_furrr <- function() {
   require_package("furrr",  fn = fn)
   require_package("future", fn = fn)
 
-  if (
-    interactive() &&
-    ("uniprocess" %in% class(future::plan()) || is.null(future::plan()))
+  check_unparallelized(fn)
+}
+
+check_unparallelized <- function(fn) {
+  plan         <- future::plan()
+  multiprocess <- future::availableCores() > 1
+  multicore    <- future::availableCores(constraints = "multicore") > 1
+
+  if (!multiprocess) {
+    rlang::inform(
+      c(
+        paste(code(fn), "is not set up to run background processes."),
+        i = paste("Check", code("help(plan, future)"), "for more details.")
+      )
+    )
+  } else if (
+    "uniprocess" %in% class(plan) ||
+      is.null(plan) ||
+      (!multicore && "multicore" %in% class(plan))
   ) {
     rlang::inform(
       c(
@@ -126,22 +142,42 @@ require_furrr <- function() {
       )
     )
 
-    plan <- utils::menu(
-      c(
-        "Sequential (no parallelization)",
-        "Multicore (recommended for non-Windows)",
-        "Multisession (recommended for Windows)",
-        "Cancel"
-      )
-    )
+    if (interactive()) {
+      if (multicore) {
+        plan <- utils::menu(
+          c(
+            "Sequential (no parallelization)",
+            "Multicore (recommended for non-Windows)",
+            "Multisession (recommended for Windows)",
+            "Cancel"
+          )
+        )
 
-    switch(
-      plan + 1,
-      invisible(NULL),
-      future::plan("sequential"),
-      future::plan("multicore"),
-      future::plan("multisession"),
-      rlang::abort("Cancelled")
-    )
+        switch(
+          plan + 1,
+          invisible(NULL),
+          future::plan("sequential"),
+          future::plan("multicore"),
+          future::plan("multisession"),
+          rlang::abort("Cancelled")
+        )
+      } else {
+        plan <- utils::menu(
+          c(
+            "Sequential (no parallelization)",
+            "Multisession (recommended)",
+            "Cancel"
+          )
+        )
+
+        switch(
+          plan + 1,
+          invisible(NULL),
+          future::plan("sequential"),
+          future::plan("multisession"),
+          rlang::abort("Cancelled")
+        )
+      }
+    }
   }
 }

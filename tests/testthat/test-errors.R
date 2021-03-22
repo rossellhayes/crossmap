@@ -22,7 +22,7 @@ test_that("message for no plan", {
     plan = function(...) {NULL},
     .env = "future"
   )
-  expect_warning(require_furrr())
+  expect_message(require_furrr(), "not set up to run background processes")
 })
 
 test_that("R 3.3.0 for trimws", {
