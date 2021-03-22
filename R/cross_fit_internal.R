@@ -35,14 +35,19 @@ cross_fit_internal <- function(
   }
 
   data <- dplyr::group_by(
-    data, dplyr::across(c(!!cols, dplyr::any_of("weights")))
+    data, dplyr::across(c(dplyr::any_of("weights"), !!cols))
   )
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, families, data)
   data <- dplyr::group_by(
     data,
     dplyr::across(
-      c(!!cols, dplyr::any_of(c("model", "family", "link", "weights")))
+      c(
+        model,
+        names(families), -dplyr::any_of(".family"),
+        dplyr::any_of("weights"),
+        !!cols
+      )
     )
   )
   data <- dplyr::rowwise(data)

@@ -21,14 +21,34 @@ cross_fit_glm <- function(
   tidy = tidy_glance, tidy_args = list(),
   errors = c("stop", "warn")
 ) {
-  if (!is.list(families) || class(families) == "family") {
+  if (!is.list(families) || class(families) %in% c("family")) {
     families <- list(families)
   }
-  families <- dplyr::tibble(
-    ".family" = families,
-    "family"  = vapply(families, function(x) x$family, character(1)),
-    "link"    = vapply(families, function(x) x$link, character(1))
+
+  families <- lapply(
+    families,
+    function(x) {
+      if (is.function(x)) {x <- x()}
+      x
+    }
   )
+
+  families <- dplyr::tibble(
+    ".family"  = families,
+    "family"   = vapply(families, function(x) x$family, character(1)),
+    "link"     = vapply(families, function(x) x$link,   character(1)),
+    "variance" = vapply(
+      families,
+      function(x) {
+        x <- x$varfun
+        if (is.null(x)) {x <- NA_character_}
+        x
+      },
+      character(1)
+    )
+  )
+
+  if (all(is.na(families$variance))) {families$variance <- NULL}
 
   cross_fit_internal(
     data      = data,
