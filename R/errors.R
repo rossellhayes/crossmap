@@ -120,7 +120,6 @@ require_furrr <- function() {
 check_unparallelized <- function(fn) {
   plan         <- future::plan()
   multiprocess <- future::availableCores() > 1
-  multicore    <- future::availableCores(constraints = "multicore") > 1
 
   if (!multiprocess) {
     rlang::inform(
@@ -132,7 +131,7 @@ check_unparallelized <- function(fn) {
   } else if (
     "uniprocess" %in% class(plan) ||
       is.null(plan) ||
-      (!multicore && "multicore" %in% class(plan))
+      ("multicore" %in% class(plan) && !future::supportsMulticore())
   ) {
     rlang::inform(
       c(
@@ -143,41 +142,21 @@ check_unparallelized <- function(fn) {
     )
 
     if (interactive()) {
-      if (multicore) {
-        plan <- utils::menu(
-          c(
-            "Sequential (no parallelization)",
-            "Multicore (recommended for non-Windows)",
-            "Multisession (recommended for Windows)",
-            "Cancel"
-          )
+      plan <- utils::menu(
+        c(
+          "Multisession (recommended)",
+          "Sequential (no parallelization)",
+          "Cancel"
         )
+      )
 
-        switch(
-          plan + 1,
-          invisible(NULL),
-          future::plan("sequential"),
-          future::plan("multicore"),
-          future::plan("multisession"),
-          rlang::abort("Cancelled")
-        )
-      } else {
-        plan <- utils::menu(
-          c(
-            "Sequential (no parallelization)",
-            "Multisession (recommended)",
-            "Cancel"
-          )
-        )
-
-        switch(
-          plan + 1,
-          invisible(NULL),
-          future::plan("sequential"),
-          future::plan("multisession"),
-          rlang::abort("Cancelled")
-        )
-      }
+      switch(
+        plan + 1,
+        invisible(NULL),
+        future::plan("multisession"),
+        future::plan("sequential"),
+        rlang::abort("Cancelled")
+      )
     }
   }
 }
