@@ -74,19 +74,6 @@ warn_if_not_matrix <- function(.l) {
   }
 }
 
-require_r <- function(ver, fn = NULL) {
-  if (getRversion() < numeric_version(ver)) {
-    if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
-
-    rlang::abort(
-      c(
-        paste(code(fn), "requires", field(paste("R", ver)), "or greater."),
-        paste("Try", code('install.packages("installr"); installr::updateR()'))
-      )
-    )
-  }
-}
-
 require_package <- function(package, fn = NULL, ver = NULL) {
   if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
 

@@ -4,7 +4,7 @@
 \alias{autonames}
 \title{Automatically generate names for vectors}
 \usage{
-autonames(x, ..., trimws = getRversion() > numeric_version("3.3.0"))
+autonames(x, ..., trimws = TRUE)
 }
 \arguments{
 \item{x}{A vector}
@@ -13,8 +13,7 @@ autonames(x, ..., trimws = getRversion() > numeric_version("3.3.0"))
 
 \item{trimws}{Whether to trim whitespace surrounding automatically formatted
 names.
-Requires R version 3.3.0 or greater.
-Defaults to \code{TRUE} if R version is 3.3.0 or greater.}
+Defaults to \code{TRUE}.}
 }
 \value{
 Returns the names of a named vector and the elements of an unnamed

@@ -8,12 +8,12 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Provides an extension to the 'purrr' family of
-    mapping functions to apply a function to each combination of elements
-    in a list of inputs.  Also includes functions for automatically
-    detecting output type in mapping functions, finding every combination
-    of elements of lists or rows of data frames, and applying multiple
-    models to multiple subsets of a dataset.
+Provides an extension to the 'purrr' family of mapping
+    functions to apply a function to each combination of elements in a
+    list of inputs.  Also includes functions for automatically detecting
+    output type in mapping functions, finding every combination of
+    elements of lists or rows of data frames, and applying multiple models
+    to multiple subsets of a dataset.
 }
 \seealso{
 Useful links:

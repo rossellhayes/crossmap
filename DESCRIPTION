@@ -7,17 +7,18 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "alexander@rossellhayes.com",
            comment = c(ORCID = "0000-0001-9412-0457"))
-Description: Provides an extension to the 'purrr' family of
-    mapping functions to apply a function to each combination of elements
-    in a list of inputs.  Also includes functions for automatically
-    detecting output type in mapping functions, finding every combination
-    of elements of lists or rows of data frames, and applying multiple
-    models to multiple subsets of a dataset.
+Description: Provides an extension to the 'purrr' family of mapping
+    functions to apply a function to each combination of elements in a
+    list of inputs.  Also includes functions for automatically detecting
+    output type in mapping functions, finding every combination of
+    elements of lists or rows of data frames, and applying multiple models
+    to multiple subsets of a dataset.
 License: MIT + file LICENSE
 URL: https://crossmap.rossellhayes.com,
     https://github.com/rossellhayes/crossmap
 BugReports: https://github.com/rossellhayes/crossmap/issues
 Imports:
+    backports,
     broom,
     dplyr (>= 1.0.0),
     purrr,
@@ -51,6 +52,7 @@ Collate:
     'future_xmap.R'
     'future_xmap_mat.R'
     'map_vec.R'
+    'onLoad.R'
     'tidy_glance.R'
     'vectorize.R'
     'xmap.R'

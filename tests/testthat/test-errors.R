@@ -24,9 +24,3 @@ test_that("message for no plan", {
   )
   expect_message(require_furrr(), "not set up to run background processes")
 })
-
-test_that("R 3.3.0 for trimws", {
-  local_mock(getRversion = function() {"0.0.1"})
-  expect_error(autonames(unnamed, trimws = TRUE))
-  expect_error(require_r("3.3.0"))
-})
