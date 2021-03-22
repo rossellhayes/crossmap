@@ -115,26 +115,39 @@ require_furrr <- function() {
   require_package("future", fn = fn)
 
   if ("uniprocess" %in% class(future::plan()) || is.null(future::plan())) {
-    plan <- utils::menu(
-      c(
-        "Multicore (recommended for non-Windows)",
-        "Multisession (recommended for Windows)",
-        "Cancel"
-      ),
-      title = paste(
-        paste(code(fn), "is not set up to run background processes."),
-        paste("Please choose a", code("future"), "plan."),
-        paste("Check", code("help(plan, future)"), "for more details."),
-        sep = "\n"
+    if (interactive()) {
+      rlang::inform(
+        c(
+          paste(code(fn), "is not set up to run background processes."),
+          paste("Please choose a", code("future"), "plan."),
+          i = paste("Check", code("help(plan, future)"), "for more details.")
+        )
       )
-    )
 
-    switch(
-      plan + 1,
-      invisible(NULL),
-      future::plan("multicore"),
-      future::plan("multisession"),
-      rlang::abort("Cancelled")
-    )
+      plan <- utils::menu(
+        c(
+          "Sequential (no parallelization)",
+          "Multicore (recommended for non-Windows)",
+          "Multisession (recommended for Windows)",
+          "Cancel"
+        )
+      )
+
+      switch(
+        plan + 1,
+        invisible(NULL),
+        future::plan("sequential"),
+        future::plan("multicore"),
+        future::plan("multisession"),
+        rlang::abort("Cancelled")
+      )
+    } else {
+      rlang::warn(
+        c(
+          paste(code(fn), "is not set up to run background processes."),
+          i = paste("Check", code("help(plan, future)"), "for more details.")
+        )
+      )
+    }
   }
 }
