@@ -21,7 +21,7 @@ cross_fit_glm <- function(
   tidy = tidy_glance, tidy_args = list(),
   errors = c("stop", "warn")
 ) {
-  if (!is.list(families) || class(families) %in% c("family")) {
+  if (inherits(families, "family") || !is.list(families)) {
     families <- list(families)
   }
 
