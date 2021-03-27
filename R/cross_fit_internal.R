@@ -2,11 +2,11 @@ cross_fit_internal <- function(
   data, formulas, cols, weights, families, fn, fn_args,
   tidy, tidy_args, errors
 ) {
-  .formula <- NULL
+  .formula <- .family <- NULL
 
   if (!is.list(formulas)) {formulas <- list(formulas)}
   abort_if_not_formulas(formulas)
-  formulas <- dplyr::tibble(.formula = formulas, "model" := autonames(formulas))
+  formulas <- dplyr::tibble(.formula = formulas, "model" = autonames(formulas))
 
   if (!is.null(weights) && !rlang::is_na(weights)) {
     if (length(weights) > 1) {
@@ -43,8 +43,8 @@ cross_fit_internal <- function(
     data,
     dplyr::across(
       c(
-        model,
-        names(families), -dplyr::any_of(".family"),
+        dplyr::all_of(c("model", names(families))),
+        -dplyr::any_of(".family"),
         dplyr::any_of("weights"),
         !!cols
       )
