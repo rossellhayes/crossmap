@@ -18,6 +18,9 @@ test_that("cross_fit_glm", {
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 16)
   expect_equal(
+    names(fit)[1:5], c("model", "family", "link", "term", "estimate")
+  )
+  expect_equal(
     fit$estimate,
     unname(
       c(
@@ -119,6 +122,10 @@ test_that("cross_fit_glm", {
   )
   expect_equal(nrow(fit_both), 4)
   expect_equal(ncol(fit_both), 17)
+  expect_equal(
+    names(fit_both)[1:6],
+    c("model", "family", "link", "variance", "term", "estimate")
+  )
 
   fit <- suppressWarnings(cross_fit_glm(df, y ~ x))
   expect_equal(nrow(fit), 2)
