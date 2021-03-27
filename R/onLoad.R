@@ -1,3 +1,3 @@
 .onLoad <- function(libname, pkgname) {
-  backports::import(pkgname, "trimws")
+  backports::import(pkgname, c("isFALSE", "trimws"))
 }
