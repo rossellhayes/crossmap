@@ -17,7 +17,6 @@
 #'   Non-parallelized equivalents: [map_vec()], [map2_vec()],
 #'   [pmap_vec()], [imap_vec()] and [xmap_vec()]
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/future_map_vec.R

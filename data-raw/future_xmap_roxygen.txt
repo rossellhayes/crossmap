@@ -25,7 +25,6 @@
 #'   [furrr::future_map()], [furrr::future_map2()], and [furrr::future_pmap()]
 #'   for other parallelized mapping functions.
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/future_xmap.R

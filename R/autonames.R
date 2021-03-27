@@ -9,7 +9,6 @@
 #' @return Returns the names of a named vector and the elements of an unnamed
 #' vector formatted as characters.
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/autonames.R

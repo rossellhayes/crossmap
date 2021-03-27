@@ -12,7 +12,6 @@
 #'
 #'   [future_xmap()] for the underlying functions.
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/future_xmap_mat.R

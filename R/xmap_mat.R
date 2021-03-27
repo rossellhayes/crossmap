@@ -17,8 +17,6 @@
 #'
 #'   [xmap()] for the underlying functions.
 #'
-#' @include errors.R
-#' @include map_vec.R
 #' @export
 #'
 #' @example examples/xmap_mat.R

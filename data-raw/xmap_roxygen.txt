@@ -63,7 +63,6 @@
 #'   [purrr::map()], [purrr::map2()], and [purrr::pmap()] for other mapping
 #'   functions.
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/xmap.R

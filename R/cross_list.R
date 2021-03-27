@@ -16,7 +16,6 @@
 #'
 #'   [expand.grid()] for an implementation that results in a [data.frame].
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/cross_list.R

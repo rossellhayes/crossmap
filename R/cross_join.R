@@ -24,7 +24,6 @@
 #' @seealso [cross_list()] to find combinations of elements of vectors
 #'   and lists.
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/cross_join.R

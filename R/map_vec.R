@@ -26,7 +26,6 @@
 #'   Parallelized equivalents: [future_map_vec()], [future_map2_vec()],
 #'   [future_pmap_vec()], [future_imap_vec()] and [future_xmap_vec()]
 #'
-#' @include errors.R
 #' @export
 #'
 #' @example examples/map_vec.R
