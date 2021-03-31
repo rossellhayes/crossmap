@@ -23,7 +23,7 @@ library(badger)
 `r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
-`r badge_codecov()`
+[![](https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
 `r badge_codefactor()`
 `r badge_dependencies()`
 <!-- badges: end -->
