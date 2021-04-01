@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -122,11 +122,15 @@
       <small>Source: <a href='https://github.com/rossellhayes/crossmap/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="crossmap-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#crossmap-development-version" class="anchor"></a>crossmap (development version)<small> Unreleased </small>
+    <div id="crossmap-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#crossmap-030" class="anchor"></a>crossmap 0.3.0<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
+<li><p>Added <code><a href="../reference/cross_fit_glm.html">cross_fit_glm()</a></code>, which works like <code><a href="../reference/cross_fit.html">cross_fit()</a></code> but allows you to also specify a crossing of <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> model families.</p></li>
 <li>
 <p>Added <code><a href="../reference/tidy_glance.html">tidy_glance()</a></code>, which returns a tibble with information from both <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> and <code><a href="https://generics.r-lib.org/reference/glance.html">broom::glance()</a></code>.</p>
 <ul>
@@ -134,18 +138,32 @@
 <code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> is now the default tidier in <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.</li>
 </ul>
 </li>
-<li><p><code><a href="../reference/cross_join.html">cross_join()</a></code>, <code><a href="../reference/cross_list.html">cross_list()</a></code>, <code><a href="../reference/cross_list.html">cross_tbl()</a></code> and <code>cross_df()</code> now silently ignore <code>NULL</code> inputs.</p></li>
 <li><p>Added <code><a href="../reference/future_xmap.html">future_xmap_raw()</a></code> and <code><a href="../reference/future_xmap.html">future_xwalk()</a></code>.</p></li>
-<li><p>Promoted <code>broom</code> and <code>dplyr</code> from suggested to imported packages.</p></li>
 </ul>
+</div>
+<div id="patches" class="section level2">
+<h2 class="hasAnchor">
+<a href="#patches" class="anchor"></a>Patches</h2>
+<ul>
+<li>
+<code><a href="../reference/cross_join.html">cross_join()</a></code>, <code><a href="../reference/cross_list.html">cross_list()</a></code>, <code><a href="../reference/cross_list.html">cross_tbl()</a></code> and <code>cross_df()</code> now silently ignore <code>NULL</code> inputs.</li>
+</ul>
+</div>
+<div id="miscellaneous" class="section level2">
+<h2 class="hasAnchor">
+<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<ul>
+<li>Promoted <code>broom</code> and <code>dplyr</code> from suggested to imported packages.</li>
+</ul>
+</div>
 </div>
     <div id="crossmap-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#crossmap-020" class="anchor"></a>crossmap 0.2.0<small> 2020-09-24 </small>
 </h1>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>Added <code>weights</code> argument to <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.
 <ul>
@@ -155,9 +173,9 @@
 </li>
 </ul>
 </div>
-<div id="miscellaneous" class="section level2">
+<div id="miscellaneous-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<a href="#miscellaneous-1" class="anchor"></a>Miscellaneous</h2>
 <ul>
 <li>Added <code>tibble</code> as a suggested package.</li>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
