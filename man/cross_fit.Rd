@@ -100,7 +100,7 @@ cross_fit(
 )
 }
 \seealso{
-\code{\link[=cross_fit_glm]{cross_fit_glm()}} to map a model acoss multiple model types.
+\code{\link[=cross_fit_glm]{cross_fit_glm()}} to map a model across multiple model types.
 
 \code{\link[=xmap]{xmap()}} to apply any function to combinations of inputs.
 }
