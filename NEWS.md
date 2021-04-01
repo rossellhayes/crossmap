@@ -11,6 +11,7 @@ also specify a crossing of `glm()` model families.
 
 ## Patches
 * `cross_join()`, `cross_list()`, `cross_tbl()` and `cross_df()` now silently ignore `NULL` inputs.
+* `future_*()` functions now prompt the user to select a `future` plan if R is not set up for parallelization.
 
 ## Miscellaneous
 * Promoted `broom` and `dplyr` from suggested to imported packages.
