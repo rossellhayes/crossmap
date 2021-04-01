@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.3.0
 
 ## New features
 * Added `cross_fit_glm()`, which works like `cross_fit()` but allows you to
