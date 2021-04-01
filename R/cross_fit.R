@@ -43,7 +43,7 @@
 #'   and columns of tidy model output or a list column of models
 #'   (if `tidy = FALSE`)
 #'
-#' @seealso [cross_fit_glm()] to map a model acoss multiple model types.
+#' @seealso [cross_fit_glm()] to map a model across multiple model types.
 #'
 #'   [xmap()] to apply any function to combinations of inputs.
 #'
