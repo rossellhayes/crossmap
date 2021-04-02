@@ -34,23 +34,25 @@ abort_if_not_df <- function(x) {
 }
 
 abort_if_not_formulas <- function(x) {
-  format.character <- function(x) {encodeString(x, quote = '"')}
+  # format.character <- function(x) {encodeString(x, quote = '"')}
 
   x    <- rlang::flatten(x)
   nfs  <- which(!vapply(x, inherits, logical(1), "formula"))
-  ln   <- length(nfs)
-  args <- match.call(sys.function(-1), sys.call(-1))[["formulas"]]
 
-  if (ln) {
+  if (length(nfs)) {
+    args <- format(x, justify = "none")
+
+    problems <- paste(
+      code(args), "is of type",
+      field(vapply(x[nfs], typeof, character(1)))
+    )[seq_len(min(length(nfs), 5))]
+
+    names(problems) <- rep("x", length(problems))
+
     message <- c(
       paste(code("formulas"), "must all be of type", field("formula")),
-      paste(
-        code(
-          vapply(nfs + 1, function(x) format(args[[x]]), character(1))
-        ), "is of type",
-        field(vapply(x[nfs], typeof, character(1)))
-      )[1:min(ln, 5)],
-      if (ln > 5) paste("... and", ln - 5, "more")
+      problems,
+      if (length(nfs) > 5) paste("... and", length(nfs) - 5, "more")
     )
 
     rlang::abort(message)

@@ -179,7 +179,7 @@ test_that("invalid tidiers", {
 })
 
 test_that("abort if not formulas", {
-  expect_error(cross_fit(df, "x", m))
-  expect_error(cross_fit(df, list("x"), m))
-  expect_error(cross_fit(df, rep("x", 10), m))
+  expect_error(cross_fit(df, "x", m), "x.*is of type.*character")
+  expect_error(cross_fit(df, list("x"), m), "x.*is of type.*character")
+  expect_error(cross_fit(df, as.list(letters), m), "c.*is of type.*character")
 })
