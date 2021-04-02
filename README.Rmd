@@ -20,7 +20,7 @@ library(badger)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
-`r badge_lifecycle("stable")`
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 [![](https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
@@ -116,6 +116,6 @@ map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 
 ---
 
-Hex sticker font is [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro) by [Adobe](https://www.adobe.com).
+Hex sticker font is [Source Sans by Adobe](https://github.com/adobe-fonts/source-sans).
 
 Please note that **crossmap** is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
