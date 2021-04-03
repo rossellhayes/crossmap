@@ -23,13 +23,13 @@ Imports:
     dplyr (>= 1.0.0),
     purrr,
     rlang,
+    stats,
     utils
 Suggests: 
     covr,
     crayon,
     furrr,
     future,
-    stats,
     testthat,
     tibble,
     withr

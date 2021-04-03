@@ -1,5 +1,7 @@
 # crossmap (development version)
 
+* Move `stats` from suggested to imported packages.
+
 # crossmap 0.3.0
 
 ## New features
