@@ -76,34 +76,11 @@ warn_if_not_matrix <- function(.l) {
   }
 }
 
-require_package <- function(package, fn = NULL, ver = NULL) {
-  if (is.null(fn)) {fn <- format(sys.call(-1)[1])}
-
-  if (!requireNamespace(package, quietly = TRUE)) {
-    rlang::abort(
-      c(
-        paste(code(fn), "requires the", field(package), "package."),
-        paste("Try", code(paste0('install.packages("', package, '")')))
-      )
-    )
-  }
-
-  if (!is.null(ver) && getNamespaceVersion(package) < numeric_version(ver)) {
-    rlang::abort(
-      paste(
-        code(fn), "requires", field(package), "version", ver, "or higher.",
-        "\n", "Try", code(paste0('install.packages("', package, '")'))
-      )
-    )
-  }
-}
-
 require_furrr <- function() {
-  fn <- format(sys.call(-1)[1])
-  require_package("furrr",  fn = fn)
-  require_package("future", fn = fn)
+  rlang::check_installed("furrr",  "to use parallelized functions.")
+  rlang::check_installed("future", "to use parallelized functions.")
 
-  check_unparallelized(fn)
+  check_unparallelized(fn = format(sys.call(-1)[1]))
 }
 
 check_unparallelized <- function(fn) {
