@@ -1,8 +1,3 @@
-test_that("require_package", {
-  expect_error(print(require_package("invalid_package_name")), "print")
-  expect_error(print(require_package("base", ver = "9999.99.9")), "print")
-})
-
 test_that("require furrr", {
   local_mock(
     requireNamespace = function(x, ...) {if (x == "furrr") {FALSE} else {TRUE}}
