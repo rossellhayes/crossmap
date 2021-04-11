@@ -158,6 +158,34 @@ test_that("logit", {
   )
 })
 
+test_that("clusters", {
+  fit <- suppressWarnings(
+    cross_fit(df, y ~ x, clusters = list(NULL, m, n), fn = estimatr::lm_robust)
+  )
+  fit_robust <- suppressWarnings(
+    cross_fit_robust(df, y ~ x, clusters = list(NULL, m, n))
+  )
+  fit_manual <- dplyr::as_tibble(
+    purrr::map_dfr(
+      list(
+        suppressWarnings(estimatr::lm_robust(y ~ x, df)),
+        suppressWarnings(estimatr::lm_robust(y ~ x, df, clusters = m)),
+        suppressWarnings(estimatr::lm_robust(y ~ x, df, clusters = n))
+      ),
+      tidy_glance
+    )
+  )
+
+  expect_equal(fit$se_type, fit_manual$se_type)
+  expect_equal(fit[, -(1:2)], fit_manual)
+  expect_equal(fit, fit_robust)
+  expect_equal(names(fit)[1:3], c("model", "clusters", "term"))
+  expect_equal(nrow(fit), 6)
+  expect_equal(ncol(fit), 18)
+
+  expect_warning(cross_fit(df, y ~ x, clusters = list(m, n)))
+})
+
 test_that("no contrasts", {
   expect_error(cross_fit(df, x ~ m, n))
   expect_warning(
@@ -165,7 +193,7 @@ test_that("no contrasts", {
   )
   fit <- suppressWarnings(cross_fit(df, x ~ m, n, errors = "warn"))
   expect_equal(ncol(fit), 19)
-  expect_true( any(fit$term == "(Invalid model)"))
+  expect_true(any(fit$term == "(Invalid model)"))
   expect_false(all(fit$term == "(Invalid model)"))
 })
 

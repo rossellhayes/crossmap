@@ -1,41 +1,25 @@
 cross_fit_internal <- function(
-  data, formulas, cols, weights, families, fn, fn_args,
-  tidy, tidy_args, errors
+  data, formulas, cols, weights,
+  clusters = NULL, families = NULL,
+  fn, fn_args, tidy, tidy_args, errors
 ) {
   .formula <- .family <- NULL
 
-  if (!is.list(formulas)) {formulas <- list(formulas)}
-  abort_if_not_formulas(formulas)
-  formulas <- dplyr::tibble(.formula = formulas, "model" = autonames(formulas))
+  formulas <- process_formulas(formulas)
+  families <- process_families(families)
 
-  if (!is.null(weights) && !rlang::is_na(weights)) {
-    if (length(weights) > 1) {
-      # Remove concatenating function (e.g. c(), list())
-      weights <- weights[-1]
-    } else {
-      weights <- rlang::new_call(weights)
-    }
+  if (!is_null_or_na(weights)) {
+    weights <- get_call_elements(weights)
+    data    <- add_weights(data, weights)
+  }
 
-    data <- purrr::map_dfr(
-      weights,
-      function(.weight) {
-        if (is.null(.weight) || rlang::is_na(.weight)) {
-          col <- 1
-        } else {
-          col <- unlist(dplyr::select(data, .weight))
-        }
-
-        dplyr::mutate(
-          data,
-          "weights" = rlang::as_label(.weight),
-          ".weight" = col
-        )
-      }
-    )
+  if (!is_null_or_na(clusters)) {
+    clusters <- get_call_elements(clusters)
+    data     <- add_clusters(data, clusters)
   }
 
   data <- dplyr::group_by(
-    data, dplyr::across(c(dplyr::any_of("weights"), !!cols))
+    data, dplyr::across(c(dplyr::any_of(c("weights", "clusters")), !!cols))
   )
   data <- dplyr::group_nest(data)
   data <- cross_join(formulas, families, data)
@@ -45,7 +29,7 @@ cross_fit_internal <- function(
       c(
         dplyr::all_of(c("model", names(families))),
         -dplyr::any_of(".family"),
-        dplyr::any_of("weights"),
+        dplyr::any_of(c("weights", "clusters")),
         !!cols
       )
     )
@@ -74,8 +58,10 @@ cross_fit_internal <- function(
       list(
         fn(
           c(
-            list(formula = .formula, data = data, weights = data[[".weight"]]),
-            if (!is.null(families)) {list(family = .family)} else {NULL},
+            list(formula = .formula, data = data),
+            if (!is.null(weights))  {list(weights  = unlist(data$.weight))},
+            if (!is.null(clusters)) {list(clusters = unlist(data$.cluster))},
+            if (!is.null(families)) {list(family   = .family)},
             fn_args
           )
         )
@@ -88,6 +74,13 @@ cross_fit_internal <- function(
   if (errors == "warn") {result <- cross_fit_warn_errors(result)}
 
   result
+}
+
+is_null_or_na <- function(x) {is.null(x) || rlang::is_na(x)}
+
+get_call_elements <- function(expr) {
+  if (length(expr) < 2) {return(rlang::new_call(expr))}
+  rlang::call_args(expr)
 }
 
 cross_fit_warn_errors <- function(result) {

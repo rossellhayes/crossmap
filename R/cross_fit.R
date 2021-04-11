@@ -16,6 +16,14 @@
 #'   If one of the elements is [`NULL`] or [`NA`], that model will not
 #'   be weighted.
 #'   Defaults to `NULL`.
+#' @param clusters A list of columns passed to `clusters` if supported by `fn`.
+#'   If one of the elements is [`NULL`] or [`NA`], that model will not
+#'   be clustered.
+#'   Defaults to `NULL`.
+#' @param families A list of [glm] model families passed to `family` if
+#'   supported by `fn`.
+#'   Defaults to [`gaussian("identity")`][gaussian], the equivalent of [lm()].
+#'   See [family] for examples.
 #' @param fn The modeling function.
 #'   Either an unquoted function name or a [purrr][purrr::map]-style lambda
 #'   function with two arguments.
@@ -37,24 +45,28 @@
 #'   If `"warn"`, the function will produce a warning for subsets that produce
 #'   an error and return results for all subsets that do not.
 #'
-#' @return A tibble with subsetting columns,
-#'   a column for the model formula applied,
-#'   a column for the weights applied (if applicable),
+#' @return A tibble with a column for the model formula,
+#'   columns for subsets,
+#'   columns for the model family and type (if applicable),
+#'   columns for the weights and clusters (if applicable),
 #'   and columns of tidy model output or a list column of models
 #'   (if `tidy = FALSE`)
 #'
 #' @seealso [cross_fit_glm()] to map a model across multiple model types.
 #'
+#'   [cross_fit_robust()] to map robust linear models.
+#'
 #'   [xmap()] to apply any function to combinations of inputs.
 #'
 #' @importFrom rlang :=
+#' @importFrom stats lm
 #' @export
 #'
 #' @example examples/cross_fit.R
 
 cross_fit <- function(
-  data, formulas, cols = NULL, weights = NULL,
-  fn = stats::lm, fn_args = list(), tidy = tidy_glance, tidy_args = list(),
+  data, formulas, cols = NULL, weights = NULL, clusters = NULL, families = NULL,
+  fn = lm, fn_args = list(), tidy = tidy_glance, tidy_args = list(),
   errors = c("stop", "warn")
 ) {
   cross_fit_internal(
@@ -62,7 +74,8 @@ cross_fit <- function(
     formulas  = formulas,
     cols      = rlang::enquo(cols),
     weights   = rlang::enexpr(weights),
-    families  = NULL,
+    clusters  = rlang::enexpr(clusters),
+    families  = families,
     fn        = fn,
     fn_args   = fn_args,
     tidy      = tidy,

@@ -1,5 +1,7 @@
 # crossmap (development version)
 
+* `cross_fit()` gains the argument `clusters`, allowing mapping along cluster specifications for functions that support it, like `estimatr::lm_robust()`.
+* `cross_fit_robust()` is a wrapper for `cross_fit(fn = estimatr::lm_robust)`.
 * Functions now use `rlang::check_installed()` for suggested packages, giving the user the option to install the package interactively.
 * Move `stats` from suggested to imported packages.
 

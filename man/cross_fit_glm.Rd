@@ -2,14 +2,14 @@
 % Please edit documentation in R/cross_fit_glm.R
 \name{cross_fit_glm}
 \alias{cross_fit_glm}
-\title{Cross map a model across multiple formulas, subsets, weights, and functions}
+\title{Cross fit generalized linear models}
 \usage{
 cross_fit_glm(
   data,
   formulas,
   cols = NULL,
   weights = NULL,
-  families = stats::gaussian(link = "identity"),
+  families = gaussian(link = identity),
   fn_args = list(),
   tidy = tidy_glance,
   tidy_args = list(),
@@ -58,14 +58,15 @@ If \code{"warn"}, the function will produce a warning for subsets that produce
 an error and return results for all subsets that do not.}
 }
 \value{
-A tibble with subsetting columns,
-a column for the model formula applied,
+A tibble with a column for the model formula,
+columns for subsets,
 columns for the model family and type,
+columns for the weights (if applicable),
 and columns of tidy model output or a list column of models
 (if \code{tidy = FALSE})
 }
 \description{
-Cross map a model across multiple formulas, subsets, weights, and functions
+Cross fit generalized linear models
 }
 \examples{
 cross_fit_glm(
@@ -74,4 +75,7 @@ cross_fit_glm(
   cols     = vs,
   families = list(gaussian("identity"), binomial("logit"))
 )
+}
+\seealso{
+\code{\link[=cross_fit]{cross_fit()}} to use any modeling function.
 }
