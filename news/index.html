@@ -127,6 +127,10 @@
 <a href="#crossmap-development-version" class="anchor"></a>crossmap (development version)<small> Unreleased </small>
 </h1>
 <ul>
+<li>
+<code><a href="../reference/cross_fit.html">cross_fit()</a></code> gains the argument <code>clusters</code>, allowing mapping along cluster specifications for functions that support it, like <code><a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html">estimatr::lm_robust()</a></code>.</li>
+<li>
+<code><a href="../reference/cross_fit_robust.html">cross_fit_robust()</a></code> is a wrapper for <code><a href="../reference/cross_fit.html">cross_fit(fn = estimatr::lm_robust)</a></code>.</li>
 <li>Functions now use <code><a href="https://rlang.r-lib.org/reference/is_installed.html">rlang::check_installed()</a></code> for suggested packages, giving the user the option to install the package interactively.</li>
 <li>Move <code>stats</code> from suggested to imported packages.</li>
 </ul>

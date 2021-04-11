@@ -135,7 +135,9 @@ set of data subsets.</p>
   <span class='va'>formulas</span>,
   cols <span class='op'>=</span> <span class='cn'>NULL</span>,
   weights <span class='op'>=</span> <span class='cn'>NULL</span>,
-  fn <span class='op'>=</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>,
+  clusters <span class='op'>=</span> <span class='cn'>NULL</span>,
+  families <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fn <span class='op'>=</span> <span class='va'>lm</span>,
   fn_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   tidy <span class='op'>=</span> <span class='va'>tidy_glance</span>,
   tidy_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
@@ -169,6 +171,20 @@ Defaults to <code>NULL</code>.</p></td>
 If one of the elements is <code><a href='https://rdrr.io/r/base/NULL.html'>NULL</a></code> or <code><a href='https://rdrr.io/r/base/NA.html'>NA</a></code>, that model will not
 be weighted.
 Defaults to <code>NULL</code>.</p></td>
+    </tr>
+    <tr>
+      <th>clusters</th>
+      <td><p>A list of columns passed to <code>clusters</code> if supported by <code>fn</code>.
+If one of the elements is <code><a href='https://rdrr.io/r/base/NULL.html'>NULL</a></code> or <code><a href='https://rdrr.io/r/base/NA.html'>NA</a></code>, that model will not
+be clustered.
+Defaults to <code>NULL</code>.</p></td>
+    </tr>
+    <tr>
+      <th>families</th>
+      <td><p>A list of <a href='https://rdrr.io/r/stats/glm.html'>glm</a> model families passed to <code>family</code> if
+supported by <code>fn</code>.
+Defaults to <code><a href='https://rdrr.io/r/stats/family.html'>gaussian("identity")</a></code>, the equivalent of <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code>.
+See <a href='https://rdrr.io/r/stats/family.html'>family</a> for examples.</p></td>
     </tr>
     <tr>
       <th>fn</th>
@@ -209,14 +225,16 @@ an error and return results for all subsets that do not.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with subsetting columns,
-a column for the model formula applied,
-a column for the weights applied (if applicable),
+    <p>A tibble with a column for the model formula,
+columns for subsets,
+columns for the model family and type (if applicable),
+columns for the weights and clusters (if applicable),
 and columns of tidy model output or a list column of models
 (if <code>tidy = FALSE</code>)</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='cross_fit_glm.html'>cross_fit_glm()</a></code> to map a model across multiple model types.</p>
+<p><code><a href='cross_fit_robust.html'>cross_fit_robust()</a></code> to map robust linear models.</p>
 <p><code><a href='xmap.html'>xmap()</a></code> to apply any function to combinations of inputs.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
