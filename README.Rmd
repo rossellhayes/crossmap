@@ -20,10 +20,10 @@ library(badger)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
-[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+`r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
-[![](https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
+`r badge_codecov()`
 `r badge_codefactor()`
 `r badge_dependencies()`
 <!-- badges: end -->
@@ -72,7 +72,7 @@ xmap_mat(list(1:3, 1:6), prod)
 **crossmap** also integrates with [**furrr**](https://github.com/DavisVaughan/furrr) to offer parallelized versions of the `xmap()` functions.
 
 ```{r}
-future::plan("multiprocess")
+future::plan("multisession")
 future_xmap_chr(list(1:3, 1:3), ~ paste(.x, "*", .y, "=", .x * .y))
 ```
 
