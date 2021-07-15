@@ -19,3 +19,11 @@ test_that("message for no plan", {
   )
   expect_message(require_furrr(), "not set up to run background processes")
 })
+
+test_that("message for single core", {
+  local_mock(
+    availableCores = function(...) {1},
+    .env = "future"
+  )
+  expect_message(require_furrr(), "not set up to run background processes")
+})
