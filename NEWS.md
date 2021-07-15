@@ -9,6 +9,7 @@
 * Functions now use `rlang::check_installed()` for suggested packages, giving the user the option to install the package interactively.
 
 ## Miscellaneous
+* Use `cli` to generate error messages.
 * Move `stats` from suggested to imported packages.
 
 # crossmap 0.3.0

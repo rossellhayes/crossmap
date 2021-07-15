@@ -35,8 +35,6 @@ test_that("xmap_arr()", {
 })
 
 test_that("warn when xmap_mat() returns an array", {
-  expect_warning(xmap_mat(list(dat, dat, dat), prod, .names = FALSE))
-  expect_equal(
-    suppressWarnings(xmap_mat(list(dat, dat, dat), prod, .names = FALSE)), arr
-  )
+  expect_warning(not_mat <- xmap_mat(list(dat, dat, dat), prod, .names = FALSE))
+  expect_equal(not_mat, arr)
 })

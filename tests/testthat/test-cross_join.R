@@ -1,3 +1,14 @@
+expect_ansi_error <- function(object, expected = NULL) {
+  object <- rlang::catch_cnd(object, "error")
+
+  testthat::expect_is(object, "error")
+
+  if (!is.null(expected)) {
+    object <- cli::ansi_strip(object$message)
+    testthat::expect_match(object, expected)
+  }
+}
+
 test_that("cross_join", {
   a <- dplyr::tibble(a = 1:2)
   b <- dplyr::tibble(b = letters[1:2])
@@ -29,7 +40,10 @@ test_that("cross_join", {
 
   expect_equal(cross_join(a, b), cross_join(a, b, NULL))
 
-  expect_error(cross_join(a, 1))
-  expect_error(cross_join(1, 1))
-  expect_error(cross_join("a", b))
+  expect_ansi_error(cross_join(a, 1), '`1` is of class "numeric"')
+  expect_ansi_error(
+    cross_join(1, 2), '`1` is of class "numeric".*`2` is of class "numeric"'
+  )
+  expect_ansi_error(cross_join("a", b), '`a` is of class "character"')
+  expect_ansi_error(cross_join(1, 1, 1, 1, 1, 1), '... and 1 more')
 })

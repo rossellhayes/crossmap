@@ -19,6 +19,7 @@ URL: https://crossmap.rossellhayes.com,
 BugReports: https://github.com/rossellhayes/crossmap/issues
 Imports:
     backports,
+    cli,
     dplyr (>= 1.0.0),
     purrr,
     rlang,

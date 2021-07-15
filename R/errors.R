@@ -1,76 +1,69 @@
-style <- function(x, quote, color) {
-  x <- encodeString(x, quote = quote)
-  if (rlang::is_installed("crayon")) {
-    x <- do.call(color, list(x), envir = asNamespace("crayon"))
-  }
-  x
-}
-
-code  <- function(x) {style(x, "`", "silver")}
-field <- function(x) {style(x, "'", "blue")}
-
 abort_if_not_df <- function(x) {
-  format.character <- function(x) {encodeString(x, quote = '"')}
+  non_data_frames <- which(purrr::map_lgl(x, ~ !inherits(., "data.frame")))
+  length          <- length(non_data_frames)
 
-  ndf  <- which(!vapply(x, inherits, logical(1), "data.frame"))
-  ln   <- length(ndf)
-  call <- sys.call(-1)
+  if (!length) {return()}
 
-  if (ln) {
-    message <- c(
-      paste(
-        code(format(call[1])),
-        "inputs must be data frames or lists of data frames"
-      ),
-      paste(
-        code(vapply(ndf + 1, function(x) format(call[[x]]), character(1))),
-        "is of type", field(vapply(x[ndf], typeof, character(1)))
-      )[1:min(ln, 5)],
-      if (ln > 5) paste("... and", ln - 5, "more")
+  non_data_frames <- non_data_frames[seq_len(min(length, 5))]
+
+  call      <- sys.call(-1)
+  fun       <- call[1]
+  arguments <- as.list(call[-1][non_data_frames])
+  types     <- purrr::map_chr(x[non_data_frames], ~ class(.)[[1]])
+  problems  <- purrr::map2(
+    arguments, types,
+    ~ cli::format_error("{.arg {.x}} is of class {.val {.y}}")
+  )
+
+  cli::cli_abort(
+    c(
+      "{.fun {fun}} inputs must be data frames or lists of data frames.",
+      purrr::set_names(problems, "x"),
+      if (length > 5) "... and {length - 5} more"
     )
-
-    rlang::abort(message)
-  }
+  )
 }
 
 abort_if_not_formulas <- function(x) {
-  # format.character <- function(x) {encodeString(x, quote = '"')}
+  x            <- rlang::flatten(x)
+  non_formulas <- which(purrr::map_lgl(x, ~ !inherits(., "formula")))
+  length       <- length(non_formulas)
 
-  x    <- rlang::flatten(x)
-  nfs  <- which(!vapply(x, inherits, logical(1), "formula"))
+  if (!length) {return()}
 
-  if (length(nfs)) {
-    args <- format(x, justify = "none")
+  non_formulas <- non_formulas[seq_len(min(length, 5))]
 
-    problems <- paste(
-      code(args), "is of type",
-      field(vapply(x[nfs], typeof, character(1)))
-    )[seq_len(min(length(nfs), 5))]
+  call      <- sys.call(-1)
+  arguments <- x[non_formulas]
+  types     <- purrr::map_chr(x[non_formulas], ~ class(.)[[1]])
+  problems  <- purrr::map2(
+    arguments, types,
+    ~ cli::format_error("{.arg {.x}} is of class {.val {.y}}")
+  )
 
-    names(problems) <- rep("x", length(problems))
-
-    message <- c(
-      paste(code("formulas"), "must all be of type", field("formula")),
-      problems,
-      if (length(nfs) > 5) paste("... and", length(nfs) - 5, "more")
+  cli::cli_abort(
+    c(
+      "{.arg formulas} must all be of class {.val formula}.",
+      purrr::set_names(problems, "x"),
+      if (length > 5) "... and {length - 5} more"
     )
-
-    rlang::abort(message)
-  }
+  )
 }
 
 warn_if_not_matrix <- function(.l) {
   if (length(.l) > 2) {
     call <- sys.call(-1)
-    call[[1]] <- rlang::sym(gsub("mat$", "arr", as.character(call[[1]])))
 
-    rlang::warn(
+    new_call      <- call
+    new_call[[1]] <- rlang::sym(gsub("mat$", "arr", as.character(call[[1]])))
+
+    cli::cli_warn(
       c(
-        paste(
-          code(format(sys.call(-1)[1])),
+        "!" = paste(
+          "{.fun {call[1]}}",
           "returned an array because it has more than 2 dimensions."
         ),
-        paste("Try", code(format(call)), "to avoid this warning.")
+        "*" = "Try {.code {format(new_call)}} to avoid this warning."
       )
     )
   }
@@ -84,50 +77,28 @@ require_furrr <- function() {
 }
 
 check_unparallelized <- function(fn) {
-  plan         <- future::plan()
-  multiprocess <- future::availableCores() > 1
-  base_fn      <- gsub("future_", "", fn)
+  plan    <- future::plan()
+  base_fn <- gsub("future_", "", fn)
 
-  if (!multiprocess) {
-    rlang::inform(
+  if (future::availableCores() < 2) {
+    cli::cli_inform(
       c(
-        paste(code(fn), "is not set up to run background processes."),
-        paste0("You can use ", code(base_fn), "."),
-        i = paste("Check", code("help(plan, future)"), "for more details.")
+        "!" = "{.fun {fn}} is not set up to run background processes.",
+        "i" = "You can use {.fun {base_fn}} to avoid this warning.",
+        "i" = "Check {.code help(plan, future)} for more details."
       )
     )
   } else if (
     "uniprocess" %in% class(plan) ||
-      is.null(plan) ||
-      ("multicore" %in% class(plan) && !future::supportsMulticore())
+    is.null(plan) ||
+    ("multicore" %in% class(plan) && !future::supportsMulticore())
   ) {
-    rlang::inform(
+    cli::cli_inform(
       c(
-        paste(code(fn), "is not set up to run background processes."),
-        paste0(
-          "Please choose a ", code("future"), " plan or use ",
-          code(base_fn), "."
-        ),
-        i = paste("Check", code("help(plan, future)"), "for more details.")
+        "!" = "{.fun {fn}} is not set up to run background processes.",
+        "*" = 'Try running {.code future::plan("multisession")}.',
+        "i" = "Check {.code help(plan, future)} for more details."
       )
     )
-
-    if (interactive()) {
-      plan <- utils::menu(
-        c(
-          "Multisession (recommended)",
-          "Sequential (no parallelization)",
-          "Cancel"
-        )
-      )
-
-      switch(
-        plan + 1,
-        invisible(NULL),
-        future::plan("multisession"),
-        future::plan("sequential"),
-        rlang::abort("Cancelled")
-      )
-    }
   }
 }
