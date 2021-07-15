@@ -126,22 +126,40 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#crossmap-development-version" class="anchor"></a>crossmap (development version)<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li>
 <code><a href="../reference/cross_fit.html">cross_fit()</a></code> gains the argument <code>clusters</code>, allowing mapping along cluster specifications for functions that support it, like <code><a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html">estimatr::lm_robust()</a></code>.</li>
 <li>
 <code><a href="../reference/cross_fit_robust.html">cross_fit_robust()</a></code> is a wrapper for <code><a href="../reference/cross_fit.html">cross_fit(fn = estimatr::lm_robust)</a></code>.</li>
+</ul>
+</div>
+<div id="enhancements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<ul>
+<li>
+<code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> (and functions that call it) now use <code>broomExtra</code> instead of <code>broom</code> to support more model types.</li>
 <li>Functions now use <code><a href="https://rlang.r-lib.org/reference/is_installed.html">rlang::check_installed()</a></code> for suggested packages, giving the user the option to install the package interactively.</li>
+</ul>
+</div>
+<div id="miscellaneous" class="section level2">
+<h2 class="hasAnchor">
+<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<ul>
 <li>Move <code>stats</code> from suggested to imported packages.</li>
 </ul>
+</div>
 </div>
     <div id="crossmap-030" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#crossmap-030" class="anchor"></a>crossmap 0.3.0<small> 2021-04-02 </small>
 </h1>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li><p>Added <code><a href="../reference/cross_fit_glm.html">cross_fit_glm()</a></code>, which works like <code><a href="../reference/cross_fit.html">cross_fit()</a></code> but allows you to also specify a crossing of <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> model families.</p></li>
 <li>
@@ -164,9 +182,9 @@
 <code>future_*()</code> functions now prompt the user to select a <code>future</code> plan if R is not set up for parallelization.</li>
 </ul>
 </div>
-<div id="miscellaneous" class="section level2">
+<div id="miscellaneous-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<a href="#miscellaneous-1" class="anchor"></a>Miscellaneous</h2>
 <ul>
 <li>Promoted <code>broom</code> and <code>dplyr</code> from suggested to imported packages.</li>
 </ul>
@@ -176,9 +194,9 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#crossmap-020" class="anchor"></a>crossmap 0.2.0<small> 2020-09-24 </small>
 </h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>Added <code>weights</code> argument to <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.
 <ul>
@@ -188,9 +206,9 @@
 </li>
 </ul>
 </div>
-<div id="miscellaneous-1" class="section level2">
+<div id="miscellaneous-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#miscellaneous-1" class="anchor"></a>Miscellaneous</h2>
+<a href="#miscellaneous-2" class="anchor"></a>Miscellaneous</h2>
 <ul>
 <li>Added <code>tibble</code> as a suggested package.</li>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>

@@ -210,52 +210,52 @@ with dimensions matching the lengths of each input in <code>.l</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>future_xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,  <span class='op'>~</span> <span class='va'>..1</span> <span class='op'>*</span> <span class='va'>..2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_mat()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_mat()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_arr()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_arr()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_vec()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_vec()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt;   1 2 3
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_mat()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_mat()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_arr()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_arr()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_vec()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_vec()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt;   1 2 3
 #&gt; 1 1 2 3
 #&gt; 2 2 4 6
 #&gt; 3 3 6 9</div><div class='input'>
 <span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='st'>"apple"</span>, b <span class='op'>=</span> <span class='st'>"banana"</span>, c <span class='op'>=</span> <span class='st'>"cantaloupe"</span><span class='op'>)</span>
 <span class='fu'>future_xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>fruits</span><span class='op'>)</span>, <span class='va'>paste</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_mat()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_mat()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_arr()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_arr()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_vec()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_vec()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt;   a         b          c             
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_mat()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_mat()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_arr()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_arr()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_vec()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_vec()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt;   a         b          c             
 #&gt; 1 "1 apple" "1 banana" "1 cantaloupe"
 #&gt; 2 "2 apple" "2 banana" "2 cantaloupe"
 #&gt; 3 "3 apple" "3 banana" "3 cantaloupe"</div><div class='input'><span class='fu'>future_xmap_mat</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>fruits</span><span class='op'>)</span>, <span class='va'>paste</span>, .names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_mat()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_mat()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_arr()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_arr()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_vec()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_vec()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt;      [,1]      [,2]       [,3]          
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_mat()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_mat()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_arr()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_arr()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_vec()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_vec()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt;      [,1]      [,2]       [,3]          
 #&gt; [1,] "1 apple" "1 banana" "1 cantaloupe"
 #&gt; [2,] "2 apple" "2 banana" "2 cantaloupe"
 #&gt; [3,] "3 apple" "3 banana" "3 cantaloupe"</div><div class='input'>
 <span class='fu'>future_xmap_arr</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,  <span class='op'>~</span> <span class='va'>..1</span> <span class='op'>*</span> <span class='va'>..2</span> <span class='op'>*</span> <span class='va'>..3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_arr()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_arr()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap_vec()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap_vec()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #555555;'>`future_xmap()`</span><span> is not set up to run background processes.</span>
-#&gt; <span class='message'>* Please choose a </span><span style='color: #555555;'>`future`</span><span> plan or use </span><span style='color: #555555;'>`xmap()`</span><span>.</span>
-#&gt; <span class='message'></span><span style='color: #0000BB;'>ℹ</span><span> Check </span><span style='color: #555555;'>`help(plan, future)`</span><span> for more details.</span></div><div class='output co'>#&gt; , , 1
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_arr()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_arr()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap_vec()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap_vec()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #555555;'>`future_xmap()`</span> is not set up to run background processes.</span>
+#&gt; <span class='message'>* Please choose a <span style='color: #555555;'>`future`</span> plan or use <span style='color: #555555;'>`xmap()`</span>.</span>
+#&gt; <span class='message'><span style='color: #0000BB;'>ℹ</span> Check <span style='color: #555555;'>`help(plan, future)`</span> for more details.</span></div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;   1 2 3
 #&gt; 1 1 2 3
@@ -275,7 +275,7 @@ with dimensions matching the lengths of each input in <code>.l</code>.</p>
 #&gt; 1 3  6  9
 #&gt; 2 6 12 18
 #&gt; 3 9 18 27
-#&gt; </div></span></pre>
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
