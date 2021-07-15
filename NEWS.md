@@ -1,8 +1,14 @@
 # crossmap (development version)
 
+## New features
 * `cross_fit()` gains the argument `clusters`, allowing mapping along cluster specifications for functions that support it, like `estimatr::lm_robust()`.
 * `cross_fit_robust()` is a wrapper for `cross_fit(fn = estimatr::lm_robust)`.
+
+## Enhancements
+* `tidy_glance()` (and functions that call it) now use `broomExtra` instead of `broom` to support more model types.
 * Functions now use `rlang::check_installed()` for suggested packages, giving the user the option to install the package interactively.
+
+## Miscellaneous
 * Move `stats` from suggested to imported packages.
 
 # crossmap 0.3.0

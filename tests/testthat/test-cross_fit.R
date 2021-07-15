@@ -94,7 +94,7 @@ test_that("named formulas", {
 })
 
 test_that("tidiers", {
-  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = broom::tidy))
+  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = broomExtra::tidy))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 7)
 
@@ -159,25 +159,31 @@ test_that("logit", {
 })
 
 test_that("clusters", {
+  withr::local_package("dplyr")
+
   fit <- suppressWarnings(
-    cross_fit(df, y ~ x, clusters = list(NULL, m, n), fn = estimatr::lm_robust)
-  )
+    cross_fit(df, y ~ x, clusters = list(m, n, NULL), fn = estimatr::lm_robust)
+  ) %>%
+    dplyr::arrange(clusters)
+
   fit_robust <- suppressWarnings(
-    cross_fit_robust(df, y ~ x, clusters = list(NULL, m, n))
-  )
-  fit_manual <- dplyr::as_tibble(
+    cross_fit_robust(df, y ~ x, clusters = list(m, n, NULL))
+  ) %>%
+    dplyr::arrange(clusters)
+
+  fit_manual <- suppressWarnings(
     purrr::map_dfr(
-      list(
-        suppressWarnings(estimatr::lm_robust(y ~ x, df)),
-        suppressWarnings(estimatr::lm_robust(y ~ x, df, clusters = m)),
-        suppressWarnings(estimatr::lm_robust(y ~ x, df, clusters = n))
-      ),
-      tidy_glance
+      list(rlang::quo(m), rlang::quo(n), NULL),
+      ~ estimatr::lm_robust(y ~ x, data = df, clusters = !!.x) %>%
+        tidy_glance() %>%
+        dplyr::mutate(clusters = rlang::as_label(.x), .before = 1)
     )
-  )
+  ) %>%
+    dplyr::as_tibble() %>%
+    dplyr::arrange(clusters)
 
   expect_equal(fit$se_type, fit_manual$se_type)
-  expect_equal(fit[, -(1:2)], fit_manual)
+  expect_equal(fit[, -1], fit_manual)
   expect_equal(fit, fit_robust)
   expect_equal(names(fit)[1:3], c("model", "clusters", "term"))
   expect_equal(nrow(fit), 6)

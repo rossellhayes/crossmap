@@ -19,13 +19,13 @@ URL: https://crossmap.rossellhayes.com,
 BugReports: https://github.com/rossellhayes/crossmap/issues
 Imports:
     backports,
-    broom,
     dplyr (>= 1.0.0),
     purrr,
     rlang,
     stats,
     utils
 Suggests: 
+    broomExtra,
     covr,
     crayon,
     estimatr,

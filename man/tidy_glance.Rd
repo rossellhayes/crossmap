@@ -9,29 +9,30 @@ tidy_glance(x, ..., tidy_args = list(), glance_args = list())
 \arguments{
 \item{x}{An object to be converted into a tidy \link[tibble:tibble]{tibble}.}
 
-\item{...}{Additional arguments passed to \code{\link[broom:reexports]{broom::tidy()}}
-and \code{\link[broom:reexports]{broom::glance()}}.
+\item{...}{Additional arguments passed to \code{\link[broomExtra:tidy]{broomExtra::tidy()}}
+and \code{\link[broomExtra:glance]{broomExtra::glance()}}.
 
 Arguments are passed to both methods, but should be ignored by the
-inapplicable method. For example, if called on a \link[stats:lm]{lm} object,
-\code{conf.int} will affect \code{\link[broom:reexports]{broom::tidy()}} but not \code{\link[broom:reexports]{broom::glance()}}.}
+inapplicable method. For example, if called on an \link[stats:lm]{lm} object,
+\code{conf.int} will affect \code{\link[broomExtra:tidy]{broomExtra::tidy()}} but not \code{\link[broomExtra:glance]{broomExtra::glance()}}.}
 
 \item{tidy_args}{A list of additional arguments passed only
-to \code{\link[broom:reexports]{broom::tidy()}}.}
+to \code{\link[broomExtra:tidy]{broomExtra::tidy()}}.}
 
 \item{glance_args}{A list of additional arguments passed only
-to \code{\link[broom:reexports]{broom::glance()}}.}
+to \code{\link[broomExtra:glance]{broomExtra::glance()}}.}
 }
 \value{
 A \link[tibble:tibble]{tibble} with columns and rows from
-\code{\link[broom:reexports]{broom::tidy()}} and columns of repeated rows from \code{\link[broom:reexports]{broom::glance()}}.
+\code{\link[broomExtra:tidy]{broomExtra::tidy()}} and columns of repeated rows
+from \code{\link[broomExtra:glance]{broomExtra::glance()}}.
 
 Column names that appear in both the \code{tidy} data and \code{glance} data will be
 disambiguated by appending "\code{model.}" to the \code{glance} column names.
 }
 \description{
-Apply both \code{\link[broom:reexports]{broom::tidy()}} and \code{\link[broom:reexports]{broom::glance()}} to an object and return a
-single \link[tibble:tibble]{tibble} with both sets of information.
+Apply both \code{\link[broomExtra:tidy]{broomExtra::tidy()}} and \code{\link[broomExtra:glance]{broomExtra::glance()}} to an object and
+return a single \link[tibble:tibble]{tibble} with both sets of information.
 }
 \examples{
 mod <- lm(mpg ~ wt + qsec, data = mtcars)
