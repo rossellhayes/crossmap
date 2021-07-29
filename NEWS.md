@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.3.1
 
 ## New features
 * `cross_fit()` gains the argument `clusters`, allowing mapping along cluster specifications for functions that support it, like `estimatr::lm_robust()`.
