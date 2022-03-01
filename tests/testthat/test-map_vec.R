@@ -9,6 +9,11 @@ test_that("map_vec()", {
   expect_is(map_vec(as.raw(x), ~ rawShift(.x, 1)), "raw")
   expect_is(map_vec(x, ~ lm(.x ~ 1)), "list")
   expect_is(map_vec(df, ~ . + 1), "list")
+  expect_is(map_vec(df, ~ . + 1), "list")
+})
+
+test_that("map_vec() can return S3 classes", {
+  expect_is(map_vec(x, as.POSIXct, origin = Sys.time()), "POSIXct")
 })
 
 test_that("map2_vec()", {
