@@ -31,6 +31,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -43,18 +45,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rossellhayes/crossmap/">
+  <a href="https://github.com/rossellhayes/crossmap/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,55 +77,54 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="crossmap-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#crossmap-" class="anchor"></a>crossmap <img src="reference/figures/logo.png?raw=TRUE" align="right" height="138">
+<div class="section level1">
+<div class="page-header"><h1 id="crossmap-">crossmap <img src="reference/figures/logo.png?raw=TRUE" align="right" height="138"><a class="anchor" aria-label="anchor" href="#crossmap-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p><strong>crossmap</strong> provides an extension to <a href="https://github.com/tidyverse/purrr"><strong>purrr</strong></a>’s family of mapping functions. <code><a href="reference/xmap.html">xmap()</a></code> works like <code><a href="https://purrr.tidyverse.org/reference/map2.html">purrr::pmap()</a></code>, but applies a function to every combination of elements in a list of inputs.</p>
+<p><strong>crossmap</strong> provides an extension to <a href="https://github.com/tidyverse/purrr" class="external-link"><strong>purrr</strong></a>’s family of mapping functions. <code><a href="reference/xmap.html">xmap()</a></code> works like <code><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">purrr::pmap()</a></code>, but applies a function to every combination of elements in a list of inputs.</p>
 <p><strong>crossmap</strong> also includes a few other general purpose and specialized functions for working with combinations of list elements.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of <strong>crossmap</strong> from <a href="https://cran.r-project.org/package=crossmap">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of <strong>crossmap</strong> from <a href="https://cran.r-project.org/package=crossmap" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"crossmap"</span><span class="op">)</span></code></pre></div>
-<p>or the development version from <a href="https://github.com/rossellhayes/crossmap">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"crossmap"</span><span class="op">)</span></code></pre></div>
+<p>or the development version from <a href="https://github.com/rossellhayes/crossmap" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("pak")</span>
 <span class="fu">pak</span><span class="fu">::</span><span class="fu">pkg_install</span><span class="op">(</span><span class="st">"rossellhayes/crossmap"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>While <code><a href="https://purrr.tidyverse.org/reference/map2.html">purrr::pmap()</a></code> applies a function to list elements pairwise, <code><a href="reference/xmap.html">xmap()</a></code> applies a function to all combinations of elements.</p>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>While <code><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">purrr::pmap()</a></code> applies a function to list elements pairwise, <code><a href="reference/xmap.html">xmap()</a></code> applies a function to all combinations of elements.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">pmap_chr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">pmap_chr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 2 = 4" "3 * 3 = 9"</span>
-<span class="fu"><a href="reference/xmap.html">xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="reference/xmap.html">xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"</span>
 <span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span></code></pre></div>
 <p><code><a href="reference/xmap_mat.html">xmap_mat()</a></code> formats <code><a href="reference/xmap.html">xmap()</a></code> results into a matrix.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/xmap_mat.html">xmap_mat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="va">prod</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/xmap_mat.html">xmap_mat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="va">prod</span><span class="op">)</span>
 <span class="co">#&gt;   1 2 3  4  5  6</span>
 <span class="co">#&gt; 1 1 2 3  4  5  6</span>
 <span class="co">#&gt; 2 2 4 6  8 10 12</span>
 <span class="co">#&gt; 3 3 6 9 12 15 18</span></code></pre></div>
-<p><strong>crossmap</strong> also integrates with <a href="https://github.com/DavisVaughan/furrr"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
+<p><strong>crossmap</strong> also integrates with <a href="https://github.com/DavisVaughan/furrr" class="external-link"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span><span class="op">(</span><span class="st">"multisession"</span><span class="op">)</span>
-<span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"multisession"</span><span class="op">)</span>
+<span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 * 1 = 1" "2 * 1 = 2" "3 * 1 = 3" "1 * 2 = 2" "2 * 2 = 4" "3 * 2 = 6"</span>
 <span class="co">#&gt; [7] "1 * 3 = 3" "2 * 3 = 6" "3 * 3 = 9"</span></code></pre></div>
 <p><code><a href="reference/cross_fit.html">cross_fit()</a></code> is an easy wrapper for an important use of <strong>crossmap</strong>, crossing model specifications with different formulas, subsets, and weights.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/cross_fit.html">cross_fit</a></span><span class="op">(</span>
   <span class="va">mtcars</span>,
-  formulas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, drat <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">drat</span><span class="op">)</span>,
-  cols     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">vs</span><span class="op">)</span>,
-  weights  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">wt</span>, <span class="cn">NA</span><span class="op">)</span>
+  formulas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, drat <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">drat</span><span class="op">)</span>,
+  cols     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">vs</span><span class="op">)</span>,
+  weights  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">wt</span>, <span class="cn">NA</span><span class="op">)</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 40 x 21</span>
 <span class="co">#&gt;    model weights   cyl    vs term      estimate  std.error  statistic    p.value</span>
@@ -173,10 +168,10 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/cross_join.html">cross_join</a></span><span class="op">(</span>
   <span class="fu">tibble</span><span class="op">(</span>
-    color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"orange"</span><span class="op">)</span>,
-    fruit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>
+    color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"orange"</span><span class="op">)</span>,
+    fruit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>
   <span class="op">)</span>,
-  <span class="fu">tibble</span><span class="op">(</span>dessert <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span>, makes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">tibble</span><span class="op">(</span>dessert <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span>, makes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 4</span>
 <span class="co">#&gt;   color  fruit      dessert  makes</span>
@@ -192,71 +187,81 @@
 <span class="co">#&gt; 9 orange cantaloupe streudel     1</span></code></pre></div>
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; [1]  9 16  4 25  1</span>
-<span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
+<span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></code></pre></div>
 <hr>
-<p>Hex sticker font is <a href="https://github.com/adobe-fonts/source-sans">Source Sans by Adobe</a>.</p>
-<p>Please note that <strong>crossmap</strong> is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct/">Contributor Code of Conduct</a>.</p>
+<p>Hex sticker font is <a href="https://github.com/adobe-fonts/source-sans" class="external-link">Source Sans by Adobe</a>.</p>
+<p>Please note that <strong>crossmap</strong> is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct/" class="external-link">Contributor Code of Conduct</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=crossmap">https://​cloud.r-project.org/​package=crossmap</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/rossellhayes/crossmap/">https://​github.com/​rossellhayes/​crossmap/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/rossellhayes/crossmap/issues">https://​github.com/​rossellhayes/​crossmap/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=crossmap" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/rossellhayes/crossmap/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/rossellhayes/crossmap/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing crossmap</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=crossmap"><img src="https://www.r-pkg.org/badges/version/crossmap?color=brightgreen"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
-<li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
-<li><a href="https://github.com/rossellhayes/crossmap/actions"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/rossellhayes/crossmap"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/rossellhayes/crossmap"><img src="https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge" alt="CodeFactor"></a></li>
-<li><a href="https://cran.r-project.org/package=crossmap"><img src="https://tinyverse.netlify.com/badge/crossmap" alt="Dependencies"></a></li>
+<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=crossmap" class="external-link"><img src="https://www.r-pkg.org/badges/version/crossmap?color=brightgreen"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
+<li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
+<li><a href="https://github.com/rossellhayes/crossmap/actions" class="external-link"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/rossellhayes/crossmap" class="external-link"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/rossellhayes/crossmap" class="external-link"><img src="https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge" alt="CodeFactor"></a></li>
+<li><a href="https://cran.r-project.org/package=crossmap" class="external-link"><img src="https://tinyverse.netlify.com/badge/crossmap" alt="Dependencies"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Alexander Rossell Hayes.</p>
+  <p></p>
+<p>Developed by Alexander Rossell Hayes.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -264,6 +269,8 @@
 
   
 
+
+  
 
   </body>
 </html>

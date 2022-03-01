@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://crossmap.rossellhayes.com/404.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/authors.html</loc>
+  </url>
+  <url>
     <loc>https://crossmap.rossellhayes.com/index.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/news/index.html</loc>
   </url>
   <url>
     <loc>https://crossmap.rossellhayes.com/reference/autonames.html</loc>
@@ -32,6 +50,9 @@
   </url>
   <url>
     <loc>https://crossmap.rossellhayes.com/reference/future_xmap_mat.html</loc>
+  </url>
+  <url>
+    <loc>https://crossmap.rossellhayes.com/reference/index.html</loc>
   </url>
   <url>
     <loc>https://crossmap.rossellhayes.com/reference/map_vec.html</loc>
