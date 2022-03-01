@@ -54,3 +54,21 @@ test_that("xmap_vec()", {
   expect_is(xmap_vec(list(x, x), ~ lm(.x ~ .y)), "list")
   expect_is(xmap_vec(list(df, x), ~ .x + .y), "list")
 })
+
+test_that("specify .class", {
+  expect_is(map_vec(x, ~ .x > 1, .class = "character"), "character")
+  expect_is(map_vec(x, ~ .x > 1, .class = "numeric"), "numeric")
+  expect_is(map_vec(x, ~ .x > 1, .class = "integer"), "integer")
+
+  expect_is(map2_vec(x, x, `>`, .class = "character"), "character")
+  expect_is(pmap_vec(list(x, x), `>`, .class = "character"), "character")
+  expect_is(imap_vec(x, `>`, .class = "character"), "character")
+  expect_is(xmap_vec(list(x, x), `>`, .class = "character"), "character")
+
+  chr_map <- map_vec(1:3, ~ rep(TRUE, .x), .class = "character")
+  expect_true(all(vapply(chr_map, class, character(1)) == "character"))
+  num_map <- map_vec(1:3, ~ rep(TRUE, .x), .class = "numeric")
+  expect_true(all(vapply(num_map, class, character(1)) == "numeric"))
+  int_map <- map_vec(1:3, ~ rep(TRUE, .x), .class = "integer")
+  expect_true(all(vapply(int_map, class, character(1)) == "integer"))
+})

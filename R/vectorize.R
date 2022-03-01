@@ -1,4 +1,8 @@
-vectorize <- function(list) {
+vectorize <- function(list, .class = NULL) {
+  if (!is.null(.class)) {
+    list <- lapply(list, `class<-`, .class)
+  }
+
   vectorizable <- all(
     vapply(list, function(x) length(x) == 1 && rlang::is_atomic(x), logical(1))
   )
@@ -9,11 +13,11 @@ vectorize <- function(list) {
 
   classes <- lapply(list, class)
 
-  list <- unlist(list)
+  vector <- unlist(list)
 
-  if (length(unique(classes)) == 1){
-    class(list) <- unlist(classes)
+  if (length(unique(classes)) == 1) {
+    class(vector) <- unlist(classes)
   }
 
-  list
+  vector
 }

@@ -22,12 +22,14 @@
 #' @example examples/future_map_vec.R
 
 future_map_vec <- function(
-  .x, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+  .x, .f, ..., .class = NULL,
+  .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 
   vectorize(
-    furrr::future_map(.x, .f, ..., .progress = .progress, .options = .options)
+    furrr::future_map(.x, .f, ..., .progress = .progress, .options = .options),
+    .class = .class
   )
 }
 
@@ -35,14 +37,14 @@ future_map_vec <- function(
 #' @export
 
 future_map2_vec <- function(
-  .x, .y, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+  .x, .y, .f, ..., .class = NULL,
+  .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 
   vectorize(
-    furrr::future_map2(
-      .x, .y, .f, ..., .progress = .progress, .options = .options
-    )
+    furrr::future_map2(.x, .y, .f, ..., .progress = .progress, .options = .options),
+    .class = .class
   )
 }
 
@@ -50,12 +52,14 @@ future_map2_vec <- function(
 #' @export
 
 future_pmap_vec <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+  .l, .f, ..., .class = NULL,
+  .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 
   vectorize(
-    furrr::future_pmap(.l, .f, ..., .progress = .progress, .options = .options)
+    furrr::future_pmap(.l, .f, ..., .progress = .progress, .options = .options),
+    .class = .class
   )
 }
 
@@ -63,12 +67,14 @@ future_pmap_vec <- function(
 #' @export
 
 future_imap_vec <- function(
-  .x, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+  .x, .f, ..., .class = NULL,
+  .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 
   vectorize(
-    furrr::future_imap(.x, .f, ..., .progress = .progress, .options = .options)
+    furrr::future_imap(.x, .f, ..., .progress = .progress, .options = .options),
+    .class = .class
   )
 }
 
@@ -76,11 +82,13 @@ future_imap_vec <- function(
 #' @export
 
 future_xmap_vec <- function(
-  .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
+  .l, .f, ..., .class = NULL,
+  .progress = FALSE, .options = furrr::furrr_options()
 ) {
   require_furrr()
 
   vectorize(
-    future_xmap(.l, .f, ..., .progress = .progress, .options = .options)
+    future_xmap(.l, .f, ..., .progress = .progress, .options = .options),
+    .class = .class
   )
 }
