@@ -4,10 +4,7 @@
 #' but allow you to run the map in parallel using [future::future()]
 #'
 #' @inheritParams xmap
-#' @param .progress A logical, for whether or not to print a progress bar for
-#'   multiprocess, multisession, and multicore plans
-#' @param .options The `future` specific options to use with the workers.
-#'   This must be the result from a call to [furrr::furrr_options()]
+#' @inheritParams furrr::future_map
 #'
 #' @return An atomic vector, list, or data frame, depending on the suffix.
 #'   Atomic vectors and lists will be named if the first element of .l is named.
@@ -15,7 +12,7 @@
 #'   If all input is length 0, the output will be length 0.
 #'   If any input is length 1, it will be recycled to the length of the longest.
 #'
-#' @seealso [xmap()] to run functions without with parallel processing.
+#' @seealso [xmap()] to run functions without parallel processing.
 #'
 #'   [future_xmap_vec()] to automatically determine output type.
 #'

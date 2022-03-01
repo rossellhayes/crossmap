@@ -8,15 +8,15 @@
 \alias{xmap_vec}
 \title{Mapping functions that automatically determine type}
 \usage{
-map_vec(.x, .f, ...)
+map_vec(.x, .f, ..., .class = NULL)
 
-map2_vec(.x, .y, .f, ...)
+map2_vec(.x, .y, .f, ..., .class = NULL)
 
-pmap_vec(.l, .f, ...)
+pmap_vec(.l, .f, ..., .class = NULL)
 
-imap_vec(.x, .f, ...)
+imap_vec(.x, .f, ..., .class = NULL)
 
-xmap_vec(.l, .f, ...)
+xmap_vec(.l, .f, ..., .class = NULL)
 }
 \arguments{
 \item{.x}{A list or atomic vector.}
@@ -42,6 +42,8 @@ by position and name at different levels. If a component is not
 present, the value of \code{.default} will be returned.}
 
 \item{...}{Additional arguments passed on to \code{.f}}
+
+\item{.class}{}
 
 \item{.y}{A vector the same length as \code{.x}.
 Vectors of length 1 will be recycled.}

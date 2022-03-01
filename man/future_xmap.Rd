@@ -101,11 +101,18 @@ present, the value of \code{.default} will be returned.}
 
 \item{...}{Additional arguments passed on to \code{.f}}
 
-\item{.progress}{A logical, for whether or not to print a progress bar for
-multiprocess, multisession, and multicore plans}
+\item{.progress}{A single logical. Should a progress bar be displayed?
+Only works with multisession, multicore, and multiprocess futures. Note
+that if a multicore/multisession future falls back to sequential, then
+a progress bar will not be displayed.
 
-\item{.options}{The \code{future} specific options to use with the workers.
-This must be the result from a call to \code{\link[furrr:furrr_options]{furrr::furrr_options()}}}
+\strong{Warning:} The \code{.progress} argument will be deprecated and removed
+in a future version of furrr in favor of using the more robust
+\href{https://CRAN.R-project.org/package=progressr}{progressr}
+package.}
+
+\item{.options}{The \code{future} specific options to use with the workers. This
+must be the result from a call to \code{\link[furrr:furrr_options]{furrr_options()}}.}
 
 \item{.id}{Either a string or \code{NULL}.
 If a string, the output will contain a variable with that name, storing
@@ -145,7 +152,7 @@ subsets  <- split(mtcars, mtcars$cyl)
 future_xmap(list(subsets, formulas), ~ lm(.y, data = .x))
 }
 \seealso{
-\code{\link[=xmap]{xmap()}} to run functions without with parallel processing.
+\code{\link[=xmap]{xmap()}} to run functions without parallel processing.
 
 \code{\link[=future_xmap_vec]{future_xmap_vec()}} to automatically determine output type.
 
