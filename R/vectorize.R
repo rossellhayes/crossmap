@@ -16,7 +16,7 @@ vectorize <- function(list, .class = NULL) {
   vector <- unlist(list)
 
   if (length(unique(classes)) == 1) {
-    class(vector) <- unlist(classes)
+    class(vector) <- unlist(unique(classes))
   }
 
   vector
