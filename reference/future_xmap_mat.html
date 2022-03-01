@@ -101,11 +101,17 @@ If inputs are named, the names are used.
 If inputs are unnamed, the elements of the input are used as names.
 Defaults to <code>TRUE</code>.</p></dd>
 <dt>.progress</dt>
-<dd><p>A logical, for whether or not to print a progress bar for
-multiprocess, multisession, and multicore plans</p></dd>
+<dd><p>A single logical. Should a progress bar be displayed?
+Only works with multisession, multicore, and multiprocess futures. Note
+that if a multicore/multisession future falls back to sequential, then
+a progress bar will not be displayed.</p>
+<p><strong>Warning:</strong> The <code>.progress</code> argument will be deprecated and removed
+in a future version of furrr in favor of using the more robust
+<a href="https://CRAN.R-project.org/package=progressr" class="external-link">progressr</a>
+package.</p></dd>
 <dt>.options</dt>
-<dd><p>The <code>future</code> specific options to use with the workers.
-This must be the result from a call to <code><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr::furrr_options()</a></code></p></dd>
+<dd><p>The <code>future</code> specific options to use with the workers. This
+must be the result from a call to <code><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options()</a></code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

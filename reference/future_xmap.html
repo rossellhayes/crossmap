@@ -140,11 +140,17 @@ present, the value of <code>.default</code> will be returned.</p></dd>
 <dt>...</dt>
 <dd><p>Additional arguments passed on to <code>.f</code></p></dd>
 <dt>.progress</dt>
-<dd><p>A logical, for whether or not to print a progress bar for
-multiprocess, multisession, and multicore plans</p></dd>
+<dd><p>A single logical. Should a progress bar be displayed?
+Only works with multisession, multicore, and multiprocess futures. Note
+that if a multicore/multisession future falls back to sequential, then
+a progress bar will not be displayed.</p>
+<p><strong>Warning:</strong> The <code>.progress</code> argument will be deprecated and removed
+in a future version of furrr in favor of using the more robust
+<a href="https://CRAN.R-project.org/package=progressr" class="external-link">progressr</a>
+package.</p></dd>
 <dt>.options</dt>
-<dd><p>The <code>future</code> specific options to use with the workers.
-This must be the result from a call to <code><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr::furrr_options()</a></code></p></dd>
+<dd><p>The <code>future</code> specific options to use with the workers. This
+must be the result from a call to <code><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options()</a></code>.</p></dd>
 <dt>.id</dt>
 <dd><p>Either a string or <code>NULL</code>.
 If a string, the output will contain a variable with that name, storing
@@ -162,7 +168,7 @@ If any input is length 1, it will be recycled to the length of the longest.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="xmap.html">xmap()</a></code> to run functions without with parallel processing.</p>
+    <div class="dont-index"><p><code><a href="xmap.html">xmap()</a></code> to run functions without parallel processing.</p>
 <p><code><a href="future_map_vec.html">future_xmap_vec()</a></code> to automatically determine output type.</p>
 <p><code><a href="future_xmap_mat.html">future_xmap_mat()</a></code> and <code><a href="future_xmap_mat.html">future_xmap_arr()</a></code> to return results in a matrix
 or array.</p>
