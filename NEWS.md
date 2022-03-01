@@ -1,3 +1,13 @@
+# crossmap 0.3.2
+
+## New features
+
+* The `map_vec()` family of functions gain a `.class` argument, which coerces each element of the output to the given class.
+
+## Enhancements
+
+* The `map_vec()` family of functions can now return vectors with S3 classes in addition to base classes.
+
 # crossmap 0.3.1
 
 ## New features
