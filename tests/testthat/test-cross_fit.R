@@ -159,6 +159,8 @@ test_that("logit", {
 })
 
 test_that("clusters", {
+  skip_if_not_installed("estimatr")
+
   withr::local_package("dplyr")
 
   fit <- suppressWarnings(

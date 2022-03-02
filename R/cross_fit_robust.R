@@ -17,7 +17,8 @@
 #'
 #' @export
 #'
-#' @example examples/cross_fit_robust.R
+#' @examplesIf getRversion() >= "3.5"
+#' cross_fit_robust(mtcars, mpg ~ wt, cyl, clusters = list(NULL, am))
 
 cross_fit_robust <- function(
   data, formulas, cols = NULL, weights = NULL, clusters = NULL,
