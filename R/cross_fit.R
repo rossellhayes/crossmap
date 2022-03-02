@@ -36,8 +36,8 @@
 #'   If `FALSE`, `NA`, or `NULL`, the untidied model output will be returned in
 #'   a list column named `fit`.
 #'   An alternative function can be specified with an unquoted function name or
-#'   a [purrr][purrr::map()]-style lambda function with one argument (see usage
-#'   with [broomExtra::tidy(conf.int = TRUE)][broomExtra::tidy()] in examples).
+#'   a [purrr][purrr::map]-style lambda function with one argument (see usage
+#'   with [broom::tidy(conf.int = TRUE)][broom::tidy.lm()] in examples).
 #'   Defaults to [tidy_glance].
 #' @param tidy_args A list of additional arguments to the `tidy` function
 #' @param errors If `"stop"`, the default, the function will stop and return an

@@ -21,12 +21,13 @@ Imports:
     backports,
     cli,
     dplyr (>= 1.0.0),
+    generics,
     purrr,
     rlang,
     stats,
     utils
 Suggests: 
-    broomExtra,
+    broom,
     covr,
     crayon,
     estimatr,

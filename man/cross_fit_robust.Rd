@@ -48,7 +48,7 @@ If \code{FALSE}, \code{NA}, or \code{NULL}, the untidied model output will be re
 a list column named \code{fit}.
 An alternative function can be specified with an unquoted function name or
 a \link[purrr:map]{purrr}-style lambda function with one argument (see usage
-with \link[broomExtra:tidy]{broomExtra::tidy(conf.int = TRUE)} in examples).
+with \link[broom:tidy.lm]{broom::tidy(conf.int = TRUE)} in examples).
 Defaults to \link{tidy_glance}.}
 
 \item{tidy_args}{A list of additional arguments to the \code{tidy} function}

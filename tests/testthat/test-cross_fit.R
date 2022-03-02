@@ -94,7 +94,7 @@ test_that("named formulas", {
 })
 
 test_that("tidiers", {
-  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = broomExtra::tidy))
+  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = generics::tidy))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 7)
 
