@@ -12,6 +12,7 @@ future_map_vec(
   .x,
   .f,
   ...,
+  .class = NULL,
   .progress = FALSE,
   .options = furrr::furrr_options()
 )
@@ -21,6 +22,7 @@ future_map2_vec(
   .y,
   .f,
   ...,
+  .class = NULL,
   .progress = FALSE,
   .options = furrr::furrr_options()
 )
@@ -29,6 +31,7 @@ future_pmap_vec(
   .l,
   .f,
   ...,
+  .class = NULL,
   .progress = FALSE,
   .options = furrr::furrr_options()
 )
@@ -37,6 +40,7 @@ future_imap_vec(
   .x,
   .f,
   ...,
+  .class = NULL,
   .progress = FALSE,
   .options = furrr::furrr_options()
 )
@@ -45,6 +49,7 @@ future_xmap_vec(
   .l,
   .f,
   ...,
+  .class = NULL,
   .progress = FALSE,
   .options = furrr::furrr_options()
 )
@@ -73,6 +78,8 @@ by position and name at different levels. If a component is not
 present, the value of \code{.default} will be returned.}
 
 \item{...}{Additional arguments passed on to \code{.f}}
+
+\item{.class}{If \code{.class} is specified, all}
 
 \item{.progress}{A single logical. Should a progress bar be displayed?
 Only works with multisession, multicore, and multiprocess futures. Note

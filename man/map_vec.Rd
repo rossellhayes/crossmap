@@ -43,7 +43,7 @@ present, the value of \code{.default} will be returned.}
 
 \item{...}{Additional arguments passed on to \code{.f}}
 
-\item{.class}{}
+\item{.class}{If \code{.class} is specified, all}
 
 \item{.y}{A vector the same length as \code{.x}.
 Vectors of length 1 will be recycled.}
