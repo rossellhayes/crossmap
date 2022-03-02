@@ -10,7 +10,7 @@ abort_if_not_df <- function(x) {
   fun       <- call[1]
   arguments <- as.list(call[-1][non_data_frames])
   types     <- purrr::map_chr(x[non_data_frames], ~ class(.)[[1]])
-  problems  <- purrr::map2(
+  problems  <- purrr::map2_chr(
     arguments, types,
     ~ cli::format_error("{.arg {.x}} is of class {.val {.y}}")
   )
@@ -36,7 +36,7 @@ abort_if_not_formulas <- function(x) {
   call      <- sys.call(-1)
   arguments <- x[non_formulas]
   types     <- purrr::map_chr(x[non_formulas], ~ class(.)[[1]])
-  problems  <- purrr::map2(
+  problems  <- purrr::map2_chr(
     arguments, types,
     ~ cli::format_error("{.arg {.x}} is of class {.val {.y}}")
   )
