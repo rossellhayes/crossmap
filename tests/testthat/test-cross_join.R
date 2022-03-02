@@ -4,7 +4,7 @@ expect_ansi_error <- function(object, expected = NULL) {
   testthat::expect_is(object, "error")
 
   if (!is.null(expected)) {
-    object <- cli::ansi_strip(object$message)
+    object <- cli::ansi_strip(conditionMessage(object))
     testthat::expect_match(object, expected)
   }
 }
