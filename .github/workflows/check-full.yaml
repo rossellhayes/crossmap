@@ -56,6 +56,7 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             estimatr=?ignore-before-r=3.5.0
+            broomExtra=?ignore-before-r=3.6.0
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
