@@ -126,7 +126,7 @@
   cols     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">vs</span><span class="op">)</span>,
   weights  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">wt</span>, <span class="cn">NA</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 40 x 21</span>
+<span class="co">#&gt; # A tibble: 40 × 21</span>
 <span class="co">#&gt;    model weights   cyl    vs term      estimate  std.error  statistic    p.value</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 hp    NA          4     0 (Interce…  26      NaN        NaN        NaN       </span>
@@ -152,7 +152,7 @@
 <span class="co">#&gt; $letter</span>
 <span class="co">#&gt; [1] "a" "a" "a" "b" "b" "b" "c" "c" "c"</span>
 <span class="fu"><a href="reference/cross_list.html">cross_tbl</a></span><span class="op">(</span>number <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 9 x 2</span>
+<span class="co">#&gt; # A tibble: 9 × 2</span>
 <span class="co">#&gt;   number letter</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; </span>
 <span class="co">#&gt; 1      1 a     </span>
@@ -173,7 +173,7 @@
   <span class="op">)</span>,
   <span class="fu">tibble</span><span class="op">(</span>dessert <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span>, makes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 9 x 4</span>
+<span class="co">#&gt; # A tibble: 9 × 4</span>
 <span class="co">#&gt;   color  fruit      dessert  makes</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 red    apple      cupcake      8</span>
@@ -188,7 +188,7 @@
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1]  9 16  4 25  1</span>
+<span class="co">#&gt; [1]  4  1  9 16 25</span>
 <span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></code></pre></div>
 <hr>
@@ -241,10 +241,11 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=crossmap" class="external-link"><img src="https://www.r-pkg.org/badges/version/crossmap?color=brightgreen"></a></li>
+<li><a href="https://rossellhayes.r-universe.dev" class="external-link"><img src="https://rossellhayes.r-universe.dev/badges/crossmap" alt="crossmap status badge"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/crossmap/actions" class="external-link"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/rossellhayes/crossmap" class="external-link"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://app.codecov.io/gh/rossellhayes/crossmap" class="external-link"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/rossellhayes/crossmap" class="external-link"><img src="https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge" alt="CodeFactor"></a></li>
 <li><a href="https://cran.r-project.org/package=crossmap" class="external-link"><img src="https://tinyverse.netlify.com/badge/crossmap" alt="Dependencies"></a></li>
 </ul>

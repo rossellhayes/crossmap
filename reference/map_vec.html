@@ -127,32 +127,32 @@ If the output contains elements that cannot be coerced to vectors
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">fruits</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">map_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1 16  9 25  4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16  4  9 25  1</span>
 <span class="r-in"><span class="fu">map_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "apples"      "bananas"     "cantaloupes" "durians"     "eggplants"  </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">map2_vec</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 8 8 7 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 6 5 8 6</span>
 <span class="r-in"><span class="fu">map2_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span>, <span class="va">paste</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "apple bread"        "banana cake"        "cantaloupe cupcake"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "durian muffin"      "eggplant streudel" </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6 12 13  8  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 11  6 10  9</span>
 <span class="r-in"><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1 apple bread"        "4 banana cake"        "3 cantaloupe cupcake"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "5 durian muffin"      "2 eggplant streudel" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4 apple bread"        "2 banana cake"        "3 cantaloupe cupcake"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "5 durian muffin"      "1 eggplant streudel" </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 6 6 9 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 4 6 9 6</span>
 <span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">.y</span>, <span class="st">": "</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1: 1" "2: 4" "3: 3" "4: 5" "5: 2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1: 4" "2: 2" "3: 3" "4: 5" "5: 1"</span>
 <span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">z</span>, <span class="va">paste</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          apple         banana     cantaloupe         durian       eggplant </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      "2 apple"     "4 banana" "5 cantaloupe"     "1 durian"   "3 eggplant" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      "4 apple"     "5 banana" "1 cantaloupe"     "2 durian"   "3 eggplant" </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  3 12  9 15  6  4 16 12 20  8  5 20 15 25 10  2  8  6 10  4  1  4  3  5  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  4  2  3  5  1 16  8 12 20  4  8  4  6 10  2 12  6  9 15  3 20 10 15 25  5</span>
 <span class="r-in"><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "apple bread"         "banana bread"        "cantaloupe bread"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "durian bread"        "eggplant bread"      "apple cake"         </span>
