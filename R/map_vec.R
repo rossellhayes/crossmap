@@ -8,6 +8,7 @@
 #' @param .x A list or atomic vector.
 #' @param .y A vector the same length as `.x`.
 #'   Vectors of length 1 will be recycled.
+#' @param .class If `.class` is specified, all
 #'
 #' @return Equivalent to the typed variants of [purrr::map()], [purrr::map2()],
 #'   [purrr::pmap()], [purrr::imap()] and [xmap()] with the type automatically
@@ -30,30 +31,34 @@
 #'
 #' @example examples/map_vec.R
 
-map_vec <- function(.x, .f, ...) {vectorize(purrr::map(.x, .f, ...))}
-
-#' @rdname map_vec
-#' @export
-
-map2_vec <- function(.x, .y, .f, ...) {
-  vectorize(purrr::map2(.x, .y, .f, ...))
+map_vec <- function(.x, .f, ..., .class = NULL) {
+  vectorize(purrr::map(.x, .f, ...), .class = .class)
 }
 
 #' @rdname map_vec
 #' @export
 
-pmap_vec <- function(.l, .f, ...) {
-  vectorize(purrr::pmap(.l, .f, ...))
+map2_vec <- function(.x, .y, .f, ..., .class = NULL) {
+  vectorize(purrr::map2(.x, .y, .f, ...), .class = .class)
 }
 
 #' @rdname map_vec
 #' @export
 
-imap_vec <- function(.x, .f, ...) {
-  vectorize(purrr::imap(.x, .f, ...))
+pmap_vec <- function(.l, .f, ..., .class = NULL) {
+  vectorize(purrr::pmap(.l, .f, ...), .class = .class)
 }
 
 #' @rdname map_vec
 #' @export
 
-xmap_vec <- function(.l, .f, ...) {vectorize(xmap(.l, .f, ...))}
+imap_vec <- function(.x, .f, ..., .class = NULL) {
+  vectorize(purrr::imap(.x, .f, ...), .class = .class)
+}
+
+#' @rdname map_vec
+#' @export
+
+xmap_vec <- function(.l, .f, ..., .class = NULL) {
+  vectorize(xmap(.l, .f, ...), .class = .class)
+}

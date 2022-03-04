@@ -1,6 +1,6 @@
 Package: crossmap
 Title: Apply Functions to All Combinations of List Elements
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: 
     person(given = "Alexander",
            family = "Rossell Hayes",
@@ -21,11 +21,13 @@ Imports:
     backports,
     cli,
     dplyr (>= 1.0.0),
+    generics,
     purrr,
     rlang,
     stats,
     utils
 Suggests: 
+    broom,
     broomExtra,
     covr,
     crayon,

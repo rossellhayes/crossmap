@@ -94,7 +94,7 @@ test_that("named formulas", {
 })
 
 test_that("tidiers", {
-  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = broomExtra::tidy))
+  fit <- suppressWarnings(cross_fit(df, y ~ x, m, tidy = generics::tidy))
   expect_equal(nrow(fit), 4)
   expect_equal(ncol(fit), 7)
 
@@ -159,6 +159,8 @@ test_that("logit", {
 })
 
 test_that("clusters", {
+  skip_if_not_installed("estimatr")
+
   withr::local_package("dplyr")
 
   fit <- suppressWarnings(

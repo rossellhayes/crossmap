@@ -20,8 +20,8 @@ cross_fit(
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = FALSE)
 cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy_args = c(conf.int = TRUE))
 
-cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = broomExtra::tidy)
+cross_fit(mtcars, list(mpg ~ wt, mpg ~ hp), cyl, tidy = broom::tidy)
 cross_fit(
   mtcars, list(mpg ~ wt, mpg ~ hp), cyl,
-  tidy = ~ broomExtra::tidy(., conf.int = TRUE)
+  tidy = ~ broom::tidy(., conf.int = TRUE)
 )

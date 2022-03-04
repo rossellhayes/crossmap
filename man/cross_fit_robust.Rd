@@ -48,7 +48,7 @@ If \code{FALSE}, \code{NA}, or \code{NULL}, the untidied model output will be re
 a list column named \code{fit}.
 An alternative function can be specified with an unquoted function name or
 a \link[purrr:map]{purrr}-style lambda function with one argument (see usage
-with \link[broomExtra:tidy]{broomExtra::tidy(conf.int = TRUE)} in examples).
+with \link[broom:tidy.lm]{broom::tidy(conf.int = TRUE)} in examples).
 Defaults to \link{tidy_glance}.}
 
 \item{tidy_args}{A list of additional arguments to the \code{tidy} function}
@@ -69,7 +69,9 @@ and columns of tidy model output or a list column of models
 Cross fit robust linear models
 }
 \examples{
+\dontshow{if (getRversion() >= "3.5") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 cross_fit_robust(mtcars, mpg ~ wt, cyl, clusters = list(NULL, am))
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=cross_fit]{cross_fit()}} to use any modeling function.
