@@ -6,12 +6,14 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/crossmap?color=brightgreen)](https://cran.r-project.org/package=crossmap)
+[![crossmap status
+badge](https://rossellhayes.r-universe.dev/badges/crossmap)](https://rossellhayes.r-universe.dev)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/crossmap/actions)
-[![](https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg)](https://codecov.io/gh/rossellhayes/crossmap)
+[![](https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/crossmap)
 [![CodeFactor](https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge)](https://www.codefactor.io/repository/github/rossellhayes/crossmap)
 [![Dependencies](https://tinyverse.netlify.com/badge/crossmap)](https://cran.r-project.org/package=crossmap)
 <!-- badges: end -->
@@ -86,7 +88,7 @@ cross_fit(
   cols     = c(cyl, vs),
   weights  = c(wt, NA)
 )
-#> # A tibble: 40 x 21
+#> # A tibble: 40 × 21
 #>    model weights   cyl    vs term      estimate  std.error  statistic    p.value
 #>    <chr> <chr>   <dbl> <dbl> <chr>        <dbl>      <dbl>      <dbl>      <dbl>
 #>  1 hp    NA          4     0 (Interce…  26      NaN        NaN        NaN       
@@ -115,7 +117,7 @@ cross_list(number = 1:3, letter = letters[1:3])
 #> $letter
 #> [1] "a" "a" "a" "b" "b" "b" "c" "c" "c"
 cross_tbl(number = 1:3, letter = letters[1:3])
-#> # A tibble: 9 x 2
+#> # A tibble: 9 × 2
 #>   number letter
 #>    <int> <chr> 
 #> 1      1 a     
@@ -139,7 +141,7 @@ cross_join(
   ),
   tibble(dessert = c("cupcake", "muffin", "streudel"), makes = c(8, 6, 1))
 )
-#> # A tibble: 9 x 4
+#> # A tibble: 9 × 4
 #>   color  fruit      dessert  makes
 #>   <chr>  <chr>      <chr>    <dbl>
 #> 1 red    apple      cupcake      8
@@ -159,7 +161,7 @@ means you don’t have to worry about adding `_int()`, `_dbl()` or
 
 ``` r
 map_vec(sample(5), ~ . ^ 2)
-#> [1]  9 16  4 25  1
+#> [1]  4  1  9 16 25
 map_vec(c("apple", "banana", "cantaloupe"), paste0, "s")
 #> [1] "apples"      "bananas"     "cantaloupes"
 ```

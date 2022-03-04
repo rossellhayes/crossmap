@@ -20,6 +20,7 @@ library(badger)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
+[![crossmap status badge](https://rossellhayes.r-universe.dev/badges/crossmap)](https://rossellhayes.r-universe.dev)
 `r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
