@@ -18,7 +18,7 @@ set of data subsets."><meta property="og:image" content="https://crossmap.rossel
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@ If <code>FALSE</code>, <code>NA</code>, or <code>NULL</code>, the untidied model
 a list column named <code>fit</code>.
 An alternative function can be specified with an unquoted function name or
 a <a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr</a>-style lambda function with one argument (see usage
-with <a href="https://indrajeetpatil.github.io/broomExtra/reference/tidy.html" class="external-link">broomExtra::tidy(conf.int = TRUE)</a> in examples).
+with <a href="https://broom.tidymodels.org/reference/tidy.lm.html" class="external-link">broom::tidy(conf.int = TRUE)</a> in examples).
 Defaults to <a href="tidy_glance.html">tidy_glance</a>.</p></dd>
 <dt>tidy_args</dt>
 <dd><p>A list of additional arguments to the <code>tidy</code> function</p></dd>
@@ -349,7 +349,7 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, tidy <span class="op">=</span> <span class="fu">broomExtra</span><span class="fu">::</span><span class="va"><a href="https://indrajeetpatil.github.io/broomExtra/reference/tidy.html" class="external-link">tidy</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, tidy <span class="op">=</span> <span class="fu">broom</span><span class="fu">::</span><span class="va"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model      cyl term        estimate std.error statistic    p.value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -367,7 +367,7 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> mpg ~ hp     8 hp          -<span style="color: #BB0000;">0.014</span><span style="color: #BB0000; text-decoration: underline;">2</span>     0.013<span style="text-decoration: underline;">9</span>    -<span style="color: #BB0000;">1.02</span>  0.326     </span>
 <span class="r-in"><span class="fu">cross_fit</span><span class="op">(</span></span>
 <span class="r-in">  <span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>,</span>
-<span class="r-in">  tidy <span class="op">=</span> <span class="op">~</span> <span class="fu">broomExtra</span><span class="fu">::</span><span class="fu"><a href="https://indrajeetpatil.github.io/broomExtra/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">.</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in">  tidy <span class="op">=</span> <span class="op">~</span> <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">.</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model      cyl term   estimate std.error statistic p.value conf.low conf.high</span>
