@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.3.3
 
 * Update roxygen version to avoid CRAN NOTE.
 * Remove `broomExtra` from suggested packages, because it was archived on CRAN.
