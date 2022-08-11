@@ -1,5 +1,7 @@
 # crossmap (development version)
 
+* Remove `broomExtra` from suggested packages, because it was archived on CRAN.
+
 # crossmap 0.3.2
 
 ## New features

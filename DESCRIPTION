@@ -28,7 +28,6 @@ Imports:
     utils
 Suggests: 
     broom,
-    broomExtra,
     covr,
     crayon,
     estimatr,
