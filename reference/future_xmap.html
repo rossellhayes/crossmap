@@ -18,7 +18,7 @@ but allow you to run the map in parallel using future::future()"><meta property=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -55,66 +55,66 @@ but allow you to run the map in parallel using <code><a href="https://future.fut
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">future_xmap</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .progress <span class="op">=</span> <span class="cn">FALSE</span>, .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">future_xmap_chr</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_dbl</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_dfc</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_dfr</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .id <span class="op">=</span> <span class="cn">NULL</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_int</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_lgl</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xmap_raw</span><span class="op">(</span>
-  <span class="va">.l</span>,
-  <span class="va">.f</span>,
-  <span class="va">...</span>,
-  .progress <span class="op">=</span> <span class="cn">FALSE</span>,
-  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">future_xwalk</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .progress <span class="op">=</span> <span class="cn">FALSE</span>, .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">future_xmap</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .progress <span class="op">=</span> <span class="cn">FALSE</span>, .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_chr</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_dbl</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_dfc</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_dfr</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_int</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_lgl</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xmap_raw</span><span class="op">(</span></span>
+<span>  <span class="va">.l</span>,</span>
+<span>  <span class="va">.f</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">future_xwalk</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .progress <span class="op">=</span> <span class="cn">FALSE</span>, .options <span class="op">=</span> <span class="fu">furrr</span><span class="fu">::</span><span class="fu"><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -124,6 +124,8 @@ but allow you to run the map in parallel using <code><a href="https://future.fut
 The length of .l determines the number of arguments that .f will be called
 with.
 List names will be used if present.</p></dd>
+
+
 <dt>.f</dt>
 <dd><p>A function, formula, or vector (not necessarily atomic).</p>
 <p>If a <strong>function</strong>, it is used as is.</p>
@@ -137,8 +139,12 @@ converted to an extractor function. Character vectors index by
 name and numeric vectors index by position; use a list to index
 by position and name at different levels. If a component is not
 present, the value of <code>.default</code> will be returned.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed on to <code>.f</code></p></dd>
+
+
 <dt>.progress</dt>
 <dd><p>A single logical. Should a progress bar be displayed?
 Only works with multisession, multicore, and multiprocess futures. Note
@@ -148,9 +154,13 @@ a progress bar will not be displayed.</p>
 in a future version of furrr in favor of using the more robust
 <a href="https://CRAN.R-project.org/package=progressr" class="external-link">progressr</a>
 package.</p></dd>
+
+
 <dt>.options</dt>
 <dd><p>The <code>future</code> specific options to use with the workers. This
-must be the result from a call to <code><a href="https://rdrr.io/pkg/furrr/man/furrr_options.html" class="external-link">furrr_options()</a></code>.</p></dd>
+must be the result from a call to <code><a href="https://furrr.futureverse.org/reference/furrr_options.html" class="external-link">furrr_options()</a></code>.</p></dd>
+
+
 <dt>.id</dt>
 <dd><p>Either a string or <code>NULL</code>.
 If a string, the output will contain a variable with that name, storing
@@ -158,12 +168,17 @@ either the name (if <code>.x</code> is named) or the index (if <code>.x</code> i
 the input.
 If <code>NULL</code>, the default, no variable will be created.</p>
 <p>Only applies to <code>_dfr</code> variant.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An atomic vector, list, or data frame, depending on the suffix.
-Atomic vectors and lists will be named if the first element of .l is named.
-If all input is length 0, the output will be length 0.
+    
+
+<p>An atomic vector, list, or data frame, depending on the suffix.
+Atomic vectors and lists will be named if the first element of .l is named.</p>
+
+
+<p>If all input is length 0, the output will be length 0.
 If any input is length 1, it will be recycled to the length of the longest.</p>
     </div>
     <div id="see-also">
@@ -172,14 +187,13 @@ If any input is length 1, it will be recycled to the length of the longest.</p>
 <p><code><a href="future_map_vec.html">future_xmap_vec()</a></code> to automatically determine output type.</p>
 <p><code><a href="future_xmap_mat.html">future_xmap_mat()</a></code> and <code><a href="future_xmap_mat.html">future_xmap_arr()</a></code> to return results in a matrix
 or array.</p>
-<p><code><a href="https://rdrr.io/pkg/furrr/man/future_map.html" class="external-link">furrr::future_map()</a></code>, <code><a href="https://rdrr.io/pkg/furrr/man/future_map2.html" class="external-link">furrr::future_map2()</a></code>, and <code><a href="https://rdrr.io/pkg/furrr/man/future_map2.html" class="external-link">furrr::future_pmap()</a></code>
+<p><code><a href="https://furrr.futureverse.org/reference/future_map.html" class="external-link">furrr::future_map()</a></code>, <code><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">furrr::future_map2()</a></code>, and <code><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">furrr::future_pmap()</a></code>
 for other parallelized mapping functions.</p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">future_xmap</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">future_xmap</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
@@ -258,14 +272,12 @@ for other parallelized mapping functions.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[25]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 25</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">future_xmap_dbl</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">future_xmap_dbl</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_dbl()()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  1  2  3  4  5  2  4  6  8 10  3  6  9 12 15  4  8 12 16 20  5 10 15 20 25</span>
-<span class="r-in"><span class="fu">future_xmap_chr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.y</span>, <span class="st">"*"</span>, <span class="va">.x</span>, <span class="st">"="</span>, <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">future_xmap_chr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.y</span>, <span class="st">"*"</span>, <span class="va">.x</span>, <span class="st">"="</span>, <span class="va">.y</span> <span class="op">*</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_chr()()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
@@ -274,25 +286,23 @@ for other parallelized mapping functions.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "3 * 1 = 3"  "3 * 2 = 6"  "3 * 3 = 9"  "3 * 4 = 12" "3 * 5 = 15"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] "4 * 1 = 4"  "4 * 2 = 8"  "4 * 3 = 12" "4 * 4 = 16" "4 * 5 = 20"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "5 * 1 = 5"  "5 * 2 = 10" "5 * 3 = 15" "5 * 4 = 20" "5 * 5 = 25"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">apples_and_bananas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apples"</span>, <span class="st">"bananas"</span><span class="op">)</span>,</span>
-<span class="r-in">  pattern <span class="op">=</span> <span class="st">"a"</span>,</span>
-<span class="r-in">  replacement <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"oo"</span>, <span class="st">"ee"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">future_xmap_chr</span><span class="op">(</span><span class="va">apples_and_bananas</span>, <span class="va">gsub</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">apples_and_bananas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apples"</span>, <span class="st">"bananas"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  pattern <span class="op">=</span> <span class="st">"a"</span>,</span></span>
+<span class="r-in"><span>  replacement <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"oo"</span>, <span class="st">"ee"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">future_xmap_chr</span><span class="op">(</span><span class="va">apples_and_bananas</span>, <span class="va">gsub</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_chr()()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "oopples"    "boonoonoos" "eepples"    "beeneenees"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">formulas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">subsets</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">future_xmap</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">subsets</span>, <span class="va">formulas</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">.y</span>, data <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">formulas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">subsets</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">future_xmap</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">subsets</span>, <span class="va">formulas</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">.y</span>, data <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
@@ -370,7 +380,7 @@ for other parallelized mapping functions.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

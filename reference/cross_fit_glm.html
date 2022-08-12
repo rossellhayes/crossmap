@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -53,44 +53,56 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cross_fit_glm</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">formulas</span>,
-  cols <span class="op">=</span> <span class="cn">NULL</span>,
-  weights <span class="op">=</span> <span class="cn">NULL</span>,
-  families <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">gaussian</a></span><span class="op">(</span>link <span class="op">=</span> <span class="va">identity</span><span class="op">)</span>,
-  fn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  tidy <span class="op">=</span> <span class="va">tidy_glance</span>,
-  tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  errors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"stop"</span>, <span class="st">"warn"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cross_fit_glm</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">formulas</span>,</span>
+<span>  cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  weights <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  families <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">gaussian</a></span><span class="op">(</span>link <span class="op">=</span> <span class="va">identity</span><span class="op">)</span>,</span>
+<span>  fn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  tidy <span class="op">=</span> <span class="va">tidy_glance</span>,</span>
+<span>  tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  errors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"stop"</span>, <span class="st">"warn"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame</p></dd>
+
+
 <dt>formulas</dt>
 <dd><p>A list of formulas to apply to each subset of the data.
 If named, these names will be used in the <code>model</code> column of the output.
 Otherwise, the formulas will be converted to strings in the <code>model</code> column.</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>Columns to subset the data.
 Can be any expression supported by
 &lt;<code><a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html" class="external-link">tidy-select</a></code>&gt;.
 If <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code>, the data is not subset into columns.
 Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>weights</dt>
 <dd><p>A list of columns passed to <code>weights</code> in <code>fn</code>.
 If one of the elements is <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> or <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">NA</a></code>, that model will not
 be weighted.
 Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>families</dt>
 <dd><p>A list of <a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a> model families.
 Defaults to <code><a href="https://rdrr.io/r/stats/family.html" class="external-link">gaussian("identity")</a></code>, the equivalent of <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code>.
 See <a href="https://rdrr.io/r/stats/family.html" class="external-link">family</a> for examples.</p></dd>
+
+
 <dt>fn_args</dt>
 <dd><p>A list of additional arguments to <code><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm()</a></code>.</p></dd>
+
+
 <dt>tidy</dt>
 <dd><p>A logical or function to use to tidy model output into
 data.frame columns.
@@ -101,17 +113,24 @@ An alternative function can be specified with an unquoted function name or
 a <a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr</a>-style lambda function with one argument (see usage
 with <a href="https://broom.tidymodels.org/reference/tidy.lm.html" class="external-link">broom::tidy(conf.int = TRUE)</a> in examples).
 Defaults to <a href="tidy_glance.html">tidy_glance</a>.</p></dd>
+
+
 <dt>tidy_args</dt>
 <dd><p>A list of additional arguments to the <code>tidy</code> function</p></dd>
+
+
 <dt>errors</dt>
 <dd><p>If <code>"stop"</code>, the default, the function will stop and return an
 error if any subset produces an error.
 If <code>"warn"</code>, the function will produce a warning for subsets that produce
 an error and return results for all subsets that do not.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble with a column for the model formula,
+    
+
+<p>A tibble with a column for the model formula,
 columns for subsets,
 columns for the model family and type,
 columns for the weights (if applicable),
@@ -125,35 +144,37 @@ and columns of tidy model output or a list column of models
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">cross_fit_glm</span><span class="op">(</span></span>
-<span class="r-in">  data     <span class="op">=</span> <span class="va">mtcars</span>,</span>
-<span class="r-in">  formulas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">gear</span>, <span class="va">am</span> <span class="op">~</span> <span class="va">cyl</span><span class="op">)</span>,</span>
-<span class="r-in">  cols     <span class="op">=</span> <span class="va">vs</span>,</span>
-<span class="r-in">  families <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">gaussian</a></span><span class="op">(</span><span class="st">"identity"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cross_fit_glm</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data     <span class="op">=</span> <span class="va">mtcars</span>,</span></span>
+<span class="r-in"><span>  formulas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">gear</span>, <span class="va">am</span> <span class="op">~</span> <span class="va">cyl</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  cols     <span class="op">=</span> <span class="va">vs</span>,</span></span>
+<span class="r-in"><span>  families <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">gaussian</a></span><span class="op">(</span><span class="st">"identity"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    model     family   link        vs term   estimate std.error statistic p.value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> am ~ gear gaussian identity     0 (Inte…   -<span style="color: #BB0000;">1.57</span>    1.69<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">9.28</span>     7.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> am ~ gear gaussian identity     0 gear      0.536   4.64<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> 11.5      3.59<span style="color: #949494;">e</span><span style="color: #BB0000;">-9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> am ~ gear gaussian identity     1 (Inte…   -<span style="color: #BB0000;">1.58</span>    9.07<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">1.74</span>     1.08<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> am ~ gear gaussian identity     1 gear      0.538   2.33<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  2.31     3.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> am ~ gear binomial logit        0 (Inte… -<span style="color: #BB0000;">177.</span>      4.09<span style="color: #949494;">e</span>+5 -<span style="color: #BB0000;">0.000</span><span style="color: #BB0000; text-decoration: underline;">434</span> 1.00<span style="color: #949494;">e</span>+0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> am ~ gear binomial logit        0 gear     50.4     1.16<span style="color: #949494;">e</span>+5  0.000<span style="text-decoration: underline;">436</span> 1.00<span style="color: #949494;">e</span>+0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> am ~ gear binomial logit        1 (Inte…  -<span style="color: #BB0000;">74.8</span>     1.28<span style="color: #949494;">e</span>+4 -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">82</span>  9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> am ~ gear binomial logit        1 gear     18.8     3.21<span style="color: #949494;">e</span>+3  0.005<span style="text-decoration: underline;">85</span>  9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> am ~ cyl  gaussian identity     0 (Inte…    2.54    5.65<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  4.51     3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> am ~ cyl  gaussian identity     0 cyl      -<span style="color: #BB0000;">0.297</span>   7.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> -<span style="color: #BB0000;">3.96</span>     1.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> am ~ cyl  gaussian identity     1 (Inte…    2.1     5.77<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  3.64     3.38<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> am ~ cyl  gaussian identity     1 cyl      -<span style="color: #BB0000;">0.35</span>    1.24<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">2.83</span>     1.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> am ~ cyl  binomial logit        0 (Inte…   79.7     1.52<span style="color: #949494;">e</span>+4  0.005<span style="text-decoration: underline;">26</span>  9.96<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> am ~ cyl  binomial logit        0 cyl     -<span style="color: #BB0000;">10.2</span>     1.89<span style="color: #949494;">e</span>+3 -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">38</span>  9.96<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> am ~ cyl  binomial logit        1 (Inte…   39.7     6.52<span style="color: #949494;">e</span>+3  0.006<span style="text-decoration: underline;">08</span>  9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> am ~ cyl  binomial logit        1 cyl      -<span style="color: #BB0000;">9.71</span>    1.63<span style="color: #949494;">e</span>+3 -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">95</span>  9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 8 more variables: null.deviance &lt;dbl&gt;, df.null &lt;int&gt;, logLik &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    model     family  link     vs term  estimate std.e…¹ statis…² p.value null.…³</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> am ~ gear gaussi… iden…     0 (Int…   -<span style="color: #BB0000;">1.57</span>  1.69<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">9.28</span><span style="color: #949494;">e</span>+0 7.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-8</span>     4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> am ~ gear gaussi… iden…     0 gear     0.536 4.64<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>  1.15<span style="color: #949494;">e</span>+1 3.59<span style="color: #949494;">e</span><span style="color: #BB0000;">-9</span>     4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> am ~ gear gaussi… iden…     1 (Int…   -<span style="color: #BB0000;">1.58</span>  9.07<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">1.74</span><span style="color: #949494;">e</span>+0 1.08<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>     3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> am ~ gear gaussi… iden…     1 gear     0.538 2.33<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  2.31<span style="color: #949494;">e</span>+0 3.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>     3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> am ~ gear binomi… logit     0 (Int… -<span style="color: #BB0000;">177.</span>    4.09<span style="color: #949494;">e</span>+5 -<span style="color: #BB0000;">4.34</span><span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> 1.00<span style="color: #949494;">e</span>+0    22.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> am ~ gear binomi… logit     0 gear    50.4   1.16<span style="color: #949494;">e</span>+5  4.36<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> 1.00<span style="color: #949494;">e</span>+0    22.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> am ~ gear binomi… logit     1 (Int…  -<span style="color: #BB0000;">74.8</span>   1.28<span style="color: #949494;">e</span>+4 -<span style="color: #BB0000;">5.82</span><span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> am ~ gear binomi… logit     1 gear    18.8   3.21<span style="color: #949494;">e</span>+3  5.85<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> am ~ cyl  gaussi… iden…     0 (Int…    2.54  5.65<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  4.51<span style="color: #949494;">e</span>+0 3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span>     4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> am ~ cyl  gaussi… iden…     0 cyl     -<span style="color: #BB0000;">0.297</span> 7.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span> -<span style="color: #BB0000;">3.96</span><span style="color: #949494;">e</span>+0 1.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>     4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> am ~ cyl  gaussi… iden…     1 (Int…    2.1   5.77<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  3.64<span style="color: #949494;">e</span>+0 3.38<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>     3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> am ~ cyl  gaussi… iden…     1 cyl     -<span style="color: #BB0000;">0.35</span>  1.24<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> -<span style="color: #BB0000;">2.83</span><span style="color: #949494;">e</span>+0 1.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>     3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> am ~ cyl  binomi… logit     0 (Int…   79.7   1.52<span style="color: #949494;">e</span>+4  5.26<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.96<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    22.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> am ~ cyl  binomi… logit     0 cyl    -<span style="color: #BB0000;">10.2</span>   1.89<span style="color: #949494;">e</span>+3 -<span style="color: #BB0000;">5.38</span><span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.96<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    22.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> am ~ cyl  binomi… logit     1 (Int…   39.7   6.52<span style="color: #949494;">e</span>+3  6.08<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> am ~ cyl  binomi… logit     1 cyl     -<span style="color: #BB0000;">9.71</span>  1.63<span style="color: #949494;">e</span>+3 -<span style="color: #BB0000;">5.95</span><span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span> 9.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>    19.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 7 more variables: df.null &lt;int&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​std.error, ²​statistic, ³​null.deviance</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -168,7 +189,7 @@ and columns of tidy model output or a list column of models
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

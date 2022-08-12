@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -53,45 +53,57 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cross_fit_robust</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">formulas</span>,
-  cols <span class="op">=</span> <span class="cn">NULL</span>,
-  weights <span class="op">=</span> <span class="cn">NULL</span>,
-  clusters <span class="op">=</span> <span class="cn">NULL</span>,
-  fn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  tidy <span class="op">=</span> <span class="va">tidy_glance</span>,
-  tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  errors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"stop"</span>, <span class="st">"warn"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cross_fit_robust</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">formulas</span>,</span>
+<span>  cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  weights <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  clusters <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  tidy <span class="op">=</span> <span class="va">tidy_glance</span>,</span>
+<span>  tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  errors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"stop"</span>, <span class="st">"warn"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame</p></dd>
+
+
 <dt>formulas</dt>
 <dd><p>A list of formulas to apply to each subset of the data.
 If named, these names will be used in the <code>model</code> column of the output.
 Otherwise, the formulas will be converted to strings in the <code>model</code> column.</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>Columns to subset the data.
 Can be any expression supported by
 &lt;<code><a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html" class="external-link">tidy-select</a></code>&gt;.
 If <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code>, the data is not subset into columns.
 Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>weights</dt>
 <dd><p>A list of columns passed to <code>weights</code> in <code>fn</code>.
 If one of the elements is <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> or <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">NA</a></code>, that model will not
 be weighted.
 Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>clusters</dt>
 <dd><p>A list of columns passed to <code>clusters</code>.
 If one of the elements is <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> or <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">NA</a></code>, that model will not
 be clustered.
 Defaults to <code>NULL</code>.</p></dd>
+
+
 <dt>fn_args</dt>
 <dd><p>A list of additional arguments to <code><a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html" class="external-link">estimatr::lm_robust()</a></code>.</p></dd>
+
+
 <dt>tidy</dt>
 <dd><p>A logical or function to use to tidy model output into
 data.frame columns.
@@ -102,17 +114,24 @@ An alternative function can be specified with an unquoted function name or
 a <a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr</a>-style lambda function with one argument (see usage
 with <a href="https://broom.tidymodels.org/reference/tidy.lm.html" class="external-link">broom::tidy(conf.int = TRUE)</a> in examples).
 Defaults to <a href="tidy_glance.html">tidy_glance</a>.</p></dd>
+
+
 <dt>tidy_args</dt>
 <dd><p>A list of additional arguments to the <code>tidy</code> function</p></dd>
+
+
 <dt>errors</dt>
 <dd><p>If <code>"stop"</code>, the default, the function will stop and return an
 error if any subset produces an error.
 If <code>"warn"</code>, the function will produce a warning for subsets that produce
 an error and return results for all subsets that do not.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble with a column for the model formula,
+    
+
+<p>A tibble with a column for the model formula,
 columns for subsets,
 columns for the weights and clusters (if applicable),
 and columns of tidy model output or a list column of models
@@ -125,25 +144,27 @@ and columns of tidy model output or a list column of models
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">cross_fit_robust</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">cyl</span>, clusters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="va">am</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cross_fit_robust</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">cyl</span>, clusters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="va">am</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    model    clusters   cyl term    estimate std.error statistic p.value conf.low</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> mpg ~ wt NULL         4 (Inter…    39.6      3.20      12.4  5.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-7</span>    32.3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> mpg ~ wt NULL         4 wt         -<span style="color: #BB0000;">5.65</span>     1.37      -<span style="color: #BB0000;">4.12</span> 2.59<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>    -<span style="color: #BB0000;">8.75</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> mpg ~ wt NULL         6 (Inter…    28.4      2.82      10.1  1.66<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span>    21.2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> mpg ~ wt NULL         6 wt         -<span style="color: #BB0000;">2.78</span>     0.934     -<span style="color: #BB0000;">2.98</span> 3.09<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    -<span style="color: #BB0000;">5.18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> mpg ~ wt NULL         8 (Inter…    23.9      3.19       7.48 7.45<span style="color: #949494;">e</span><span style="color: #BB0000;">-6</span>    16.9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> mpg ~ wt NULL         8 wt         -<span style="color: #BB0000;">2.19</span>     0.825     -<span style="color: #BB0000;">2.66</span> 2.09<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    -<span style="color: #BB0000;">3.99</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> mpg ~ wt am           4 (Inter…    39.6      6.59       6.00 6.11<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    -<span style="color: #BB0000;">6.45</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> mpg ~ wt am           4 wt         -<span style="color: #BB0000;">5.65</span>     2.55      -<span style="color: #BB0000;">2.21</span> 2.19<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>   -<span style="color: #BB0000;">24.3</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> mpg ~ wt am           6 (Inter…    28.4      6.54       4.35 6.75<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    -<span style="color: #BB0000;">5.94</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> mpg ~ wt am           6 wt         -<span style="color: #BB0000;">2.78</span>     1.94      -<span style="color: #BB0000;">1.43</span> 3.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>   -<span style="color: #BB0000;">12.1</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> mpg ~ wt am           8 (Inter…    23.9      1.94      12.3  4.13<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>     3.83</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> mpg ~ wt am           8 wt         -<span style="color: #BB0000;">2.19</span>     0.391     -<span style="color: #BB0000;">5.60</span> 9.61<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    -<span style="color: #BB0000;">6.19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 10 more variables: conf.high &lt;dbl&gt;, df &lt;dbl&gt;, outcome &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   r.squared &lt;dbl&gt;, adj.r.squared &lt;dbl&gt;, model.statistic &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.p.value &lt;dbl&gt;, df.residual &lt;dbl&gt;, nobs &lt;int&gt;, se_type &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    model    clusters   cyl term  estim…¹ std.e…² stati…³ p.value conf.…⁴ conf.…⁵</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> mpg ~ wt NULL         4 (Int…   39.6    3.20    12.4  5.95<span style="color: #949494;">e</span><span style="color: #BB0000;">-7</span>   32.3   46.8  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> mpg ~ wt NULL         4 wt      -<span style="color: #BB0000;">5.65</span>   1.37    -<span style="color: #BB0000;">4.12</span> 2.59<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>   -<span style="color: #BB0000;">8.75</span>  -<span style="color: #BB0000;">2.55</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> mpg ~ wt NULL         6 (Int…   28.4    2.82    10.1  1.66<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span>   21.2   35.7  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> mpg ~ wt NULL         6 wt      -<span style="color: #BB0000;">2.78</span>   0.934   -<span style="color: #BB0000;">2.98</span> 3.09<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>   -<span style="color: #BB0000;">5.18</span>  -<span style="color: #BB0000;">0.380</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> mpg ~ wt NULL         8 (Int…   23.9    3.19     7.48 7.45<span style="color: #949494;">e</span><span style="color: #BB0000;">-6</span>   16.9   30.8  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> mpg ~ wt NULL         8 wt      -<span style="color: #BB0000;">2.19</span>   0.825   -<span style="color: #BB0000;">2.66</span> 2.09<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>   -<span style="color: #BB0000;">3.99</span>  -<span style="color: #BB0000;">0.394</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> mpg ~ wt am           4 (Int…   39.6    6.59     6.00 6.11<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>   -<span style="color: #BB0000;">6.45</span>  85.6  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> mpg ~ wt am           4 wt      -<span style="color: #BB0000;">5.65</span>   2.55    -<span style="color: #BB0000;">2.21</span> 2.19<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  -<span style="color: #BB0000;">24.3</span>   13.1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> mpg ~ wt am           6 (Int…   28.4    6.54     4.35 6.75<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>   -<span style="color: #BB0000;">5.94</span>  62.8  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> mpg ~ wt am           6 wt      -<span style="color: #BB0000;">2.78</span>   1.94    -<span style="color: #BB0000;">1.43</span> 3.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>  -<span style="color: #BB0000;">12.1</span>    6.55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> mpg ~ wt am           8 (Int…   23.9    1.94    12.3  4.13<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>    3.83  43.9  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> mpg ~ wt am           8 wt      -<span style="color: #BB0000;">2.19</span>   0.391   -<span style="color: #BB0000;">5.60</span> 9.61<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>   -<span style="color: #BB0000;">6.19</span>   1.81 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9 more variables: df &lt;dbl&gt;, outcome &lt;chr&gt;, r.squared &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   adj.r.squared &lt;dbl&gt;, model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;dbl&gt;, nobs &lt;int&gt;, se_type &lt;chr&gt;, and abbreviated variable</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​estimate, ²​std.error, ³​statistic, ⁴​conf.low, ⁵​conf.high</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -158,7 +179,7 @@ and columns of tidy model output or a list column of models
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

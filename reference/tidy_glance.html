@@ -18,7 +18,7 @@ return a single tibble with both sets of information."><meta property="og:image"
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -55,68 +55,85 @@ return a single <a href="https://tibble.tidyverse.org/reference/tibble.html" cla
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, glance_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, glance_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>An object to be converted into a tidy <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">generics::tidy()</a></code>
 and <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">generics::glance()</a></code>.</p>
 <p>Arguments are passed to both methods, but should be ignored by the
 inapplicable method. For example, if called on an <a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a> object,
 <code>conf.int</code> will affect <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">generics::tidy()</a></code> but not <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">generics::glance()</a></code>.</p></dd>
+
+
 <dt>tidy_args</dt>
 <dd><p>A list of additional arguments passed only
 to <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">generics::tidy()</a></code>.</p></dd>
+
+
 <dt>glance_args</dt>
 <dd><p>A list of additional arguments passed only
 to <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">generics::glance()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> with columns and rows from
+    
+
+<p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> with columns and rows from
 <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">generics::tidy()</a></code> and columns of repeated rows
-from <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">generics::glance()</a></code>.
-Column names that appear in both the <code>tidy</code> data and <code>glance</code> data will be
+from <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">generics::glance()</a></code>.</p>
+
+
+<p>Column names that appear in both the <code>tidy</code> data and <code>glance</code> data will be
 disambiguated by appending "<code>model.</code>" to the <code>glance</code> column names.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">qsec</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">qsec</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   term       estimate std.error statistic  p.value r.squared adj.r.squared sigma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Intercep…   19.7       5.25       3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>     0.826         0.814  2.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt           -<span style="color: #BB0000;">5.05</span>      0.484    -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>     0.826         0.814  2.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec          0.929     0.265      3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>     0.826         0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term   estim…¹ std.e…² stati…³  p.value r.squ…⁴ adj.r…⁵ sigma model…⁶ model.…⁷</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Inte…  19.7     5.25     3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>   0.826   0.814  2.60    69.0 9.39<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt      -<span style="color: #BB0000;">5.05</span>    0.484  -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>   0.826   0.814  2.60    69.0 9.39<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec     0.929   0.265    3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>   0.826   0.814  2.60    69.0 9.39<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 7 more variables: df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​estimate, ²​std.error, ³​statistic, ⁴​r.squared, ⁵​adj.r.squared,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​model.statistic, ⁷​model.p.value</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
+<span class="r-in"><span><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 19</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term    estim…¹ std.e…² stati…³  p.value conf.…⁴ conf.…⁵ r.squ…⁶ adj.r…⁷ sigma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Inter…  19.7     5.25     3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>   9.00    30.5    0.826   0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt       -<span style="color: #BB0000;">5.05</span>    0.484  -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>  -<span style="color: #BB0000;">6.04</span>    -<span style="color: #BB0000;">4.06</span>   0.826   0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec      0.929   0.265    3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>   0.387    1.47   0.826   0.814  2.60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9 more variables: model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span>
-<span class="r-in"><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​estimate,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​std.error, ³​statistic, ⁴​conf.low, ⁵​conf.high, ⁶​r.squared, ⁷​adj.r.squared</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
+<span class="r-in"><span><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span>, tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   term        estimate std.error statistic  p.value conf.low conf.high r.squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Intercept)   19.7       5.25       3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>    9.00      30.5      0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt            -<span style="color: #BB0000;">5.05</span>      0.484    -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>   -<span style="color: #BB0000;">6.04</span>      -<span style="color: #BB0000;">4.06</span>     0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec           0.929     0.265      3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>    0.387      1.47     0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 11 more variables: adj.r.squared &lt;dbl&gt;, sigma &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span>
-<span class="r-in"><span class="fu">tidy_glance</span><span class="op">(</span><span class="va">mod</span>, tidy_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   term        estimate std.error statistic  p.value conf.low conf.high r.squared</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Intercept)   19.7       5.25       3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>    9.00      30.5      0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt            -<span style="color: #BB0000;">5.05</span>      0.484    -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>   -<span style="color: #BB0000;">6.04</span>      -<span style="color: #BB0000;">4.06</span>     0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec           0.929     0.265      3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>    0.387      1.47     0.826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 11 more variables: adj.r.squared &lt;dbl&gt;, sigma &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term    estim…¹ std.e…² stati…³  p.value conf.…⁴ conf.…⁵ r.squ…⁶ adj.r…⁷ sigma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> (Inter…  19.7     5.25     3.76 7.65<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span>   9.00    30.5    0.826   0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> wt       -<span style="color: #BB0000;">5.05</span>    0.484  -<span style="color: #BB0000;">10.4</span>  2.52<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>  -<span style="color: #BB0000;">6.04</span>    -<span style="color: #BB0000;">4.06</span>   0.826   0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> qsec      0.929   0.265    3.51 1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>   0.387    1.47   0.826   0.814  2.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9 more variables: model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​estimate,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​std.error, ³​statistic, ⁴​conf.low, ⁵​conf.high, ⁶​r.squared, ⁷​adj.r.squared</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -131,7 +148,7 @@ disambiguated by appending "<code>model.</code>" to the <code>glance</code> colu
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

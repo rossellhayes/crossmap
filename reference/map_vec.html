@@ -19,7 +19,7 @@ purrr::map2(), purrr::pmap(), purrr::imap() and xmap()
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -57,21 +57,23 @@ purrr::map2(), purrr::pmap(), purrr::imap() and xmap()
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">map_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">map2_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">pmap_vec</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">imap_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">xmap_vec</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">map_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map2_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_vec</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_vec</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">xmap_vec</span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span>, .class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.x</dt>
 <dd><p>A list or atomic vector.</p></dd>
+
+
 <dt>.f</dt>
 <dd><p>A function, formula, or vector (not necessarily atomic).</p>
 <p>If a <strong>function</strong>, it is used as is.</p>
@@ -85,28 +87,43 @@ converted to an extractor function. Character vectors index by
 name and numeric vectors index by position; use a list to index
 by position and name at different levels. If a component is not
 present, the value of <code>.default</code> will be returned.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed on to <code>.f</code></p></dd>
+
+
 <dt>.class</dt>
 <dd><p>If <code>.class</code> is specified, all</p></dd>
+
+
 <dt>.y</dt>
 <dd><p>A vector the same length as <code>.x</code>.
 Vectors of length 1 will be recycled.</p></dd>
+
+
 <dt>.l</dt>
 <dd><p>A list of vectors, such as a data frame.
 The length of .l determines the number of arguments that .f will be called
 with.
 List names will be used if present.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Equivalent to the typed variants of <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">purrr::map2()</a></code>,
+    
+
+<p>Equivalent to the typed variants of <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">purrr::map2()</a></code>,
 <code><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">purrr::pmap()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">purrr::imap()</a></code> and <code><a href="xmap.html">xmap()</a></code> with the type automatically
-determined.
-If the output contains multiple types, the type is determined from
+determined.</p>
+
+
+<p>If the output contains multiple types, the type is determined from
 the highest type of the components in the hierarchy <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a> &lt; <a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a> &lt;
-<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a> &lt; <a href="https://rdrr.io/r/base/double.html" class="external-link">double</a> &lt; <a href="https://rdrr.io/r/base/complex.html" class="external-link">complex</a> &lt; <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a> &lt; <a href="https://rdrr.io/r/base/list.html" class="external-link">list</a> (as in <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>).
-If the output contains elements that cannot be coerced to vectors
+<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a> &lt; <a href="https://rdrr.io/r/base/double.html" class="external-link">double</a> &lt; <a href="https://rdrr.io/r/base/complex.html" class="external-link">complex</a> &lt; <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a> &lt; <a href="https://rdrr.io/r/base/list.html" class="external-link">list</a> (as in <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>).</p>
+
+
+<p>If the output contains elements that cannot be coerced to vectors
 (e.g. lists), the output will be a list.</p>
     </div>
     <div id="see-also">
@@ -119,41 +136,41 @@ If the output contains elements that cannot be coerced to vectors
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">fruits</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span>, <span class="st">"durian"</span>, <span class="st">"eggplant"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bread"</span>, <span class="st">"cake"</span>, <span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">z</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">fruits</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">map_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">fruits</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span>, <span class="st">"durian"</span>, <span class="st">"eggplant"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bread"</span>, <span class="st">"cake"</span>, <span class="st">"cupcake"</span>, <span class="st">"muffin"</span>, <span class="st">"streudel"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">z</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">fruits</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">map_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16  4  9 25  1</span>
-<span class="r-in"><span class="fu">map_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">map_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "apples"      "bananas"     "cantaloupes" "durians"     "eggplants"  </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">map2_vec</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 6 5 8 6</span>
-<span class="r-in"><span class="fu">map2_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span>, <span class="va">paste</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">map2_vec</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8  3  6 10  3</span>
+<span class="r-in"><span><span class="fu">map2_vec</span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span>, <span class="va">paste</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "apple bread"        "banana cake"        "cantaloupe cupcake"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "durian muffin"      "eggplant streudel" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  9 11  6 10  9</span>
-<span class="r-in"><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">sum</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12  8  8 11  6</span>
+<span class="r-in"><span><span class="fu">pmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4 apple bread"        "2 banana cake"        "3 cantaloupe cupcake"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "5 durian muffin"      "1 eggplant streudel" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">+</span> <span class="va">.y</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 4 6 9 6</span>
-<span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">.y</span>, <span class="st">": "</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">imap_vec</span><span class="op">(</span><span class="va">x</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">.y</span>, <span class="st">": "</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1: 4" "2: 2" "3: 3" "4: 5" "5: 1"</span>
-<span class="r-in"><span class="fu">imap_vec</span><span class="op">(</span><span class="va">z</span>, <span class="va">paste</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">imap_vec</span><span class="op">(</span><span class="va">z</span>, <span class="va">paste</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          apple         banana     cantaloupe         durian       eggplant </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      "4 apple"     "5 banana" "1 cantaloupe"     "2 durian"   "3 eggplant" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  4  2  3  5  1 16  8 12 20  4  8  4  6 10  2 12  6  9 15  3 20 10 15 25  5</span>
-<span class="r-in"><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      "4 apple"     "5 banana" "2 cantaloupe"     "1 durian"   "3 eggplant" </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 16  8 12 20  4  4  2  3  5  1 12  6  9 15  3 20 10 15 25  5  8  4  6 10  2</span>
+<span class="r-in"><span><span class="fu">xmap_vec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">fruits</span>, <span class="va">desserts</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "apple bread"         "banana bread"        "cantaloupe bread"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "durian bread"        "eggplant bread"      "apple cake"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "banana cake"         "cantaloupe cake"     "durian cake"        </span>
@@ -177,7 +194,7 @@ If the output contains elements that cannot be coerced to vectors
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
