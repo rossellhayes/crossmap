@@ -1,6 +1,6 @@
 Package: crossmap
 Title: Apply Functions to All Combinations of List Elements
-Version: 0.3.3
+Version: 0.3.3.9000
 Authors@R: 
     person(given = "Alexander",
            family = "Rossell Hayes",
