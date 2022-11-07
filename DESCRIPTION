@@ -2,10 +2,7 @@ Package: crossmap
 Title: Apply Functions to All Combinations of List Elements
 Version: 0.3.3.9000
 Authors@R: 
-    person(given = "Alexander",
-           family = "Rossell Hayes",
-           role = c("aut", "cre", "cph"),
-           email = "alexander@rossellhayes.com",
+    person("Alexander", "Rossell Hayes", , "alexander@rossellhayes.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-9412-0457"))
 Description: Provides an extension to the 'purrr' family of mapping
     functions to apply a function to each combination of elements in a
