@@ -74,7 +74,7 @@ If all input is length 0, the output will be length 0.
 If any input is length 1, it will be recycled to the length of the longest.
 }
 \description{
-These functions are variants of \code{\link[purrr:map2]{purrr::pmap()}} that iterate over each
+These functions are variants of \code{\link[purrr:pmap]{purrr::pmap()}} that iterate over each
 combination of elements in a list.
 }
 \details{
@@ -118,6 +118,6 @@ xmap(list(data = subsets, formula = formulas), lm)
 
 \code{\link[=cross_list]{cross_list()}} to find combinations of list elements.
 
-\code{\link[purrr:map]{purrr::map()}}, \code{\link[purrr:map2]{purrr::map2()}}, and \code{\link[purrr:map2]{purrr::pmap()}} for other mapping
+\code{\link[purrr:map]{purrr::map()}}, \code{\link[purrr:map2]{purrr::map2()}}, and \code{\link[purrr:pmap]{purrr::pmap()}} for other mapping
 functions.
 }
