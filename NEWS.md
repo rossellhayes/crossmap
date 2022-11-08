@@ -1,5 +1,8 @@
 # crossmap (development version)
 
+* Add `xpluck()` function.
+  * `xpluck()` works like `purrr::pluck()`, but allows you to specify multiple indices at each step, e.g. `xpluck(x, 1:2, c("a", "b"))`.
+
 # crossmap 0.3.3
 
 * Update roxygen version to avoid CRAN NOTE.
