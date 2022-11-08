@@ -1,3 +1,45 @@
+test_that("xpluck() with vector indices", {
+  obj1 <- list("a", list(1, elt = "foo"))
+  obj2 <- list("b", list(2, elt = "bar"))
+  x <- list(obj1, obj2)
+
+  expect_equal(
+    xpluck(x, 1:2, 2),
+    list(list(1, elt = "foo"), list(2, elt = "bar"))
+  )
+
+  expect_equal(
+    xpluck(x, 1:2, 2, 1),
+    c(1, 2)
+  )
+
+  expect_equal(
+    xpluck(x, 1:2, 2, 1:2),
+    list(list(1, "foo"), list(2, "bar"))
+  )
+})
+
+test_that("xpluck() with missing indices", {
+  obj1 <- list("a", list(1, elt = "foo"))
+  obj2 <- list("b", list(2, elt = "bar"))
+  x <- list(obj1, obj2)
+
+  expect_equal(
+    xpluck(x, , 2),
+    list(list(1, elt = "foo"), list(2, elt = "bar"))
+  )
+
+  expect_equal(
+    xpluck(x, , 2, 1),
+    c(1, 2)
+  )
+
+  expect_equal(
+    xpluck(x, , 2, 1:2),
+    list(list(1, "foo"), list(2, "bar"))
+  )
+})
+
 # These tests are adapted from tests in the purrr package
 # https://github.com/tidyverse/purrr
 #
