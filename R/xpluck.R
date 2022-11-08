@@ -1,3 +1,24 @@
+#' Get one or more elements deep within a nested data structure
+#'
+#' `xpluck()` provides an alternative to [purrr::pluck()].
+#' Unlike [purrr::pluck()], `xpluck()` allows you to extract multiple indices at
+#' each nesting level.
+#'
+#' @example man/examples/example-xpluck.R
+#'
+#' @param .x A [list] or [vector]
+#' @param ... A list of accessors for indexing into the object.
+#'   Can be positive integers,
+#'   negative integers (to index from the right),
+#'   strings (to index into names) or
+#'   missing (to keep all elements at a given level).
+#'
+#'   Unlike [purrr::pluck()],
+#'   each accessor may be a vector to extract multiple elements.
+#' @param .default Value to use if target is [`NULL`] or absent.
+#'
+#' @return A [list] or [vector].
+#' @export
 xpluck <- function(.x, ..., .default = NULL) {
   rlang::check_dots_unnamed()
   indices <- rlang::dots_list(..., .preserve_empty = TRUE)
