@@ -26,7 +26,14 @@ xpluck <- function(.x, ..., .default = NULL) {
 
   result <- xpluck_impl(.x, indices, .default)
 
-  while (purrr::pluck_depth(result) > 2 && all(lengths(result) == 1)) {
+  # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
+  pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
+    purrr::pluck_depth
+  } else {
+    purrr::vec_depth
+  }
+
+  while (pluck_depth(result) > 2 && all(lengths(result) == 1)) {
     result <- purrr::flatten(result)
   }
 
