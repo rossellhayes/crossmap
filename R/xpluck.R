@@ -23,25 +23,7 @@ xpluck <- function(.x, ..., .default = NULL) {
   rlang::check_dots_unnamed()
   indices <- rlang::dots_list(..., .preserve_empty = TRUE)
   assert_valid_indices(indices)
-
-  result <- xpluck_impl(.x, indices, .default)
-
-  # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
-  pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
-    purrr::pluck_depth
-  } else {
-    purrr::vec_depth
-  }
-
-  while (pluck_depth(result) > 2 && all(lengths(result) == 1)) {
-    result <- purrr::flatten(result)
-  }
-
-  if (all(lengths(result) <= 1)) {
-    result <- purrr::list_c(result)
-  }
-
-  result
+  flatten_result(xpluck_impl(.x, indices, .default))
 }
 
 xpluck_impl <- function(.x, indices, .default) {
@@ -88,4 +70,27 @@ assert_valid_indices <- function(indices) {
       "not a {.cls {invalid_index_class}}."
     ))
   }
+}
+
+flatten_result <- function(result) {
+  # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
+  pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
+    purrr::pluck_depth
+  } else {
+    purrr::vec_depth
+  }
+
+  while (pluck_depth(result) > 2 && all(lengths(result) == 1)) {
+    result <- purrr::flatten(result)
+  }
+
+  if (
+    is.list(result) &&
+    all(lengths(result) == 1) &&
+    length(unique(purrr::map_chr(result, class))) == 1
+  ) {
+    result <- vctrs::list_unchop(result)
+  }
+
+  result
 }

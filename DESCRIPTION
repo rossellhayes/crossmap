@@ -22,7 +22,8 @@ Imports:
     purrr,
     rlang,
     stats,
-    utils
+    utils,
+    vctrs
 Suggests: 
     broom,
     covr,
