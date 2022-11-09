@@ -40,6 +40,15 @@ test_that("xpluck() with missing indices", {
   )
 })
 
+test_that("xpluck() with multiple classes", {
+  obj1 <- list("a", 1)
+  obj2 <- list("b", "c")
+  x <- list(obj1, obj2)
+
+  expect_equal(xpluck(x, 1:2, 1), c("a", "b"))
+  expect_equal(xpluck(x, 1:2, 2), list(1, "c"))
+})
+
 # These tests are adapted from tests in the purrr package
 # https://github.com/tidyverse/purrr
 #

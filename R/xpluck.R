@@ -73,6 +73,8 @@ assert_valid_indices <- function(indices) {
 }
 
 flatten_result <- function(result) {
+  if (!is.list(result)) return(result)
+
   # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
   pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
     purrr::pluck_depth
@@ -84,12 +86,17 @@ flatten_result <- function(result) {
     result <- purrr::flatten(result)
   }
 
+  # `list()` or `list(integer(0))`
+  if (length(result) == 0 || identical(lengths(result), 0L)) {
+    return(vctrs::list_unchop(result))
+  }
+
+  # `list(1, 2)` or `list("a", "b")`
   if (
-    is.list(result) &&
     all(lengths(result) == 1) &&
     length(unique(purrr::map_chr(result, class))) == 1
   ) {
-    result <- vctrs::list_unchop(result)
+    return(vctrs::list_unchop(result))
   }
 
   result
