@@ -18,7 +18,7 @@ set of data subsets."><meta property="og:image" content="https://crossmap.rossel
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3.9000</span>
       </span>
     </div>
 
@@ -180,7 +180,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​estimate,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​std.error, ³​statistic, ⁴​r.squared, ⁵​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 19</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model      cyl term   estimate std.e…¹ stati…² p.value r.squ…³ adj.r.…⁴ sigma</span>
@@ -201,7 +200,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​std.error,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​statistic, ³​r.squared, ⁴​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>wt <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 19</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model   cyl term      estimate std.e…¹ stati…² p.value r.squ…³ adj.r.…⁴ sigma</span>
@@ -222,7 +220,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​std.error,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​statistic, ³​r.squared, ⁴​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">vs</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>essentially perfect fit: summary may be unreliable</span>
@@ -255,7 +252,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable name ¹​r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 36 × 20</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model      cyl  carb term   estim…¹ std.e…² stati…³   p.value r.squ…⁴ adj.r…⁵</span>
@@ -274,7 +270,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​estimate, ²​std.error, ³​statistic, ⁴​r.squared, ⁵​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, weights <span class="op">=</span> <span class="va">wt</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 20</span></span>
@@ -290,7 +285,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​std.error, ²​statistic, ³​r.squared, ⁴​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, weights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">wt</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 20</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    model weights   cyl term    estimate std.e…¹ stati…² p.value r.squ…³ adj.r.…⁴</span>
@@ -311,7 +305,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   names ¹​std.error, ²​statistic, ³​r.squared, ⁴​adj.r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">cyl</span>, <span class="va">vs</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">am</span>,</span></span>
@@ -335,7 +328,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 5 more variables: AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​std.error,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​statistic, ³​null.deviance</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">cyl</span>, <span class="va">vs</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">am</span>,</span></span>
 <span class="r-in"><span>  fn <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link <span class="op">=</span> <span class="va">logit</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -358,7 +350,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 5 more variables: AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   df.residual &lt;int&gt;, nobs &lt;int&gt;, and abbreviated variable names ¹​std.error,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​statistic, ³​null.deviance</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, tidy <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 3</span></span>
@@ -391,7 +382,6 @@ and columns of tidy model output or a list column of models
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;, and</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​std.error, ²​statistic, ³​conf.low, ⁴​conf.high,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​r.squared</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">cross_fit</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, <span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span><span class="op">)</span>, <span class="va">cyl</span>, tidy <span class="op">=</span> <span class="fu">broom</span><span class="fu">::</span><span class="va"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 7</span></span>

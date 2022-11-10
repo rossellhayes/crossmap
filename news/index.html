@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossmap</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3.9000</span>
       </span>
     </div>
 
@@ -48,7 +48,14 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.3" id="crossmap-033">crossmap 0.3.3<a class="anchor" aria-label="anchor" href="#crossmap-033"></a></h2>
+<h2 class="page-header" data-toc-text="development version" id="crossmap-development-version">crossmap (development version)<a class="anchor" aria-label="anchor" href="#crossmap-development-version"></a></h2>
+<ul><li>Add <code><a href="../reference/xpluck.html">xpluck()</a></code> function.
+<ul><li>
+<code><a href="../reference/xpluck.html">xpluck()</a></code> works like <code><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">purrr::pluck()</a></code>, but allows you to specify multiple indices at each step, e.g. <code>xpluck(x, 1:2, c("a", "b"))</code>.</li>
+</ul></li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.3" id="crossmap-033">crossmap 0.3.3<small>2022-08-12</small><a class="anchor" aria-label="anchor" href="#crossmap-033"></a></h2>
 <ul><li>Update roxygen version to avoid CRAN NOTE.</li>
 <li>Remove <code>broomExtra</code> from suggested packages, because it was archived on CRAN.</li>
 </ul></div>
@@ -56,13 +63,16 @@
 <h2 class="page-header" data-toc-text="0.3.2" id="crossmap-032">crossmap 0.3.2<a class="anchor" aria-label="anchor" href="#crossmap-032"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-3-2">New features<a class="anchor" aria-label="anchor" href="#new-features-0-3-2"></a></h3>
-<ul><li>The <code><a href="../reference/map_vec.html">map_vec()</a></code> family of functions gain a <code>.class</code> argument, which coerces each element of the output to the given class.</li></ul></div>
+<ul><li>The <code><a href="../reference/map_vec.html">map_vec()</a></code> family of functions gain a <code>.class</code> argument, which coerces each element of the output to the given class.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="enhancements-0-3-2">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-0-3-2"></a></h3>
 <ul><li>The <code><a href="../reference/map_vec.html">map_vec()</a></code> family of functions can now return vectors with S3 classes in addition to base classes.</li>
 <li>
-<code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> (and functions that call it) now use <code>generics</code> instead of <code>broomExtra</code>.<ul><li>
-<code>broom</code> and <code>broomExtra</code> are now Suggested packages.</li></ul></li>
+<code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> (and functions that call it) now use <code>generics</code> instead of <code>broomExtra</code>.
+<ul><li>
+<code>broom</code> and <code>broomExtra</code> are now Suggested packages.</li>
+</ul></li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -94,7 +104,8 @@
 <li>
 <p>Added <code><a href="../reference/tidy_glance.html">tidy_glance()</a></code>, which returns a tibble with information from both <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">broom::tidy()</a></code> and <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">broom::glance()</a></code>.</p>
 <ul><li>
-<code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> is now the default tidier in <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.</li></ul></li>
+<code><a href="../reference/tidy_glance.html">tidy_glance()</a></code> is now the default tidier in <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.</li>
+</ul></li>
 <li><p>Added <code><a href="../reference/future_xmap.html">future_xmap_raw()</a></code> and <code><a href="../reference/future_xmap.html">future_xwalk()</a></code>.</p></li>
 </ul></div>
 <div class="section level3">
@@ -106,15 +117,18 @@
 </ul></div>
 <div class="section level3">
 <h3 id="miscellaneous-0-3-0">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-0-3-0"></a></h3>
-<ul><li>Promoted <code>broom</code> and <code>dplyr</code> from suggested to imported packages.</li></ul></div>
+<ul><li>Promoted <code>broom</code> and <code>dplyr</code> from suggested to imported packages.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="crossmap-020">crossmap 0.2.0<small>2020-09-24</small><a class="anchor" aria-label="anchor" href="#crossmap-020"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
-<ul><li>Added <code>weights</code> argument to <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.<ul><li>You can now cross model specifications in three dimensions: formulas, subsets, and weights.</li>
+<ul><li>Added <code>weights</code> argument to <code><a href="../reference/cross_fit.html">cross_fit()</a></code>.
+<ul><li>You can now cross model specifications in three dimensions: formulas, subsets, and weights.</li>
 <li>Weights are specified as a list of column names, or <code>NULL</code> or <code>NA</code> for an unweighted model.</li>
-</ul></li></ul></div>
+</ul></li>
+</ul></div>
 <div class="section level3">
 <h3 id="miscellaneous-0-2-0">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous-0-2-0"></a></h3>
 <ul><li>Added <code>tibble</code> as a suggested package.</li>
@@ -124,7 +138,8 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.0" id="crossmap-010">crossmap 0.1.0<small>2020-09-10</small><a class="anchor" aria-label="anchor" href="#crossmap-010"></a></h2>
-<ul><li>Initial CRAN release.</li></ul></div>
+<ul><li>Initial CRAN release.</li>
+</ul></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
