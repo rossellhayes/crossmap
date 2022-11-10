@@ -77,9 +77,9 @@ flatten_result <- function(result) {
 
   # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
   pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
-    purrr::pluck_depth
+    utils::getFromNamespace("pluck_depth", asNamespace("purrr"))
   } else {
-    purrr::vec_depth
+    utils::getFromNamespace("vec_depth", asNamespace("purrr"))
   }
 
   while (pluck_depth(result) > 2 && all(lengths(result) == 1)) {
