@@ -54,6 +54,17 @@ test_that("xpluck() with data frame columns", {
   expect_equal(xpluck(mtcars, "cyl"), mtcars[["cyl"]])
 })
 
+test_that("xpluck() with zero-length accessor returns `NULL`", {
+  expect_equal(xpluck(mtcars, NULL), NULL)
+  expect_equal(xpluck(mtcars, character(0)), NULL)
+  expect_equal(xpluck(mtcars, numeric(0)), NULL)
+  expect_equal(xpluck(mtcars, integer(0)), NULL)
+})
+
+test_that("zero-length accessors are still validated", {
+  expect_error(xpluck(mtcars, logical(0)))
+})
+
 # These tests are adapted from tests in the purrr package
 # https://github.com/tidyverse/purrr
 #
@@ -169,7 +180,6 @@ test_that("empty and NA names never match", {
 })
 
 test_that("require character/double vectors", {
-  expect_error(xpluck(1, NULL))
   expect_error(xpluck(1, TRUE))
 })
 
