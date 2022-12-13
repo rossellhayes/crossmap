@@ -99,5 +99,10 @@ flatten_result <- function(result) {
     return(vctrs::list_unchop(result))
   }
 
+  # `list(c(1, 2))` or `list(c("a", "b"))`
+  if (is.list(result) && length(result) == 1) {
+    return(vctrs::list_unchop(result))
+  }
+
   result
 }

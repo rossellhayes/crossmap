@@ -49,6 +49,11 @@ test_that("xpluck() with multiple classes", {
   expect_equal(xpluck(x, 1:2, 2), list(1, "c"))
 })
 
+test_that("xpluck() with data frame columns", {
+  expect_equal(xpluck(mtcars, 1), mtcars[[1]])
+  expect_equal(xpluck(mtcars, "cyl"), mtcars[["cyl"]])
+})
+
 # These tests are adapted from tests in the purrr package
 # https://github.com/tidyverse/purrr
 #
