@@ -1,5 +1,8 @@
 # crossmap (development version)
 
+* Deprecate `xmap_raw()` and `future_xmap_raw()` functions.
+  * `purrr::map_raw()` and other `*_raw()` functions are deprecated in purrr 1.0.0.
+
 # crossmap 0.3.3
 
 * Update roxygen version to avoid CRAN NOTE.
