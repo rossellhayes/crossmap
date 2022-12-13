@@ -22,6 +22,7 @@ Imports:
     cli,
     dplyr (>= 1.0.0),
     generics,
+    lifecycle,
     purrr,
     rlang,
     stats,
@@ -38,4 +39,4 @@ Suggests:
     withr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3

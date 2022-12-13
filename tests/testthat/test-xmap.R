@@ -19,7 +19,10 @@ test_that("output suffixes have correct type", {
   expect_is(xmap_int(list(x, x), `-`), "integer")
   expect_is(xmap_dbl(list(x, x), `/`), "numeric")
   expect_is(xmap_chr(list(x, x), paste), "character")
-  expect_is(xmap_raw(list(as.raw(x), x), rawShift), "raw")
+  expect_is(
+    lifecycle::expect_deprecated(xmap_raw(list(as.raw(x), x), rawShift)),
+    "raw"
+  )
   expect_output(xwalk(list(x, x), ~ print(paste(.x, .y))))
 })
 
@@ -37,7 +40,12 @@ test_that("xmap on data frames performs rowwise operations", {
   expect_is(xmap_int(df, function(x, y) x - y), "integer")
   expect_is(xmap_dbl(df, function(x, y) x / y), "numeric")
   expect_is(xmap_chr(df, paste), "character")
-  expect_is(xmap_raw(df, function(x, y) rawShift(as.raw(x), y)), "raw")
+  expect_is(
+    lifecycle::expect_deprecated(
+      xmap_raw(df, function(x, y) rawShift(as.raw(x), y))
+    ),
+    "raw"
+  )
 })
 
 test_that("xmap works with empty lists", {

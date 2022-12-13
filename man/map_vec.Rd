@@ -55,7 +55,7 @@ List names will be used if present.}
 }
 \value{
 Equivalent to the typed variants of \code{\link[purrr:map]{purrr::map()}}, \code{\link[purrr:map2]{purrr::map2()}},
-\code{\link[purrr:map2]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}} with the type automatically
+\code{\link[purrr:pmap]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}} with the type automatically
 determined.
 
 If the output contains multiple types, the type is determined from
@@ -67,7 +67,7 @@ If the output contains elements that cannot be coerced to vectors
 }
 \description{
 These functions work exactly the same as typed variants of \code{\link[purrr:map]{purrr::map()}},
-\code{\link[purrr:map2]{purrr::map2()}}, \code{\link[purrr:map2]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}}
+\code{\link[purrr:map2]{purrr::map2()}}, \code{\link[purrr:pmap]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}}
 (e.g. \code{\link[purrr:map]{purrr::map_chr()}}), but automatically determine the type.
 }
 \examples{
@@ -96,7 +96,7 @@ xmap_vec(list(fruits, desserts), paste)
 }
 \seealso{
 The original functions: \code{\link[purrr:map]{purrr::map()}}, \code{\link[purrr:map2]{purrr::map2()}},
-\code{\link[purrr:map2]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}}
+\code{\link[purrr:pmap]{purrr::pmap()}}, \code{\link[purrr:imap]{purrr::imap()}} and \code{\link[=xmap]{xmap()}}
 
 Parallelized equivalents: \code{\link[=future_map_vec]{future_map_vec()}}, \code{\link[=future_map2_vec]{future_map2_vec()}},
 \code{\link[=future_pmap_vec]{future_pmap_vec()}}, \code{\link[=future_imap_vec]{future_imap_vec()}} and \code{\link[=future_xmap_vec]{future_xmap_vec()}}
