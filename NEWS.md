@@ -1,5 +1,7 @@
 # crossmap (development version)
 
+* Add `xpluck()` function.
+  * `xpluck()` works like `purrr::pluck()`, but allows you to specify multiple indices at each step, e.g. `xpluck(x, 1:2, c("a", "b"))`.
 * Deprecate `xmap_raw()` and `future_xmap_raw()` functions.
   * `purrr::map_raw()` and other `*_raw()` functions are deprecated in purrr 1.0.0.
 
