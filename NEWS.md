@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.4.0
 
 * Add `xpluck()` function.
   * `xpluck()` works like `purrr::pluck()`, but allows you to specify multiple indices at each step, e.g. `xpluck(x, 1:2, c("a", "b"))`.
