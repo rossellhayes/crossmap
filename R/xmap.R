@@ -117,6 +117,7 @@ xmap_lgl <- function(.l, .f, ...) {
 #' @export
 
 xmap_raw <- function(.l, .f, ...) {
+  lifecycle::deprecate_warn("0.4.0", "xmap_raw()", "xmap_vec()")
   purrr::pmap_raw(cross_list(.l), .f, ...)
 }
 

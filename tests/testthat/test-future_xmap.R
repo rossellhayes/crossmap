@@ -50,8 +50,8 @@ for (.e in executors) {
 
     test_l[[1]]  <- as.raw(test_l[[1]])
     .f           <- rawShift
-    .xmap        <- xmap_raw(test_l, .f)
-    .future_xmap <- future_xmap_raw(test_l, .f)
+    .xmap        <- lifecycle::expect_deprecated(xmap_raw(test_l, .f))
+    .future_xmap <- lifecycle::expect_deprecated(future_xmap_raw(test_l, .f))
     expect_equal(.xmap, .future_xmap)
   })
 

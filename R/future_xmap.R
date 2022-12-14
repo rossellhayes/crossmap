@@ -113,6 +113,7 @@ future_xmap_lgl <- function(
 future_xmap_raw <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
+  lifecycle::deprecate_warn("0.4.0", "future_xmap_raw()", "future_xmap_vec()")
   require_furrr()
   furrr::future_pmap_raw(
     cross_list(.l), .f, ..., .progress = .progress, .options = .options
@@ -130,3 +131,4 @@ future_xwalk <- function(
     cross_list(.l), .f, ..., .progress = .progress, .options = .options
   )
 }
+

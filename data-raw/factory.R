@@ -6,7 +6,7 @@ library(furrr)
 
 pmap <- as.character(lsf.str("package:purrr")) %>%
   str_subset("(pmap|pwalk)") %>%
-  str_subset("[^(_df)]$")
+  str_subset("(_df|_raw|_vec)$", negate = TRUE)
 xmap_roxygen <- paste(readLines('data-raw/xmap_roxygen.txt'), collapse = "\n")
 xmap_rd      <- "#' @rdname xmap\n#' @export"
 
@@ -31,7 +31,7 @@ writeLines(xmap, "R/xmap.R")
 
 future_pmap <- as.character(lsf.str("package:furrr")) %>%
   str_subset("(pmap|pwalk)") %>%
-  str_subset("[^(_df)]$")
+  str_subset("(_df|_raw|_vec)$", negate = TRUE)
 future_xmap_roxygen <- paste(
   readLines('data-raw/future_xmap_roxygen.txt'), collapse = "\n"
 )
