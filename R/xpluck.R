@@ -15,6 +15,10 @@
 #'
 #'   Unlike [purrr::pluck()],
 #'   each accessor may be a vector to extract multiple elements.
+#'
+#'   If an accessor has length 0
+#'   (e.g. [`NULL`], [character(0)] or [numeric(0)]),
+#'   `xpluck()` will return [`NULL`].
 #' @param .default Value to use if target is [`NULL`] or absent.
 #'
 #' @return A [list] or [vector].
@@ -54,22 +58,23 @@ xpluck_impl <- function(.x, indices, .default) {
 }
 
 assert_valid_indices <- function(indices) {
-  invalid_indices <- which(
-    purrr::map_lgl(
-      indices,
-      function(x) !is.numeric(x) && !is.character(x) && !rlang::is_missing(x)
-    )
+  # Find the position of the first index that is not a valid type
+  invalid_index <- Position(
+    function(x) {
+      !rlang::is_missing(x) && !is.numeric(x) && !is.character(x) && !is.null(x)
+    },
+    indices
   )
 
-  if (length(invalid_indices) > 0) {
-    invalid_index <- invalid_indices[[1]]
-    invalid_index_class <- class(indices[[invalid_index]])
+  # If `Position()` doesn't find a match, it returns `NA`
+  if (is.na(invalid_index)) return()
 
-    cli::cli_abort(paste(
-      "Index {invalid_index} must be a {.cls character} or {.cls numeric} vector,",
-      "not a {.cls {invalid_index_class}}."
-    ))
-  }
+  invalid_index_class <- class(indices[[invalid_index]])
+
+  cli::cli_abort(paste(
+    "Index {invalid_index} must be a {.cls character} or {.cls numeric} vector",
+    "or {.code NULL}, not a {.cls {invalid_index_class}}."
+  ))
 }
 
 flatten_result <- function(result) {
@@ -96,6 +101,11 @@ flatten_result <- function(result) {
     all(lengths(result) == 1) &&
     length(unique(purrr::map_chr(result, class))) == 1
   ) {
+    return(vctrs::list_unchop(result))
+  }
+
+  # `list(c(1, 2))` or `list(c("a", "b"))`
+  if (is.list(result) && length(result) == 1) {
     return(vctrs::list_unchop(result))
   }
 
