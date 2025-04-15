@@ -141,18 +141,18 @@ with dimensions matching the lengths of each input in <code>.l</code>.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">future_xmap_mat</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,  <span class="op">~</span> <span class="va">..1</span> <span class="op">*</span> <span class="va">..2</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1 2 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 1 2 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 4 6</span>
@@ -160,50 +160,50 @@ with dimensions matching the lengths of each input in <code>.l</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">fruits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"apple"</span>, b <span class="op">=</span> <span class="st">"banana"</span>, c <span class="op">=</span> <span class="st">"cantaloupe"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">future_xmap_mat</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">fruits</span><span class="op">)</span>, <span class="va">paste</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a         b          c             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 "1 apple" "1 banana" "1 cantaloupe"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 "2 apple" "2 banana" "2 cantaloupe"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 "3 apple" "3 banana" "3 cantaloupe"</span>
 <span class="r-in"><span><span class="fu">future_xmap_mat</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">fruits</span><span class="op">)</span>, <span class="va">paste</span>, .names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_mat()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]      [,2]       [,3]          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] "1 apple" "1 banana" "1 cantaloupe"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,] "2 apple" "2 banana" "2 cantaloupe"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,] "3 apple" "3 banana" "3 cantaloupe"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">future_xmap_arr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,  <span class="op">~</span> <span class="va">..1</span> <span class="op">*</span> <span class="va">..2</span> <span class="op">*</span> <span class="va">..3</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_arr()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap_vec()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()()` is not set up to run background processes.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `future_xmap()` is not set up to run background processes.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> Try running `future::plan("multisession")`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check `help(plan, future)` for more details.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Check ?future::plan() (`?future::plan()`) for more details.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1 2 3</span>
