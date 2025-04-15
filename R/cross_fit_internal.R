@@ -52,7 +52,7 @@ cross_fit_internal <- function(
     )
   }
 
-  result <- dplyr::summarize(
+  result <- dplyr::reframe(
     data,
     tidy(
       list(
@@ -67,8 +67,7 @@ cross_fit_internal <- function(
         )
       ),
       !!!tidy_args
-    ),
-    .groups = "drop"
+    )
   )
 
   if (errors == "warn") {result <- cross_fit_warn_errors(result)}
