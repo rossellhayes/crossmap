@@ -6,8 +6,8 @@ test_that("require furrr", {
 })
 
 test_that("require future", {
-  local_mock(
-    requireNamespace = function(x, ...) {if (x == "future") {FALSE} else {TRUE}}
+  withr::local_options(
+    "rlang:::is_installed_hook" = function(pkg, ver, cmp) pkg != "future"
   )
   expect_error(future_xmap(list(1:3, 1:3), paste))
 })
