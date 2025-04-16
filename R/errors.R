@@ -76,28 +76,40 @@ require_furrr <- function() {
   check_unparallelized(fn = rlang::caller_call()[[1]])
 }
 
-check_unparallelized <- function(fn) {
-  plan    <- future::plan()
-  base_fn <- gsub("future_", "", fn)
+check_unparallelized <- function(fn = NULL) {
+  plan <- future::plan()
+
+  unparallelized_message <- c(
+    if (is.null(fn)) {
+      c("!" = "Your R session is not set up to run background processes.")
+    } else {
+      c("!" = "{.fun {fn}} is not set up to run background processes.")
+    },
+    "i" = "Check {.help [?future::plan()](future::plan)} for more details."
+  )
 
   if (future::availableCores() < 2) {
-    cli::cli_inform(
-      c(
-        "!" = "{.fun {fn}} is not set up to run background processes.",
-        "i" = "You can use {.fun {base_fn}} to avoid this warning.",
-        "i" = "Check {.help [?future::plan()](future::plan)} for more details."
+    if (length(fn) == 1) {
+      base_fn <- gsub("future_", "", fn)
+
+      unparallelized_message <- append(
+        unparallelized_message,
+        c("i" = "You can use {.fun {base_fn}} to avoid this warning."),
+        after = 1
       )
-    )
+    }
+
+    cli::cli_inform(unparallelized_message)
   } else if (
     "uniprocess" %in% class(plan) ||
     is.null(plan) ||
     ("multicore" %in% class(plan) && !future::supportsMulticore())
   ) {
     cli::cli_inform(
-      c(
-        "!" = "{.fun {fn}} is not set up to run background processes.",
-        "*" = 'Try running {.run future::plan("multisession")}.',
-        "i" = "Check {.help [?future::plan()](future::plan)} for more details."
+      append(
+        unparallelized_message,
+        c("*" = 'Try running {.run future::plan("multisession")}.'),
+        after = 1
       )
     )
   }
