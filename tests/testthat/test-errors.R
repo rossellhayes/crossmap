@@ -1,6 +1,6 @@
 test_that("require furrr", {
-  local_mock(
-    requireNamespace = function(x, ...) {if (x == "furrr") {FALSE} else {TRUE}}
+  withr::local_options(
+    "rlang:::is_installed_hook" = function(pkg, ver, cmp) pkg != "furrr"
   )
   expect_error(future_xmap(list(1:3, 1:3), paste))
 })
@@ -13,17 +13,18 @@ test_that("require future", {
 })
 
 test_that("message for no plan", {
-  local_mock(
-    plan = function(...) {NULL},
-    .env = "future"
-  )
-  expect_message(require_furrr(), "not set up to run background processes")
+  curent_plan <- attr(future::plan(), "call")
+
+  withr::defer(withr::with_package("future", rlang::eval_bare(curent_plan)))
+
+  future::plan(future::sequential)
+
+  expect_message(check_unparallelized(), "not set up to run background processes")
 })
 
 test_that("message for single core", {
-  local_mock(
-    availableCores = function(...) {1},
-    .env = "future"
+  withr::local_options(
+    "parallelly.availableCores.custom" = function() 1
   )
-  expect_message(require_furrr(), "not set up to run background processes")
+  expect_message(check_unparallelized(), "not set up to run background processes")
 })
