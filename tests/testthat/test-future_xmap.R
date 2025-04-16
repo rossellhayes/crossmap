@@ -11,7 +11,7 @@ for (.e in executors) {
     (system.os != "Darwin" || Sys.getenv("RSTUDIO", "") == "1")
   ) {next}
 
-  if (requireNamespace("future", quietly = TRUE)) {future::plan(.e)}
+  if (rlang::is_installed("future")) {future::plan(.e)}
 
   test_that(test_msg(.e, "equivalence with xmap()"), {
     skip_if_not_installed("furrr")
