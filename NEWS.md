@@ -1,4 +1,4 @@
-# crossmap (development version)
+# crossmap 0.4.1
 
 * Non-user-facing changes to fix test failures.
 
