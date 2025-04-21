@@ -65,6 +65,10 @@ test_that("zero-length accessors are still validated", {
   expect_error(xpluck(mtcars, logical(0)))
 })
 
+test_that("flatten_result early return", {
+  expect_equal(flatten_result("a"), "a")
+})
+
 # These tests are adapted from tests in the purrr package
 # https://github.com/tidyverse/purrr
 #

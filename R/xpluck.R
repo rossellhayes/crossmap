@@ -81,11 +81,11 @@ flatten_result <- function(result) {
   if (!is.list(result)) return(result)
 
   # In `purrr` >= 1.0, `vec_depth()` is renamed to `pluck_depth()`.
-  pluck_depth <- if (exists("pluck_depth", asNamespace("purrr"))) {
-    utils::getFromNamespace("pluck_depth", asNamespace("purrr"))
-  } else {
-    utils::getFromNamespace("vec_depth", asNamespace("purrr"))
-  }
+  pluck_depth_name <- intersect(
+    c("pluck_depth", "vec_depth"),
+    ls(asNamespace("purrr"))
+  )[[1]]
+  pluck_depth <- utils::getFromNamespace(pluck_depth_name, asNamespace("purrr"))
 
   while (pluck_depth(result) > 2 && all(lengths(result) == 1)) {
     result <- purrr::flatten(result)
