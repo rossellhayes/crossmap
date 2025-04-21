@@ -19,7 +19,7 @@ Unlike \code{\link[purrr:pluck]{purrr::pluck()}},
 each accessor may be a vector to extract multiple elements.
 
 If an accessor has length 0
-(e.g. \code{\link{NULL}}, \link{character(0)} or \link{numeric(0)}),
+(e.g. \code{\link{NULL}}, \code{\link[=character]{character(0)}} or \code{\link[=numeric]{numeric(0)}}),
 \code{xpluck()} will return \code{\link{NULL}}.}
 
 \item{.default}{Value to use if target is \code{\link{NULL}} or absent.}

@@ -17,7 +17,7 @@
 #'   each accessor may be a vector to extract multiple elements.
 #'
 #'   If an accessor has length 0
-#'   (e.g. [`NULL`], [character(0)] or [numeric(0)]),
+#'   (e.g. [`NULL`], [`character(0)`][character] or [`numeric(0)`][numeric]),
 #'   `xpluck()` will return [`NULL`].
 #' @param .default Value to use if target is [`NULL`] or absent.
 #'
