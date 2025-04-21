@@ -75,7 +75,10 @@ negative integers (to index from the right),
 strings (to index into names) or
 missing (to keep all elements at a given level).</p>
 <p>Unlike <code><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">purrr::pluck()</a></code>,
-each accessor may be a vector to extract multiple elements.</p></dd>
+each accessor may be a vector to extract multiple elements.</p>
+<p>If an accessor has length 0
+(e.g. <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code>, character(0) or numeric(0)),
+<code>xpluck()</code> will return <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code>.</p></dd>
 
 
 <dt id="arg--default">.default<a class="anchor" aria-label="anchor" href="#arg--default"></a></dt>

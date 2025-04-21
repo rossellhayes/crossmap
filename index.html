@@ -107,7 +107,7 @@
 <span><span class="co">#&gt; 1 1 2 3  4  5  6</span></span>
 <span><span class="co">#&gt; 2 2 4 6  8 10 12</span></span>
 <span><span class="co">#&gt; 3 3 6 9 12 15 18</span></span></code></pre></div>
-<p><strong>crossmap</strong> also integrates with <a href="https://github.com/DavisVaughan/furrr" class="external-link"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
+<p><strong>crossmap</strong> also integrates with <a href="https://github.com/futureverse/furrr" class="external-link"><strong>furrr</strong></a> to offer parallelized versions of the <code><a href="reference/xmap.html">xmap()</a></code> functions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"multisession"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/future_xmap.html">future_xmap_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"*"</span>, <span class="va">.y</span>, <span class="st">"="</span>, <span class="va">.x</span> <span class="op">*</span> <span class="va">.y</span><span class="op">)</span><span class="op">)</span></span>
@@ -128,16 +128,16 @@
 <span><span class="co">#&gt;  2 hp    NA          4     0 hp         NA       NA         NA         NA       </span></span>
 <span><span class="co">#&gt;  3 hp    NA          4     1 (Interce…  36.0      5.52e+ 0   6.52e+ 0   1.85e- 4</span></span>
 <span><span class="co">#&gt;  4 hp    NA          4     1 hp         -0.113    6.55e- 2  -1.73e+ 0   1.21e- 1</span></span>
-<span><span class="co">#&gt;  5 hp    NA          6     0 (Interce…  23.2      1.02e-14   2.28e+15   2.79e-16</span></span>
-<span><span class="co">#&gt;  6 hp    NA          6     0 hp         -0.0200   7.53e-17  -2.66e+14   2.40e-15</span></span>
+<span><span class="co">#&gt;  5 hp    NA          6     0 (Interce…  23.2      1.98e-14   1.17e+15   5.43e-16</span></span>
+<span><span class="co">#&gt;  6 hp    NA          6     0 hp         -0.0200   1.46e-16  -1.37e+14   4.66e-15</span></span>
 <span><span class="co">#&gt;  7 hp    NA          6     1 (Interce…  24.2      1.41e+ 1   1.72e+ 0   2.28e- 1</span></span>
 <span><span class="co">#&gt;  8 hp    NA          6     1 hp         -0.0440   1.22e- 1  -3.61e- 1   7.52e- 1</span></span>
 <span><span class="co">#&gt;  9 hp    NA          8     0 (Interce…  18.1      2.99e+ 0   6.05e+ 0   5.74e- 5</span></span>
 <span><span class="co">#&gt; 10 hp    NA          8     0 hp         -0.0142   1.39e- 2  -1.02e+ 0   3.26e- 1</span></span>
-<span><span class="co">#&gt; # … with 30 more rows, and 12 more variables: r.squared &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   adj.r.squared &lt;dbl&gt;, sigma &lt;dbl&gt;, model.statistic &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 30 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 12 more variables: r.squared &lt;dbl&gt;, adj.r.squared &lt;dbl&gt;, sigma &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   model.statistic &lt;dbl&gt;, model.p.value &lt;dbl&gt;, df &lt;dbl&gt;, logLik &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   AIC &lt;dbl&gt;, BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</span></span></code></pre></div>
 <p><code><a href="reference/cross_list.html">cross_list()</a></code> finds all combinations of elements from a set of lists.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cross_list.html">cross_list</a></span><span class="op">(</span>number <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, letter <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
@@ -183,7 +183,7 @@
 <p><code><a href="reference/map_vec.html">map_vec()</a></code> and variants automatically determine output types. This means you don’t have to worry about adding <code>_int()</code>, <code>_dbl()</code> or <code>_chr()</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  4  1  9 16 25</span></span>
+<span><span class="co">#&gt; [1] 25  9  4  1 16</span></span>
 <span><span class="fu"><a href="reference/map_vec.html">map_vec</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cantaloupe"</span><span class="op">)</span>, <span class="va">paste0</span>, <span class="st">"s"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "apples"      "bananas"     "cantaloupes"</span></span></code></pre></div>
 <hr>
@@ -242,7 +242,6 @@
 <li><a href="https://github.com/rossellhayes/crossmap/actions" class="external-link"><img src="https://github.com/rossellhayes/crossmap/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://app.codecov.io/gh/rossellhayes/crossmap" class="external-link"><img src="https://codecov.io/gh/rossellhayes/crossmap/branch/main/graph/badge.svg"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/rossellhayes/crossmap" class="external-link"><img src="https://www.codefactor.io/repository/github/rossellhayes/crossmap/badge" alt="CodeFactor"></a></li>
-<li><a href="https://cran.r-project.org/package=crossmap" class="external-link"><img src="https://tinyverse.netlify.com/badge/crossmap" alt="Dependencies"></a></li>
 </ul>
 </div>
 
