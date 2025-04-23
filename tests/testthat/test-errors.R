@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("require furrr", {
   withr::local_options(
     "rlang:::is_installed_hook" = function(pkg, ver, cmp) pkg != "furrr"

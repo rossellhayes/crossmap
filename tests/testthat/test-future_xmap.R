@@ -1,3 +1,7 @@
+skip_on_cran()
+skip_if_not_installed("furrr")
+skip_if_not_installed("future")
+
 test_msg  <- function(executor, ...) {paste(executor, ..., sep = " - ")}
 executors <- c("multicore", "multisession", "sequential")
 system.os <- Sys.info()[["sysname"]]
@@ -14,18 +18,12 @@ for (.e in executors) {
   if (rlang::is_installed("future")) {future::plan(.e)}
 
   test_that(test_msg(.e, "equivalence with xmap()"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     .xmap        <- xmap(test_l, sum)
     .future_xmap <- future_xmap(test_l, sum)
     expect_equal(.xmap, .future_xmap)
   })
 
   test_that(test_msg(.e, "equivalence with vector xmap()s"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     .f           <- `>`
     .xmap        <- xmap_lgl(test_l, .f)
     .future_xmap <- future_xmap_lgl(test_l, .f)
@@ -59,9 +57,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "equivalence with df xmap()s"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     .f           <- ~ list(x = .x, y = .y)
     .xmap        <- xmap_dfr(test_l, .f)
     .future_xmap <- future_xmap_dfr(test_l, .f)
@@ -74,9 +69,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "equivalence with map_vec()"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     x  <- 1:3
     df <- data.frame(x = 1:3, y = 2:4, z = 3:5)
 
@@ -158,9 +150,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "equivalence with xmap_mat()"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     dat       <- 1:3
     named_dat <- `names<-`(1:3, letters[1:3])
 
@@ -193,9 +182,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "named arguments can be passed through"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     vec_mean <- function(.x, .y, na.rm = FALSE) {
       mean(c(.x, .y), na.rm = na.rm)
     }
@@ -210,9 +196,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "arguments can be matched by name"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     test_l_named        <- test_l
     names(test_l_named) <- c("x", "y")
     test_l_named[["y"]] <- test_l_named[["y"]] * 2
@@ -226,9 +209,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "unused components can be absorbed"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     .f_bad <- function(x)      {x}
     .f     <- function(x, ...) {x}
 
@@ -240,9 +220,6 @@ for (.e in executors) {
   })
 
   test_that(test_msg(.e, "Globals in .l are found (.l could be a fn)"), {
-    skip_if_not_installed("furrr")
-    skip_if_not_installed("future")
-
     my_robust_sum  <- function(x) sum(x, na.rm = TRUE)
     my_robust_sum2 <- function(x) sum(x, na.rm = TRUE)
     multi_x <- list(c(1, 2, NA), c(2, 3, 4))
@@ -257,9 +234,6 @@ for (.e in executors) {
 
   test_that(
     test_msg(.e, "Globals in .l are only exported to workers that use them"), {
-      skip_if_not_installed("furrr")
-      skip_if_not_installed("future")
-
       my_mean  <- function(x) {mean(x, na.rm = TRUE)} # Exported to worker 1
       my_mean2 <- function(x) {mean(x, na.rm = TRUE)} # Exported to worker 2
 
