@@ -1,1 +1,3 @@
-url: https://crossmap.rossellhayes.com
+url: https://pkg.rossellhayes.com/crossmap
+template:
+  bootstrap: 5
