@@ -1,3 +1,5 @@
+# crossmap 0.4.3
+
 # crossmap 0.4.2
 
 * Skip testing future functions on CRAN to avoid issues.
