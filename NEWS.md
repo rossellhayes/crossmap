@@ -1,5 +1,7 @@
 # crossmap 0.4.3
 
+* Use `parallelly` rather than `future` as namespace for re-exported functions (#12 and #13).
+
 # crossmap 0.4.2
 
 * Skip testing future functions on CRAN to avoid issues.
