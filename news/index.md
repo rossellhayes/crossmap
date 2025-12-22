@@ -1,5 +1,11 @@
 # Changelog
 
+## crossmap 0.4.3
+
+- Use `parallelly` rather than `future` as namespace for re-exported
+  functions ([\#12](https://github.com/rossellhayes/crossmap/issues/12)
+  and [\#13](https://github.com/rossellhayes/crossmap/issues/13)).
+
 ## crossmap 0.4.2
 
 CRAN release: 2025-04-25
