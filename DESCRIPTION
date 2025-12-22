@@ -20,6 +20,7 @@ Imports:
     dplyr (>= 1.0.0),
     generics,
     lifecycle,
+    parallelly,
     purrr,
     rlang,
     stats,

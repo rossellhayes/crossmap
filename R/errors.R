@@ -88,7 +88,7 @@ check_unparallelized <- function(fn = NULL) {
     "i" = "Check {.help [?future::plan()](future::plan)} for more details."
   )
 
-  if (future::availableCores() < 2) {
+  if (parallelly::availableCores() < 2) {
     if (length(fn) == 1) {
       base_fn <- gsub("future_", "", fn)
 
@@ -103,7 +103,7 @@ check_unparallelized <- function(fn = NULL) {
   } else if (
     "uniprocess" %in% class(plan) ||
     is.null(plan) ||
-    ("multicore" %in% class(plan) && !future::supportsMulticore())
+    ("multicore" %in% class(plan) && !parallelly::supportsMulticore())
   ) {
     cli::cli_inform(
       append(
