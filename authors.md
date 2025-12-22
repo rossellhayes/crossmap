@@ -12,12 +12,12 @@ Source:
 
 Rossell Hayes A (2025). *crossmap: Apply Functions to All Combinations
 of List Elements*. R package version 0.4.3,
-<https://pkg.rossellhayes.com/crossmap>.
+<https://pkg.rossellhayes.com/crossmap/>.
 
     @Manual{,
       title = {crossmap: Apply Functions to All Combinations of List Elements},
       author = {Alexander {Rossell Hayes}},
       year = {2025},
       note = {R package version 0.4.3},
-      url = {https://pkg.rossellhayes.com/crossmap},
+      url = {https://pkg.rossellhayes.com/crossmap/},
     }
