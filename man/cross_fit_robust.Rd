@@ -69,7 +69,7 @@ and columns of tidy model output or a list column of models
 Cross fit robust linear models
 }
 \examples{
-\dontshow{if (getRversion() >= "3.5") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (getRversion() >= "3.5") withAutoprint(\{ # examplesIf}
 cross_fit_robust(mtcars, mpg ~ wt, cyl, clusters = list(NULL, am))
 \dontshow{\}) # examplesIf}
 }

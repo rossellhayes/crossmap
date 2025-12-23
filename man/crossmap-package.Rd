@@ -13,7 +13,7 @@ Provides an extension to the 'purrr' family of mapping functions to apply a func
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://crossmap.rossellhayes.com}
+  \item \url{https://pkg.rossellhayes.com/crossmap/}
   \item \url{https://github.com/rossellhayes/crossmap}
   \item Report bugs at \url{https://github.com/rossellhayes/crossmap/issues}
 }
