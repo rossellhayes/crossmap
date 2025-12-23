@@ -11,7 +11,7 @@ a dataset.
 
 Useful links:
 
-- <https://crossmap.rossellhayes.com>
+- <https://pkg.rossellhayes.com/crossmap/>
 
 - <https://github.com/rossellhayes/crossmap>
 

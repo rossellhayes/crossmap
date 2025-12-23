@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-12-22T20:48Z
+last_built: 2025-12-23T01:18Z
 urls:
   reference: https://pkg.rossellhayes.com/crossmap/reference
   article: https://pkg.rossellhayes.com/crossmap/articles
