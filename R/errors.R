@@ -101,9 +101,8 @@ check_unparallelized <- function(fn = NULL) {
 
     cli::cli_inform(unparallelized_message)
   } else if (
-    "uniprocess" %in% class(plan) ||
-    is.null(plan) ||
-    ("multicore" %in% class(plan) && !parallelly::supportsMulticore())
+    inherits(plan, "uniprocess") ||
+    (inherits(plan, "multicore") && !parallelly::supportsMulticore())
   ) {
     cli::cli_inform(
       append(
