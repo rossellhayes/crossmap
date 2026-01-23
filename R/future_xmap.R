@@ -108,16 +108,13 @@ future_xmap_lgl <- function(
 }
 
 #' @rdname future_xmap
+#' @usage NULL
 #' @export
 
 future_xmap_raw <- function(
   .l, .f, ..., .progress = FALSE, .options = furrr::furrr_options()
 ) {
-  lifecycle::deprecate_warn("0.4.0", "future_xmap_raw()", "future_xmap_vec()")
-  require_furrr()
-  furrr::future_pmap_raw(
-    cross_list(.l), .f, ..., .progress = .progress, .options = .options
-  )
+  lifecycle::deprecate_stop("0.5.0", "future_xmap_raw()", "future_xmap_vec()")
 }
 
 #' @rdname future_xmap
