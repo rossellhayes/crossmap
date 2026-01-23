@@ -10,14 +10,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/rossellhayes/crossmap/blob/main/DESCRIPTION)
 
-Rossell Hayes A (2025). *crossmap: Apply Functions to All Combinations
-of List Elements*. R package version 0.4.3,
+Rossell Hayes A (2026). *crossmap: Apply Functions to All Combinations
+of List Elements*. R package version 0.5.0,
 <https://pkg.rossellhayes.com/crossmap/>.
 
     @Manual{,
       title = {crossmap: Apply Functions to All Combinations of List Elements},
       author = {Alexander {Rossell Hayes}},
-      year = {2025},
-      note = {R package version 0.4.3},
+      year = {2026},
+      note = {R package version 0.5.0},
       url = {https://pkg.rossellhayes.com/crossmap/},
     }
