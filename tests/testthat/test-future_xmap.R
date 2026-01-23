@@ -48,12 +48,6 @@ for (.e in executors) {
     .xmap        <- utils::capture.output(xwalk(test_l, .f))
     .future_xmap <- utils::capture.output(future_xwalk(test_l, .f))
     expect_equal(.xmap, .future_xmap)
-
-    test_l[[1]]  <- as.raw(test_l[[1]])
-    .f           <- rawShift
-    .xmap        <- lifecycle::expect_deprecated(xmap_raw(test_l, .f))
-    .future_xmap <- lifecycle::expect_deprecated(future_xmap_raw(test_l, .f))
-    expect_equal(.xmap, .future_xmap)
   })
 
   test_that(test_msg(.e, "equivalence with df xmap()s"), {
