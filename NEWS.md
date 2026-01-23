@@ -1,3 +1,5 @@
+# crossmap 0.5.0
+
 # crossmap 0.4.3
 
 * Use `parallelly` rather than `future` as namespace for re-exported functions (#12 and #13).
