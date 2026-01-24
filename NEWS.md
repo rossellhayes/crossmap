@@ -1,6 +1,6 @@
 # crossmap 0.5.0
 
-* `xamp_raw()` and `future_xmap_raw()` are now defunct to reflect the planned removal of `pmap_raw()` from the `purrr` package and `future_pmap_raw()` from the `furrr` package (#15).
+* `xmap_raw()` and `future_xmap_raw()` are now defunct to reflect the planned removal of `pmap_raw()` from the `purrr` package and `future_pmap_raw()` from the `furrr` package (#15).
 
 # crossmap 0.4.3
 
