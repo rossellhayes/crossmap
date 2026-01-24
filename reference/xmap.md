@@ -21,6 +21,8 @@ xmap_int(.l, .f, ...)
 
 xmap_lgl(.l, .f, ...)
 
+xmap_raw(.l, .f, ...)
+
 xwalk(.l, .f, ...)
 ```
 

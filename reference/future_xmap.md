@@ -59,6 +59,14 @@ future_xmap_lgl(
   .options = furrr::furrr_options()
 )
 
+future_xmap_raw(
+  .l,
+  .f,
+  ...,
+  .progress = FALSE,
+  .options = furrr::furrr_options()
+)
+
 future_xwalk(.l, .f, ..., .progress = FALSE, .options = furrr::furrr_options())
 ```
 
