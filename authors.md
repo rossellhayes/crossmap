@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/rossellhayes/crossmap/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/rossellhayes/crossmap/blob/v0.5.0/DESCRIPTION)
 
 Rossell Hayes A (2026). *crossmap: Apply Functions to All Combinations
 of List Elements*. R package version 0.5.0,
