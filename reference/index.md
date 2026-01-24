@@ -28,7 +28,6 @@
   [`future_xmap_dfr()`](https://pkg.rossellhayes.com/crossmap/reference/future_xmap.md)
   [`future_xmap_int()`](https://pkg.rossellhayes.com/crossmap/reference/future_xmap.md)
   [`future_xmap_lgl()`](https://pkg.rossellhayes.com/crossmap/reference/future_xmap.md)
-  [`future_xmap_raw()`](https://pkg.rossellhayes.com/crossmap/reference/future_xmap.md)
   [`future_xwalk()`](https://pkg.rossellhayes.com/crossmap/reference/future_xmap.md)
   : Map over each combination of list elements simultaneously via
   futures
@@ -50,7 +49,6 @@
   [`xmap_dfr()`](https://pkg.rossellhayes.com/crossmap/reference/xmap.md)
   [`xmap_int()`](https://pkg.rossellhayes.com/crossmap/reference/xmap.md)
   [`xmap_lgl()`](https://pkg.rossellhayes.com/crossmap/reference/xmap.md)
-  [`xmap_raw()`](https://pkg.rossellhayes.com/crossmap/reference/xmap.md)
   [`xwalk()`](https://pkg.rossellhayes.com/crossmap/reference/xmap.md) :
   Map over each combination of list elements
 - [`xmap_mat()`](https://pkg.rossellhayes.com/crossmap/reference/xmap_mat.md)
