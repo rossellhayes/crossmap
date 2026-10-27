@@ -43,9 +43,9 @@ cross_fit_internal <- function(
   } else {
     tidy <- rlang::as_function(tidy)
   }
-  tidy <- purrr::lift(tidy)
+  tidy <- lift_dl(tidy)
 
-  fn <- purrr::lift(rlang::as_function(fn))
+  fn <- lift_dl(rlang::as_function(fn))
   if (errors == "warn") {
     fn <- purrr::possibly(
       fn, fn(0 ~ 0 + .invalid_model, data = list(.invalid_model = 1))
@@ -73,6 +73,11 @@ cross_fit_internal <- function(
   if (errors == "warn") {result <- cross_fit_warn_errors(result)}
 
   result
+}
+
+lift_dl <- function(.f) {
+  force(.f)
+  function(.l, ...) {do.call(.f, c(.l, list(...)))}
 }
 
 is_null_or_na <- function(x) {is.null(x) || rlang::is_na(x)}
